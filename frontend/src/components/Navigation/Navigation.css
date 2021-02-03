@@ -1,3 +1,42 @@
 .profile-dropdown {
   position: absolute;
 }
+
+#profile-button {
+  margin-right: 10px;
+}
+
+#border-heading {
+  position: relative;
+  height: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  background: radial-gradient(rgb(141, 202, 255), rgb(227, 107, 177));
+}
+
+#top-nav-bar {
+  background-color: rgb(221, 232, 241);
+  margin-top: 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+/* COME BACK TO STYLING THIS!! */
+.logo .mobile {
+  display: none;
+}
+/* when screen is less than 600px wide
+     show mobile version and hide desktop */
+@media (max-width: 600px) {
+  .logo .mobile {
+    display: block;
+  }
+  .logo .desktop {
+    display: none;
+  }
+}
