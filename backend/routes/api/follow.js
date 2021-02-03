@@ -40,7 +40,6 @@ router.get('/following/:username',
     const following = user.Following.map(eachFollowedPerson => {
         return eachFollowedPerson.username
     });
-    console.log(user.Following)
     res.json({ following });
   })
 );
