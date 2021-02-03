@@ -1,10 +1,6 @@
 // import './HomePage.css';
-// import canvas from './z-s-pCFw8nlNS9c-unsplash.jpg';
-// import painting from './steve-johnson-5MTf9XyVVgM-unsplash.jpg';
-// import pottery from './oshin-khandelwal-EQpXnijYejQ-unsplash.jpg';
-// import photography from './nathan-dumlao-p4TKmK4Egvg-unsplash.jpg';
 import {useEffect} from 'react';
-import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
+import {fetchAllGoalsForPeopleAUserFollows, fetchUser} from '../../store/goals';
 import {useDispatch, useSelector} from 'react-redux';
 // import {Link} from 'react-router-dom';
 
@@ -22,7 +18,6 @@ function HomePage () {
     }, [dispatch])
 
     const goals = useSelector(state => {
-        console.log(state.goals.User, 'yooooo')
         return state.goals.goals
     });
 
@@ -32,6 +27,12 @@ function HomePage () {
             <h3>Social Feed:</h3>
             <div className='product-listing'>
                 {goals && goals.map(goal => {
+                    let userId = goal.userId
+                    useEffect (() => {
+                        dispatch(fetchUser(userId))
+                    }, [dispatch])
+
+                    const user = useSelector(state => state.user.username);
                 return (
                     <>
                         <div>{goal.name}</div>
