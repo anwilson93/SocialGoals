@@ -5,9 +5,11 @@ import "./LoginForm.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
+ 
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password })).catch(
       (res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
-      }
+      },
     );
   };
 

@@ -25,7 +25,6 @@ function HomePage () {
     return (
         <>
          {username && <h2>Welcome, {username}!</h2>}
-            <h3>Social Feed:</h3>
             <div>
                 {goals && goals.map(goal => {
                     let user = goal.User.username
