@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { User, Goal, Comment } = require('../../db/models');
+const { User, Goal } = require('../../db/models');
 
 
 // GET ALL GOALS FOR USERS THAT A PERSON IS FOLLOWING
@@ -28,12 +28,8 @@ router.get('/following/:username',
         {
           model: User,
         },
-        {
-          model: Comment,
-        }
       ],
       order: [["createdAt", 'DESC']],
-      // attributes: [[sequelize.fn('date_format', sequelize.col('startDate'), '%Y %m %d'), 'startDate']]
 
     });
 

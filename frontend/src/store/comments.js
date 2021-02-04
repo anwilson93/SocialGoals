@@ -13,13 +13,28 @@ const getAllComments = (comments) => ({
 
 
 export const fetchAllComments = (goalId) => {
-    
     return async (dispatch) => {
         const res = await fetch(`/api/comments/${goalId}`)
         dispatch(
             getAllComments(res.data)
         );
     };
+};
+
+
+export const createComment = (obj) => async (dispatch) => {
+  const { userId, goalId, newComment } = obj;
+
+  const res = await fetch(`/api/comments/${goalId}`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId,
+            comment: newComment
+      })
+  });
+    dispatch(fetchAllComments(goalId))
+    return res
 };
 
 
