@@ -20,4 +20,21 @@ router.get('/:goalId',
   })
 );
 
+
+// router.post('/:goalId',
+//   asyncHandler(async (req, res) => {
+//     const goalId = req.params.goalId;
+//     const comments = await Comment.findAll({
+//       where: { goalId},
+//       include: [
+//         {
+//           model: User,
+//         },
+//       ],
+//     });
+
+//     return res.json(comments)
+//   })
+// );
+
 module.exports = router;

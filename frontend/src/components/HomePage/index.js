@@ -1,7 +1,6 @@
 import './HomePage.css';
 import {useEffect} from 'react';
 import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
-import {fetchAllComments} from '../../store/comments';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
@@ -36,7 +35,7 @@ function HomePage () {
                     let user = goal.User.username
                     let startDate = new Date(goal.startDate).toString().slice(0, 16);
                     let goalId = goal.id
-                    
+
                     return (
                         <>  
                             {/* <div className='feed-container'> */}
