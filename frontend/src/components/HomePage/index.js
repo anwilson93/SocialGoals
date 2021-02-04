@@ -1,6 +1,6 @@
 // import './HomePage.css';
 import {useEffect} from 'react';
-import {fetchAllGoalsForPeopleAUserFollows, fetchUser} from '../../store/goals';
+import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
 import {useDispatch, useSelector} from 'react-redux';
 // import {Link} from 'react-router-dom';
 
@@ -21,23 +21,21 @@ function HomePage () {
         return state.goals.goals
     });
 
+
     return (
         <>
          {username && <h2>Welcome, {username}!</h2>}
             <h3>Social Feed:</h3>
-            <div className='product-listing'>
+            <div className=''>
                 {goals && goals.map(goal => {
-                    let userId = goal.userId
-                    useEffect (() => {
-                        dispatch(fetchUser(userId))
-                    }, [dispatch])
-
-                    const user = useSelector(state => state.user.username);
-                return (
-                    <>
-                        <div>{goal.name}</div>
-                    </>
-                )
+                    let user = goal.User.username
+                    let startDate = new Date(goal.startDate).toString().slice(0, 16);
+                    return (
+                        <>
+                            <div> {user} made a new goal: {goal.name}</div>
+                            <div>Start date: {startDate}</div>
+                        </>
+                    )
             })}
             </div>
         </>

@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
 const { User, Goal } = require('../../db/models');
+const sequelize = require('sequelize')
 
 // GET ALL GOALS FOR USERS THAT A PERSON IS FOLLOWING
 router.get('/following/:username',
   asyncHandler(async (req, res) => {
     const username = req.params.username;
     const user = await User.findOne({
-      where: { username },
+      where: { username},
       include: [
         {
           model: User,
@@ -22,7 +23,15 @@ router.get('/following/:username',
     });
    
     const followedPersonGoals = await Goal.findAll({
-      where: {userId: followingId}
+      where: {userId: followingId},
+      include: [
+        {
+          model: User,
+        },
+      ],
+      order: [["createdAt", 'DESC']],
+      // attributes: [[sequelize.fn('date_format', sequelize.col('startDate'), '%Y %m %d'), 'startDate']]
+
     });
 
     const goals = followedPersonGoals.map(eachFollowedPerson => {
