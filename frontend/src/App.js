@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import CommentList from "./components/CommentList";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route exact path='/'>
             <HomePage />
+            <CommentList />
           </Route>
         </Switch>
       )}

@@ -1,11 +1,32 @@
 import { useState, useEffect } from "react";
-import "./CommentBox.css";
+import {fetchAllComments} from '../../store/comments';
+import {useDispatch, useSelector} from 'react-redux';
+import './CommentBox.css';
+import CommentList from '../CommentList';
+import CommentForm from '../CommentForm';
 
-function CommentBox() {
+function CommentBox({goalId}) {
+
+  const [commentsOpen, setCommentsOpen] = useState(false);
+
+  const dispatch = useDispatch()
+
+    useEffect (() => {
+        dispatch(fetchAllComments(goalId))
+    }, [commentsOpen])
+  
+  const comments = useSelector(state => {
+        return state.comments
+    });
+
     return (
-      <div className="comment-box">
-        Hello, world! I am a CommentBox.
-      </div>
+      <>
+        <div onClick={() => setCommentsOpen(!commentsOpen)}>Comments:</div>
+        <div className="comment-box">
+          <CommentList visible={commentsOpen}/>
+          <CommentForm visible={commentsOpen}/>
+        </div>
+      </>
     )
 }
 

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import "./CommentForm.css";
+// import "./CommentForm.css";
 
-function CommentForm() {
+function CommentForm({visible}) {
+  if (!visible) return null
     return (
       <div className="comment-form">
         Hello, world! I am a CommentForm.
