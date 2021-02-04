@@ -23,7 +23,7 @@ router.get('/following/:username',
     });
    
     const followedPersonGoals = await Goal.findAll({
-      where: {userId: followingId},
+      where: {userId: followingId, completed: false},
       include: [
         {
           model: User,

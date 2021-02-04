@@ -1,0 +1,34 @@
+.largeContainer {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  /* max-width: 450px; */
+  padding: 1rem;
+  /* background: linear-gradient(to right, red, purple); */
+}
+
+.outer {
+  display: flex;
+  justify-content: center;
+}
+
+.individualContainer {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  width: 400px;
+  height: auto;
+  border-left: 3px solid rgb(227, 107, 177);
+  border-bottom: 3px solid rgb(141, 202, 255);
+  border-top: 3px solid rgb(252, 196, 3);
+  border-right: 3px solid rgb(231, 72, 35);
+  padding: 2rem;
+  box-shadow: 5px 5px 5px rgb(221, 232, 241);
+}
+
+.space {
+  margin: 2px;
+  height: 4px;
+  width: 50px;
+  background-color: rgb(221, 232, 241);
+}
