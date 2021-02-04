@@ -1,4 +1,18 @@
-.largeContainer {
+.main-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.feed-container-outer {
+  margin-left: 150px;
+}
+
+/* .feed-container {
+  display: flex;
+  justify-content: center;
+} */
+
+.feed-container {
   display: flex;
   justify-content: center;
   width: 600px;
@@ -7,12 +21,7 @@
   /* background: linear-gradient(to right, red, purple); */
 }
 
-.outer {
-  display: flex;
-  justify-content: center;
-}
-
-.individualContainer {
+.individual-container {
   display: flex;
   align-content: center;
   flex-direction: column;
