@@ -11,7 +11,7 @@ function SidePanel() {
                 <div className="side-panel-wrapper">
                     <div className="side-panel-button"
                          onClick={() => setSideOpen(!sideOpen)}>
-                        {sideOpen ? '>' : '<'}
+                        {sideOpen ? '<' : '>'}
                     </div>
                 </div>
                 <SidePanelDetails visible={sideOpen} />
