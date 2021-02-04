@@ -1,0 +1,24 @@
+.ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  font-size: 1.5rem;
+  margin-right: 30px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: rgb(141, 202, 255);
+}
+
+.space-for-links {
+  height: 50px;
+}
