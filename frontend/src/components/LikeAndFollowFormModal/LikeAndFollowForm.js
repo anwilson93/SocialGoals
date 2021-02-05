@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {createGoalLike} from '../../store/likes';
 import "./LikeAndFollowForm.css";
 
 function LikeAndFollowForm({goalId, userId}) {
@@ -13,8 +14,7 @@ function LikeAndFollowForm({goalId, userId}) {
   
   const handleLikeSubmit = (e) => {
       setErrors([]);
-      console.log(goalId, 'goalllll', userId, 'userrrrr')
-    //   return dispatch(createGoalLike({userId, goalId}))
+      return dispatch(createGoalLike({userId, goalId}))
     //   .catch((res) => {
     //     if (res.data && res.data.errors) setErrors(res.data.errors);
     //   });
