@@ -13,6 +13,7 @@ import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 
 function HomePage () {
     const username = useSelector(state => state.session.user.username);
+    const userId = useSelector(state => state.session.user.id);
 
     const dispatch = useDispatch()
 
@@ -45,7 +46,7 @@ function HomePage () {
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
-                                    <LikeAndFollowFormModal />
+                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/>
                                     <CommentBox goalId={goalId}/>
                                 </div>
                             </div>

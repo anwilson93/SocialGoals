@@ -1,19 +1,30 @@
 import React, { useState } from "react";
-// import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./LikeAndFollowForm.css";
 
-function LikeAndFollowForm() {
+function LikeAndFollowForm({goalId, userId}) {
   const dispatch = useDispatch();
- 
+  
+//   const userId = useSelector(state => state.session.user.id);
+
   const [like, setLike] = useState(false);
   const [followGoal, setFollowGoal] = useState(false);
+  const [errors, setErrors] = useState([]);
   
+  const handleLikeSubmit = (e) => {
+      setErrors([]);
+      console.log(goalId, 'goalllll', userId, 'userrrrr')
+    //   return dispatch(createGoalLike({userId, goalId}))
+    //   .catch((res) => {
+    //     if (res.data && res.data.errors) setErrors(res.data.errors);
+    //   });
+  }
+
 
   return (
     <>
       <h1>Like or Follow</h1>
-      <button onClick={() => setLike(true)}>Like <i class="far fa-heart"></i></button>
+      <button onClick={() => handleLikeSubmit()}>Like <i class="far fa-heart"></i></button>
       <button onClick={() => setFollowGoal(true)}>Follow</button>
     </>
   );
