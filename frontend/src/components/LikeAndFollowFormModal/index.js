@@ -7,7 +7,7 @@ function LikeAndFollowFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Like <i class="far fa-heart"> or Follow Goal</i></button>
+      <button className='modal-like-button' onClick={() => setShowModal(true)}>Like <i class="far fa-heart"> or Follow Goal</i></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LikeAndFollowForm />
