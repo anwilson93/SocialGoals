@@ -41,3 +41,12 @@
   width: 50px;
   background-color: rgb(221, 232, 241);
 }
+
+.goal-heart {
+}
+
+.card {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}

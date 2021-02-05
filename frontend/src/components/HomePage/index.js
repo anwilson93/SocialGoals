@@ -4,6 +4,7 @@ import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
+import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 // import {Link} from 'react-router-dom';
 
 
@@ -12,6 +13,7 @@ import CommentBox from '../CommentBox';
 
 function HomePage () {
     const username = useSelector(state => state.session.user.username);
+    const userId = useSelector(state => state.session.user.id);
 
     const dispatch = useDispatch()
 
@@ -44,6 +46,7 @@ function HomePage () {
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
+                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/>
                                     <CommentBox goalId={goalId}/>
                                 </div>
                             </div>
