@@ -4,6 +4,7 @@ import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
+import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 // import {Link} from 'react-router-dom';
 
 
@@ -44,6 +45,7 @@ function HomePage () {
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
+                                    <LikeAndFollowFormModal />
                                     <CommentBox goalId={goalId}/>
                                 </div>
                             </div>
