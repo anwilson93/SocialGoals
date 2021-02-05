@@ -12,14 +12,14 @@ const setLikes = (likes) => ({
 });
 
 
-// export const fetchLikes = (userId) => {
-//     return async (dispatch) => {
-//         const res = await fetch(`/api/likes/user/${userId}`)
-//         dispatch(
-//             setLikes(res.data)
-//         );
-//     };
-// };
+export const fetchLikes = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/likes/user/${userId}`)
+        dispatch(
+            setLikes(res.data)
+        );
+    };
+};
 
 
 export const createGoalLike = (obj) => async (dispatch) => {
@@ -31,9 +31,8 @@ export const createGoalLike = (obj) => async (dispatch) => {
             goalId: goalId
       })
   });
-    // dispatch(fetchLikes(userId))
-    console.log('resssssssss', res.data.like)
-    return res
+    dispatch(fetchLikes(userId))
+    return res.data.like
 };
 
 
