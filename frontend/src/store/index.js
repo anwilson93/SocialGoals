@@ -4,12 +4,14 @@ import session from './session';
 import goals from './goals';
 import comments from './comments';
 import likes from './likes';
+import follows from './follow';
 
 const rootReducer = combineReducers({
   session,
   goals,
   comments,
-  likes
+  likes,
+  follows
 });
 
 let enhancer;

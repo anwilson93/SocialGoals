@@ -8,6 +8,7 @@ import CommentBox from '../CommentBox';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
 import GoalsFollowed from '../GoalsFollowed';
+import { fetchGoalFollows } from '../../store/follow';
 // import {Link} from 'react-router-dom';
 
 
@@ -26,6 +27,10 @@ function HomePage () {
 
     useEffect (() => {
         dispatch(fetchLikes(userId))
+    }, [dispatch])
+
+    useEffect (() => {
+        dispatch(fetchGoalFollows(userId))
     }, [dispatch])
 
     const goals = useSelector(state => {

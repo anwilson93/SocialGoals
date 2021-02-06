@@ -1,25 +1,25 @@
 import { fetch } from './csrf.js';
 
-const SET_FOLLOW_FOR_GOALS = 'follow/setGoalFollow';
+const SET_FOLLOW_GOAL = 'follow/setFollowGoal';
 
 
 
 const initialState = {};
 
-const setFollowForGoal = (follow) => ({
-  type: SET_FOLLOW_FOR_GOALS,
-  payload: follow
+const setFollowGoal = (follows) => ({
+  type: SET_FOLLOW_GOAL,
+  payload: follows
 });
 
 
-// export const fetchLikes = (userId) => {
-//     return async (dispatch) => {
-//         const res = await fetch(`/api/likes/user/${userId}`)
-//         dispatch(
-//             setLikes(res.data)
-//         );
-//     };
-// };
+export const fetchGoalFollows = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/goals/following/goal/${userId}`)
+        dispatch(
+            setFollowGoal(res.data)
+        );
+    };
+};
 
 
 export const createGoalFollow = (obj) => async (dispatch) => {
@@ -31,7 +31,7 @@ export const createGoalFollow = (obj) => async (dispatch) => {
             goalId: goalId
       })
   });
-    // dispatch(fetchLikes(userId))
+    dispatch(fetchGoalFollows(userId))
     return res.data
 };
 
@@ -40,8 +40,8 @@ export const createGoalFollow = (obj) => async (dispatch) => {
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case SET_FOLLOW_FOR_GOALS:
-      newState = Object.assign({}, state, { follow: action.payload });
+    case SET_FOLLOW_GOAL:
+      newState = Object.assign({}, state, { follows: action.payload });
       return newState;
     // case GET_USER:
     //   newState = Object.assign({}, state, { user: action.payload });

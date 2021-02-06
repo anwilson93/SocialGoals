@@ -4,23 +4,22 @@ import {useSelector} from 'react-redux';
 function GoalsFollowed ({goalId}) {
 
     
-    // const likes = useSelector(state => {
-    //     return state.likes.likes
-    // });
+    const follows = useSelector(state => {
+        return state.follows.follows
+    });
 
     return (
         <>
-        <h1>Follow</h1>
-         {/* {likes && likes.map(like => {
+         {follows && follows.map(follow => {
             
-             {if (like.goalId === goalId) {
+             {if (follow.goalId === goalId) {
                  return (
-                     <h1>liked</h1>
+                     <h1>following goal</h1>
                  )
              } else {
                 return null
              }}
-         })} */}
+         })}
         </>
     )
 }
