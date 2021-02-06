@@ -16,7 +16,7 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }))
+    return dispatch(sessionActions.login({ credential, password }), <Redirect to='/' />)
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });

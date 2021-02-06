@@ -1,10 +1,12 @@
 import './HomePage.css';
 import {useEffect} from 'react';
 import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
+import {fetchLikes} from '../../store/likes';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
+import GoalsLiked from '../GoalsLiked';
 // import {Link} from 'react-router-dom';
 
 
@@ -21,9 +23,14 @@ function HomePage () {
         dispatch(fetchAllGoalsForPeopleAUserFollows(username))
     }, [dispatch])
 
+    useEffect (() => {
+        dispatch(fetchLikes(userId))
+    }, [dispatch])
+
     const goals = useSelector(state => {
         return state.goals.goals
     });
+
 
 
 
@@ -38,6 +45,7 @@ function HomePage () {
                     let startDate = new Date(goal.startDate).toString().slice(0, 16);
                     let goalId = goal.id
 
+
                     return (
                         <>  
                             {/* <div className='feed-container'> */}
@@ -48,6 +56,7 @@ function HomePage () {
                                     <div>Start date: {startDate}</div>
                                     <LikeAndFollowFormModal goalId={goalId} userId={userId}/>
                                     <CommentBox goalId={goalId}/>
+                                    <GoalsLiked goalId={goalId} />
                                 </div>
                             </div>
                             {/* </div> */}

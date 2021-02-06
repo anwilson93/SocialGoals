@@ -1,3 +1,4 @@
+import { Redirect } from 'react-router-dom';
 import { fetch } from './csrf.js';
 
 const SET_USER = 'session/setUser';
@@ -46,7 +47,7 @@ export const logout = () => async (dispatch) => {
   const response = await fetch('/api/session', {
     method: 'DELETE'
   });
-  dispatch(removeUser());
+  dispatch(removeUser(), <Redirect to='/login' />);
   return response;
 };
 
