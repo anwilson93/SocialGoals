@@ -1,6 +1,7 @@
 import './HomePage.css';
 import {useEffect} from 'react';
 import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
+import {fetchAllDiariessForGoalsAUserFollows} from '../../store/diaries';
 import {fetchLikes} from '../../store/likes';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
@@ -9,6 +10,7 @@ import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
 import GoalsFollowed from '../GoalsFollowed';
 import { fetchGoalFollows } from '../../store/follow';
+import DiaryEntriesCard from '../DiaryEntriesCard';
 // import {Link} from 'react-router-dom';
 
 
@@ -26,6 +28,10 @@ function HomePage () {
     }, [dispatch])
 
     useEffect (() => {
+        dispatch(fetchAllDiariessForGoalsAUserFollows(userId))
+    }, [dispatch])
+
+    useEffect (() => {
         dispatch(fetchLikes(userId))
     }, [dispatch])
 
@@ -33,10 +39,10 @@ function HomePage () {
         dispatch(fetchGoalFollows(userId))
     }, [dispatch])
 
+
     const goals = useSelector(state => {
         return state.goals.goals
     });
-
 
 
 
@@ -68,6 +74,7 @@ function HomePage () {
                         </>
                     )
             })}
+            <DiaryEntriesCard />
             </div>
             </div>
         </>
