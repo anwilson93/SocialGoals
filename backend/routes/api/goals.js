@@ -55,4 +55,16 @@ router.get('/following/goal/:userId(\\d+)',
   })
 );
 
+// GET ALL OF USER'S GOALS
+router.get('/:userId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const myGoals = await Goal.findAll({
+      where: { userId},
+    });
+
+    return res.json(myGoals)
+  })
+);
+
 module.exports = router;
