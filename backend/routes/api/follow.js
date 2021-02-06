@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { User } = require('../../db/models');
+const { User, FollowGoal } = require('../../db/models');
 
 
 // GET ALL FOLLOWERS FOR A USER AND RETURNS THE FOLLOWERS' USERNAMES
@@ -41,6 +41,29 @@ router.get('/following/:username',
         return eachFollowedPerson.username
     });
     res.json({ following });
+  })
+);
+
+// CREATE OR DELETE FOLLOW FOR A GOAL
+router.post('/:goalId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId} = req.body
+    let follow;
+    //CHECK IF FOLLOW ALREADY EXISTS
+    const deleteFollow = await FollowGoal.findOne({
+        where: {goalId, userId}
+    });
+
+    // IF IT DOESN'T EXIST, CREATE IT. ELSE DELETE IT
+    if (deleteFollow === null){
+        const follow = await FollowGoal.create({goalId, userId})
+        await follow.save();
+        return res.json({ follow });
+    } else {
+        FollowGoal.destroy({
+            where: {goalId, userId}
+        })
+    }
   })
 );
 
