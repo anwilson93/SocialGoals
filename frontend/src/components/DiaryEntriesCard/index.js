@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
+import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 
-function DiaryEntriesCard () {
+function DiaryEntriesCard ({userId}) {
     const diaries = useSelector(state => {
         return state.diaries.diaries
     });
@@ -10,17 +11,20 @@ function DiaryEntriesCard () {
                 let date = new Date(diary.createdAt).toString().slice(0, 16);
                 let entry = diary.entry
                 let goalId = diary.goalId
-
+                let diaryEntryId = diary.id
+                let goalName = diary.Goal.name
 
                 return (
                     <>  
                         <div className='feed-container'>
                             <div className='individual-container'>
-                                <div> {date}</div>
+                                <div> New diary entry for goal: {goalName}</div>
                                 <div className='space'></div>
-                                <div>{entry}</div>
-                                {/* <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsLiked goalId={goalId} /> <GoalsFollowed goalId={goalId} />
-                                <CommentBox goalId={goalId}/> */}
+                                {date}
+                                <div>Entry: {entry}</div>
+                                <LikeAndFollowFormModal diaryEntryId={diaryEntryId} userId={userId}/> 
+                                {/* <GoalsLiked goalId={goalId} /> <GoalsFollowed goalId={goalId} /> */}
+                                {/* <CommentBox goalId={goalId}/> */}
                             </div>
                         </div>
                     </>

@@ -21,6 +21,11 @@ router.get('/following/:userId',
     // FIND ALL DIARY ENTRIES BY GOAL ID
     const followedGoalsDiaries = await DiaryEntry.findAll({
       where: {goalId},
+      include: [
+        {
+          model: Goal,
+        },
+      ],
       order: [["createdAt", 'DESC']],
 
     });

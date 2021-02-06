@@ -74,7 +74,7 @@ function HomePage () {
                         </>
                     )
             })}
-            <DiaryEntriesCard />
+            <DiaryEntriesCard userId={userId} />
             </div>
             </div>
         </>
