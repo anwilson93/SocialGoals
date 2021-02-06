@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { User, Goal } = require('../../db/models');
+const { User, Goal, Like } = require('../../db/models');
 
 
 // GET ALL GOALS FOR USERS THAT A PERSON IS FOLLOWING
@@ -27,6 +27,9 @@ router.get('/following/:username',
       include: [
         {
           model: User,
+        },
+        {
+          model: Like,
         },
       ],
       order: [["createdAt", 'DESC']],
