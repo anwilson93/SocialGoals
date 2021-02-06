@@ -20,7 +20,7 @@ router.get('/user/:userId',
   })
 );
 
-// CREATE OR DELETE LIKE
+// CREATE OR DELETE LIKE FOR GOAL
 router.post('/:goalId(\\d+)',
   asyncHandler(async (req, res) => {
     const {userId, goalId} = req.body
@@ -38,6 +38,29 @@ router.post('/:goalId(\\d+)',
     } else {
         Like.destroy({
             where: {goalId, userId}
+        })
+    }
+  })
+);
+
+// CREATE OR DELETE LIKE FOR DIARY
+router.post('/diary/:diaryEntryId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const {userId, diaryEntryId} = req.body
+    let like;
+    //CHECK IF LIKE ALREADY EXISTS
+    const deleteLike = await Like.findOne({
+        where: {diaryEntryId, userId}
+    });
+
+    // IF IT DOESN'T EXIST, CREATE IT. ELSE DELETE IT
+    if (deleteLike === null){
+        const like = await Like.create({diaryEntryId, userId})
+        await like.save();
+        return res.json({ like });
+    } else {
+        Like.destroy({
+            where: {diaryEntryId, userId}
         })
     }
   })
