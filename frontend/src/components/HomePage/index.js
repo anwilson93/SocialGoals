@@ -7,6 +7,7 @@ import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
+import GoalsFollowed from '../GoalsFollowed';
 // import {Link} from 'react-router-dom';
 
 
@@ -54,9 +55,8 @@ function HomePage () {
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
-                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/>
+                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsLiked goalId={goalId} /> <GoalsFollowed goalId={goalId} />
                                     <CommentBox goalId={goalId}/>
-                                    <GoalsLiked goalId={goalId} />
                                 </div>
                             </div>
                             {/* </div> */}
