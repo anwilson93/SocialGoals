@@ -1,7 +1,7 @@
 import SidePanel from '../SidePanel';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {fetchAllMyGoals, fetchAllMyCompletedGoals} from '../../store/goals';
+import {fetchAllMyCompletedGoals} from '../../store/goals';
 import {Link} from 'react-router-dom';
 
 
@@ -13,24 +13,13 @@ function CompletedGoals () {
 
     const dispatch = useDispatch();
    
-
     
     useEffect (() => {
-        dispatch(fetchAllMyGoals(userId))
+        dispatch(fetchAllMyCompletedGoals(userId))
     }, [dispatch])
 
 
-    const getCompleted = () => {
-        return(dispatch(fetchAllMyCompletedGoals(userId)))
-        
-    }
-
-    const getAllGoals = () => {
-        return(dispatch(fetchAllMyGoals(userId)))
-    }
-
     const completedGoals = useSelector(state => {
-        console.log(state.completed.completed, 'yooo')
         return state.completed.completed
     });
 
@@ -40,9 +29,8 @@ function CompletedGoals () {
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>
-                    <Link to='/goals'><button className='goals-button' onClick={getAllGoals}>Current Goals</button></Link>
-                    <Link to={`/goals/completed`}><button className='goals-button'  onClick={getCompleted}>Completed Goals</button></Link>
-
+                    <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
+                    <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
                     {completedGoals && completedGoals.map(goal => {
                         let goalId = goal.id
 

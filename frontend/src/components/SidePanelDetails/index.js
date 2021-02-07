@@ -13,7 +13,7 @@ function SidePanelDetails({visible}) {
                     <NavLink to={`/goals`} className='link'>
                     <li className='list-item'>My Goals</li> </NavLink>
                     <div className='space-for-links'></div>
-                    <NavLink to={`/entries/${username}`} className='link'>
+                    <NavLink to={`/diaries`} className='link'>
                     <li className='list-item'>My Diary Entries</li></NavLink>
                     <div className='space-for-links'></div>
                     <NavLink to={`/followers/${username}`} className='link'>

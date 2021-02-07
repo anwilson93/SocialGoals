@@ -46,6 +46,38 @@ export const fetchAllMyCompletedGoals = (userId) => {
     };
 };
 
+export const createGoal = (obj) => async (dispatch) => {
+  const { userId, name, goalType, startDate } = obj;
+  const res = await fetch(`/api/goals/create`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            name: name,
+            goalType: goalType,
+            startDate: startDate
+      })
+  }); 
+    dispatch(fetchAllMyGoals(userId))
+    return res
+};
+
+
+
+export const deleteGoal = (goalId, userId) => async (dispatch) => {
+
+    const res = await fetch(`/api/delete/goal/${goalId}`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            goalId
+        })
+    });
+    dispatch(fetchAllMyGoals(userId))
+    return res
+};
+
+
+
+
 
 function reducer(state = initialState, action) {
   let newState;
