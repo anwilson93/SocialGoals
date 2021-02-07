@@ -84,8 +84,8 @@ router.get('/completed/:userId(\\d+)',
 // CREATE A GOAL
 router.post('/create',
   asyncHandler(async (req, res) => {
-    const {userId, goalType, startDate} = req.body
-    const newGoal = await Goal.create({userId, goalType, startDate})
+    const {userId, name, goalType, startDate} = req.body
+    const newGoal = await Goal.create({userId, name, goalType, startDate})
     await newGoal.save();
     return res.json({ newGoal});
   }));

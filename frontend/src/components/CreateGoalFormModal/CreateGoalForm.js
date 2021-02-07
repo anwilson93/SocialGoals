@@ -18,9 +18,9 @@ function CreateGoalForm({userId}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!errors){
+    if (errors.length===0){
     setErrors([]);
-      return dispatch(createGoal({ userId, goalType, startDate}), <Redirect to='/goals' />)
+      return dispatch(createGoal({ userId, name, goalType, startDate}))
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
