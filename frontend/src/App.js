@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import CommentList from "./components/CommentList";
 import ProfilePage from "./components/ProfilePage";
 import CompletedGoals from "./components/CompletedGoals";
+import MyDiaryEntries from "./components/MyDiaryEntries";
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route exact path="/goals/completed">
             <CompletedGoals />
+          </Route>
+          <Route exact path='/diaries'>
+            <MyDiaryEntries />
           </Route>
         </Switch>
       )}

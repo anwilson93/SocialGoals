@@ -17,7 +17,7 @@ router.get('/following/:userId',
     const goalId = followGoals.map(goal => {
         return goal.goalId
     });
-    
+
     // FIND ALL DIARY ENTRIES BY GOAL ID
     const followedGoalsDiaries = await DiaryEntry.findAll({
       where: {goalId},
@@ -34,6 +34,23 @@ router.get('/following/:userId',
         return eachFollowedGoal.dataValues
     });
     res.json({ diaries });
+  })
+);
+
+
+// FIND ALL OF MY DIARY ENTRIES
+router.get('/:userId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const myDiaryEntries = await Goal.findAll({
+      where: { userId},
+      include: [
+        {
+          model: DiaryEntry,
+        },
+      ],
+    });
+    return res.json(myDiaryEntries)
   })
 );
 

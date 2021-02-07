@@ -21,6 +21,15 @@ export const fetchAllDiariessForGoalsAUserFollows = (userId) => {
     };
 };
 
+export const fetchAllMyDiaryEntries = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/diary/${userId}`)
+        dispatch(
+            getAllDiaries(res.data)
+        );
+    };
+};
+
 
 
 function reducer(state = initialState, action) {
