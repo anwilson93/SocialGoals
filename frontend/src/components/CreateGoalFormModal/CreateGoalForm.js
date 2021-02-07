@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {createGoal} from '../../store/goals';
-import { Redirect } from "react-router-dom";
+
 
 
 function CreateGoalForm({userId}) {
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+ 
 
   const handleGoalTypeChange = (e) => {
         setGoalType(e.target.value);
@@ -19,6 +20,7 @@ function CreateGoalForm({userId}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length===0){
+    
     setErrors([]);
       return dispatch(createGoal({ userId, name, goalType, startDate}))
         .catch(res => {

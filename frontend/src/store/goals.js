@@ -48,19 +48,19 @@ export const fetchAllMyCompletedGoals = (userId) => {
 
 export const createGoal = (obj) => async (dispatch) => {
   const { userId, name, goalType, startDate } = obj;
-  console.log('is this working', userId, goalType, startDate)
   const res = await fetch(`/api/goals/create`, {
     method: 'POST',
      body: JSON.stringify({
-            userId,
-            name,
-            goalType,
-            startDate
+            userId: userId,
+            name: name,
+            goalType: goalType,
+            startDate: startDate
       })
-  });
+  }); 
     dispatch(fetchAllMyGoals(userId))
-    return res.data
+    return res
 };
+
 
 
 export const deleteGoal = (goalId, userId) => async (dispatch) => {

@@ -24,14 +24,6 @@ function ProfilePage () {
         return state.goals.goals
     });
 
-    const getCompleted = () => {
-        return(dispatch(fetchAllMyCompletedGoals(userId)))   
-    }
-
-    const getAllGoals = () => {
-        return(dispatch(fetchAllMyGoals(userId)))
-    }
-
 
     return (
         <>
@@ -39,8 +31,8 @@ function ProfilePage () {
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>
-                    <Link to='/goals'><button className='goals-button' onClick={getAllGoals}>Current Goals</button></Link>
-                    <Link to={`/goals/completed`}><button className='goals-button'  onClick={getCompleted}>Completed Goals</button></Link>
+                    <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
+                    <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
 
                     {goals && goals.map(goal => {
                         let goalId = goal.id
