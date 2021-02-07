@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux';
 
 
-function GoalsLiked ({goalId}) {
+function GoalsLiked ({goalId, diaryEntryId}) {
 
     
     const likes = useSelector(state => {
@@ -16,8 +16,10 @@ function GoalsLiked ({goalId}) {
                  return (
                      <h1>liked</h1>
                  )
-             } else {
-                return null
+             } else if (like.diaryEntryId === diaryEntryId) {
+                return (
+                    <h1>like</h1>
+                )
              }}
          })}
         </>

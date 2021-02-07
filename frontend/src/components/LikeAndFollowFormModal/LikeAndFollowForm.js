@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {createGoalLike, fetchLikes} from '../../store/likes';
+import {createGoalLike, fetchLikes, createDiaryLike} from '../../store/likes';
 import {createGoalFollow, fetchGoalFollows} from '../../store/follow';
+import {fetchAllDiariessForGoalsAUserFollows} from '../../store/diaries';
 import "./LikeAndFollowForm.css";
 
 
-function LikeAndFollowForm({goalId, userId}) {
+function LikeAndFollowForm({goalId, userId, diaryEntryId}) {
   const dispatch = useDispatch();
 
-  
+
 //   const userId = useSelector(state => state.session.user.id);
 
   
@@ -25,13 +26,28 @@ function LikeAndFollowForm({goalId, userId}) {
 
   const handleGoalSubmit = (e) => {
       setErrors([]);
-      return dispatch(createGoalFollow({userId, goalId}), dispatch(fetchGoalFollows(userId)))
+      return dispatch(createGoalFollow({userId, goalId}), dispatch(fetchGoalFollows(userId), dispatch(fetchAllDiariessForGoalsAUserFollows(userId))))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
   }
 
+  const handleLikeDiarySubmit = (e) => {
+      setErrors([]);
+      return dispatch(createDiaryLike({userId, diaryEntryId}), dispatch(fetchLikes(userId)))
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+  }
 
+  if (!goalId){
+    return (
+      <>
+        <h1>Like</h1>
+        <button onClick={() => handleLikeDiarySubmit()}>Like <i className="far fa-heart"></i></button>
+      </>
+    )
+  }
   return (
     <>
       <h1>Like or Follow</h1>

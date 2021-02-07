@@ -36,6 +36,20 @@ export const createGoalLike = (obj) => async (dispatch) => {
 };
 
 
+export const createDiaryLike = (obj) => async (dispatch) => {
+  const { userId, diaryEntryId } = obj;
+  const res = await fetch(`/api/likes/diary/${diaryEntryId}`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            diaryEntryId: diaryEntryId
+      })
+  });
+    dispatch(fetchLikes(userId))
+    return res.data.like
+};
+
+
 
 function reducer(state = initialState, action) {
   let newState;

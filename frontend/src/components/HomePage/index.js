@@ -1,6 +1,7 @@
 import './HomePage.css';
 import {useEffect} from 'react';
 import {fetchAllGoalsForPeopleAUserFollows} from '../../store/goals';
+import {fetchAllDiariessForGoalsAUserFollows} from '../../store/diaries';
 import {fetchLikes} from '../../store/likes';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
@@ -9,6 +10,7 @@ import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
 import GoalsFollowed from '../GoalsFollowed';
 import { fetchGoalFollows } from '../../store/follow';
+import DiaryEntriesCard from '../DiaryEntriesCard';
 // import {Link} from 'react-router-dom';
 
 
@@ -26,6 +28,10 @@ function HomePage () {
     }, [dispatch])
 
     useEffect (() => {
+        dispatch(fetchAllDiariessForGoalsAUserFollows(userId))
+    }, [dispatch])
+
+    useEffect (() => {
         dispatch(fetchLikes(userId))
     }, [dispatch])
 
@@ -33,13 +39,15 @@ function HomePage () {
         dispatch(fetchGoalFollows(userId))
     }, [dispatch])
 
+
     const goals = useSelector(state => {
         return state.goals.goals
     });
 
+    
+    try {
 
-
-
+    
     return (
         <>
          {username && <h2>Welcome, {username}!</h2>}
@@ -55,8 +63,8 @@ function HomePage () {
                     return (
                         <>  
                             {/* <div className='feed-container'> */}
-                            <div className='feed-container'>
-                                <div className='individual-container'>
+                            <div className='feed-container' key={goal.id}>
+                                <div className='individual-container' key={goal.id}>
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
@@ -68,10 +76,15 @@ function HomePage () {
                         </>
                     )
             })}
+            <DiaryEntriesCard userId={userId} />
             </div>
             </div>
         </>
-    )
+    )} catch (e){
+        return (
+            <h4>Something went wrong. Try reloading the page</h4>
+        )
+    }
 
 }
 

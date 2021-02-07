@@ -10,7 +10,7 @@ function SidePanelDetails({visible}) {
         <>
             <div>
                 <ul className='ul'>
-                    <NavLink to={`/goals/${username}`} className='link'>
+                    <NavLink to={`/goals`} className='link'>
                     <li className='list-item'>My Goals</li> </NavLink>
                     <div className='space-for-links'></div>
                     <NavLink to={`/entries/${username}`} className='link'>
