@@ -63,6 +63,16 @@ export const createGoal = (obj) => async (dispatch) => {
 };
 
 
+export const deleteGoal = (goalId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/goals/delete/${goalId}`)
+        dispatch(
+            getAllGoals(res.data)
+        );
+    };
+};
+
+
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
