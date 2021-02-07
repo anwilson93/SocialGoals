@@ -55,12 +55,12 @@ router.get('/following/goal/:userId(\\d+)',
   })
 );
 
-// GET ALL OF USER'S GOALS
+// GET ALL OF USER'S UNCOMPLETED GOALS
 router.get('/:userId(\\d+)',
   asyncHandler(async (req, res) => {
     const userId = req.params.userId;
     const myGoals = await Goal.findAll({
-      where: { userId},
+      where: { userId, completed: false},
       order: [["createdAt", 'DESC']],
     });
 

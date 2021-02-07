@@ -44,8 +44,10 @@ function HomePage () {
         return state.goals.goals
     });
 
+    
+    try {
 
-
+    
     return (
         <>
          {username && <h2>Welcome, {username}!</h2>}
@@ -78,7 +80,11 @@ function HomePage () {
             </div>
             </div>
         </>
-    )
+    )} catch (e){
+        return (
+            <h4>Something went wrong. Try reloading the page</h4>
+        )
+    }
 
 }
 

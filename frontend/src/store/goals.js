@@ -2,7 +2,7 @@ import { fetch } from './csrf.js';
 
 const GET_ALL_GOALS = 'goals/getAllGoals';
 const GET_COMPLETED_GOALS = 'goals/getCompletedGoals';
-const RESET = 'reset/resetCompletedGoals';
+
 
 const initialState = {};
 
@@ -16,10 +16,7 @@ const getCompletedGoals = (completed) => ({
   payload: completed
 });
 
-const reset = (reset) => ({
-  type: RESET,
-  payload: reset
-});
+
 
 
 export const fetchAllGoalsForPeopleAUserFollows = (username) => {
@@ -35,8 +32,7 @@ export const fetchAllMyGoals = (userId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/goals/${userId}`)
         dispatch(
-            getAllGoals(res.data),
-            reset([])
+            getAllGoals(res.data)
         );
     };
 };
@@ -59,9 +55,6 @@ function reducer(state = initialState, action) {
       return newState;
     case GET_COMPLETED_GOALS:
       newState = Object.assign({}, state, { completed: action.payload });
-      return newState;
-    case RESET:
-      newState = Object.assign({}, state, { reset: action.payload });
       return newState;
     default:
       return state;
