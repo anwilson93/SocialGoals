@@ -5,6 +5,7 @@ import {fetchAllMyGoals, fetchAllMyCompletedGoals} from '../../store/goals';
 import {Link} from 'react-router-dom';
 import './ProfilePage.css';
 import CreateGoalFormModal from '../CreateGoalFormModal';
+import DeleteButton from '../DeleteButton';
 
 
 function ProfilePage () {
@@ -49,9 +50,9 @@ function ProfilePage () {
 
                         return (
                             <>
-                                <div key={goalId}>
+                                <div key={goalId} className='goals-individual-container'>
                                     <input type="checkbox" onClick={completeGoal}/>
-                                    <label> {goal.name}</label>
+                                    <label>{goal.name}</label> < DeleteButton goalId={goalId}/>
                                 </div>
                             </>
                         )

@@ -33,3 +33,7 @@
   /* grid-template-rows: 50px 1fr 30px; */
   grid-template-columns: 1fr;
 }
+
+.goals-individual-container {
+  margin-top: 20px;
+}
