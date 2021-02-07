@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {createComment} from '../../store/comments';
 // import "./CommentForm.css";
@@ -6,7 +6,7 @@ import {createComment} from '../../store/comments';
 function CommentForm({visible, goalId}) {
   const [newComment, setNewComment] = useState('');
   const [errors, setErrors] = useState([]);
-  const [vis, setVisible] = useState(true)
+  // const [vis, setVisible] = useState(true)
 
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ function CommentForm({visible, goalId}) {
     }
     }
 
-  if (!visible || !vis) return null
+  if (!visible) return null
     return (
     <>
       <form onSubmit={handleSubmit}>

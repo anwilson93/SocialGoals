@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {createGoalLike, fetchLikes, createDiaryLike} from '../../store/likes';
 import {createGoalFollow, fetchGoalFollows} from '../../store/follow';
 import {fetchAllDiariessForGoalsAUserFollows} from '../../store/diaries';

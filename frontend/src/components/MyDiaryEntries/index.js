@@ -43,7 +43,7 @@ function MyDiaryEntries () {
                                     <div>
                                         {goal.name}
                                     </div>
-                                    <div><MyDiaryEntryCard diary={diary}/></div>
+                                    <div><MyDiaryEntryCard diary={diary} userId={userId} /></div>
                                     <CreateDiaryFormModal goalId={goalId} userId={userId}/>
                                 </div>
                             </>

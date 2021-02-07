@@ -64,7 +64,7 @@ export const createGoal = (obj) => async (dispatch) => {
 
 
 export const deleteGoal = (goalId, userId) => async (dispatch) => {
-    console.log('hereee', goalId, userId)
+
     const res = await fetch(`/api/delete/goal/${goalId}`, {
         method: 'DELETE',
         body: JSON.stringify({

@@ -1,4 +1,4 @@
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector} from 'react-redux';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
 function DiaryEntriesCard ({userId}) {

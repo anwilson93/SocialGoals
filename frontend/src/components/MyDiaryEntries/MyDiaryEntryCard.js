@@ -1,16 +1,18 @@
+import DeleteButton from '../DeleteButton';
 
-function MyDiaryEntryCard ({diary}) {
+function MyDiaryEntryCard ({diary, userId}) {
 
     try {
     return (
         <>
             {diary && diary.map(diar => {
-                     
+                let diaryEntryId = diar.id     
                 return (
                     <>
                         <div>
                             {diar.entry}
                         </div>
+                        < DeleteButton userId={userId} diaryEntryId={diaryEntryId}/>
                     </>
                 )
             })}

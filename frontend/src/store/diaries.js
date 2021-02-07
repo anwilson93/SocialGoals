@@ -44,6 +44,19 @@ export const createDiary = (obj) => async (dispatch) => {
 };
 
 
+export const deleteDiaryEntry = (diaryEntryId, userId) => async (dispatch) => {
+
+    const res = await fetch(`/api/delete/diary/${diaryEntryId}`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            diaryEntryId
+        })
+    });
+    dispatch(fetchAllMyDiaryEntries(userId))
+    return res
+};
+
+
 
 function reducer(state = initialState, action) {
   let newState;
