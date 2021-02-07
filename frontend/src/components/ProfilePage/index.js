@@ -4,6 +4,7 @@ import {useEffect} from 'react';
 import {fetchAllMyGoals, fetchAllMyCompletedGoals} from '../../store/goals';
 import {Link} from 'react-router-dom';
 import './ProfilePage.css';
+import CreateGoalFormModal from '../CreateGoalFormModal';
 
 
 function ProfilePage () {
@@ -56,6 +57,7 @@ function ProfilePage () {
                         )
                     })}
                 </div>
+                <CreateGoalFormModal userId={userId}/>
             </div>
         </>
     )

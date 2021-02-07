@@ -22,15 +22,6 @@ function MyDiaryEntries () {
         return state.diaries.diaries
     });
 
-    const getCompleted = () => {
-        console.log('i')
-        // return(dispatch(fetchAllMyCompletedGoals(userId)))   
-    }
-
-    const getAllGoals = () => {
-        console.log('b')
-        // return(dispatch(fetchAllMyGoals(userId)))
-    }
 
     try {
     return (
@@ -39,8 +30,8 @@ function MyDiaryEntries () {
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>
-                    <Link to='/diaries'><button className='goals-button' onClick={getAllGoals}>Diary Entries</button></Link>
-                    <Link to={`/diaries/comments`}><button className='goals-button'  onClick={getCompleted}>Diary Comments</button></Link>
+                    <Link to='/diaries'><button className='goals-button'>Diary Entries</button></Link>
+                    {/* <Link to={`/diaries/comments`}><button className='goals-button'  onClick={getCompleted}>Diary Comments</button></Link> */}
 
                     {goals && goals.map(goal => {
                         let goalId = goal.id

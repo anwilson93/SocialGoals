@@ -5,6 +5,7 @@ function DiaryEntriesCard ({userId}) {
     const diaries = useSelector(state => {
         return state.diaries.diaries
     });
+    try {
       return (
         <>
             {diaries && diaries.map(diary => {
@@ -32,7 +33,11 @@ function DiaryEntriesCard ({userId}) {
            
           
         </>
-    )
+    )} catch (e){
+        return (
+            <h4>Something went wrong. Try reloading the page</h4>
+        )
+    }
 
 }
 
