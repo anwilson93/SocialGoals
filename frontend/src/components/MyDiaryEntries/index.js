@@ -4,7 +4,7 @@ import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { fetchAllMyDiaryEntries } from '../../store/diaries';
 import MyDiaryEntryCard from './MyDiaryEntryCard';
-
+import CreateDiaryFormModal from '../CreateDiaryFormModal';
 
 function MyDiaryEntries () {
 
@@ -44,6 +44,7 @@ function MyDiaryEntries () {
                                         {goal.name}
                                     </div>
                                     <div><MyDiaryEntryCard diary={diary}/></div>
+                                    <CreateDiaryFormModal goalId={goalId} userId={userId}/>
                                 </div>
                             </>
                         )
@@ -52,6 +53,7 @@ function MyDiaryEntries () {
             </div>
         </>
     )} catch (e){
+        console.log(e)
         return (
             <h4>Something went wrong. Try reloading the page</h4>
         )

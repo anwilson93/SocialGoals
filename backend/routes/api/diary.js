@@ -54,4 +54,22 @@ router.get('/:userId(\\d+)',
   })
 );
 
+// CREATE A DIARY ENTRY
+router.post('/create',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId, entry} = req.body
+    const newDiary = await DiaryEntry.create({goalId, entry})
+    await newDiary.save();
+    const myDiaryEntries = await Goal.findAll({
+      where: { userId},
+      include: [
+        {
+          model: DiaryEntry,
+        },
+      ],
+    });
+
+    return res.json({ myDiaryEntries});
+  }));
+
 module.exports = router;
