@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {createGoalLike, fetchLikes, createDiaryLike} from '../../store/likes';
-import {createGoalFollow, fetchGoalFollows} from '../../store/follow';
-import {fetchAllDiariessForGoalsAUserFollows} from '../../store/diaries';
+import {createGoal} from '../../store/goals';
 import { Redirect } from "react-router-dom";
 
 
@@ -17,11 +15,9 @@ function CreateGoalForm({userId}) {
   const [startDate, setStartDate] = useState("");
   const [errors, setErrors] = useState([]);
 
-//   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userId, goalType, startDate, 'whettttt')
     if (!errors){
     setErrors([]);
       return dispatch(createGoal({ userId, goalType, startDate}), <Redirect to='/goals' />)
@@ -78,52 +74,6 @@ function CreateGoalForm({userId}) {
       </form>
     </>
   );
-
-//   const userId = useSelector(state => state.session.user.id);
-
-  
-  
-//   const [errors, setErrors] = useState([]);
-  
-//   const handleLikeSubmit = (e) => {
-//       setErrors([]);
-//       return dispatch(createGoalLike({userId, goalId}), dispatch(fetchLikes(userId)))
-//       .catch((res) => {
-//         if (res.data && res.data.errors) setErrors(res.data.errors);
-//       });
-//   }
-
-//   const handleGoalSubmit = (e) => {
-//       setErrors([]);
-//       return dispatch(createGoalFollow({userId, goalId}), dispatch(fetchGoalFollows(userId), dispatch(fetchAllDiariessForGoalsAUserFollows(userId))))
-//       .catch((res) => {
-//         if (res.data && res.data.errors) setErrors(res.data.errors);
-//       });
-//   }
-
-//   const handleLikeDiarySubmit = (e) => {
-//       setErrors([]);
-//       return dispatch(createDiaryLike({userId, diaryEntryId}), dispatch(fetchLikes(userId)))
-//       .catch((res) => {
-//         if (res.data && res.data.errors) setErrors(res.data.errors);
-//       });
-//   }
-
-//   if (!goalId){
-//     return (
-//       <>
-//         <h1>Like</h1>
-//         <button onClick={() => handleLikeDiarySubmit()}>Like <i className="far fa-heart"></i></button>
-//       </>
-//     )
-//   }
-//   return (
-//     <>
-//       <h1>Like or Follow</h1>
-//       <button onClick={() => handleLikeSubmit()}>Like <i className="far fa-heart"></i></button>
-//       <button onClick={() => handleGoalSubmit()}>Follow</button>
-//     </>
-//   );
 }
 
 export default CreateGoalForm;
