@@ -3,33 +3,36 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {fetchAllMyGoals, fetchAllMyCompletedGoals} from '../../store/goals';
 import {Link} from 'react-router-dom';
-import './ProfilePage.css';
 
 
-function ProfilePage () {
+
+function CompletedGoals () {
 
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
 
     const dispatch = useDispatch();
+   
 
     
     useEffect (() => {
         dispatch(fetchAllMyGoals(userId))
     }, [dispatch])
 
-    const goals = useSelector(state => {
-        return state.goals.goals
-    });
 
     const getCompleted = () => {
-        return(dispatch(fetchAllMyCompletedGoals(userId)))   
+        return(dispatch(fetchAllMyCompletedGoals(userId)))
+        
     }
 
     const getAllGoals = () => {
         return(dispatch(fetchAllMyGoals(userId)))
     }
 
+    const completedGoals = useSelector(state => {
+        console.log(state.completed.completed, 'yooo')
+        return state.completed.completed
+    });
 
     return (
         <>
@@ -40,16 +43,13 @@ function ProfilePage () {
                     <Link to='/goals'><button className='goals-button' onClick={getAllGoals}>Current Goals</button></Link>
                     <Link to={`/goals/completed`}><button className='goals-button'  onClick={getCompleted}>Completed Goals</button></Link>
 
-                    {goals && goals.map(goal => {
+                    {completedGoals && completedGoals.map(goal => {
                         let goalId = goal.id
-                        const completeGoal = () => {
-                            console.log('complete', goalId)
-                        }
 
                         return (
                             <>
                                 <div key={goalId}>
-                                    <input type="checkbox" onClick={completeGoal}/>
+                                    <input type="checkbox" checked/>
                                     <label> {goal.name}</label>
                                 </div>
                             </>
@@ -59,7 +59,6 @@ function ProfilePage () {
             </div>
         </>
     )
-                // }
 }
 
-export default ProfilePage;
+export default CompletedGoals;

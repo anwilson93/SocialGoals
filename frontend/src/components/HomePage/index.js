@@ -61,8 +61,8 @@ function HomePage () {
                     return (
                         <>  
                             {/* <div className='feed-container'> */}
-                            <div className='feed-container'>
-                                <div className='individual-container'>
+                            <div className='feed-container' key={goal.id}>
+                                <div className='individual-container' key={goal.id}>
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>

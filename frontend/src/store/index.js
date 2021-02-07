@@ -6,6 +6,8 @@ import comments from './comments';
 import likes from './likes';
 import follows from './follow';
 import diaries from './diaries';
+import completed from './goals';
+import reset from './goals'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +15,9 @@ const rootReducer = combineReducers({
   comments,
   likes,
   follows,
-  diaries
+  diaries,
+  completed,
+  reset
 });
 
 let enhancer;

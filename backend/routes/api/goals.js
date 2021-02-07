@@ -61,6 +61,20 @@ router.get('/:userId(\\d+)',
     const userId = req.params.userId;
     const myGoals = await Goal.findAll({
       where: { userId},
+      order: [["createdAt", 'DESC']],
+    });
+
+    return res.json(myGoals)
+  })
+);
+
+// GET ALL OF USER'S COMPLETED GOALS
+router.get('/completed/:userId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const myGoals = await Goal.findAll({
+      where: { userId, completed: true},
+      order: [["createdAt", 'DESC']],
     });
 
     return res.json(myGoals)

@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import CommentList from "./components/CommentList";
 import ProfilePage from "./components/ProfilePage";
+import CompletedGoals from "./components/CompletedGoals";
 
 
 function App() {
@@ -32,8 +33,11 @@ function App() {
             <HomePage />
             <CommentList />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/goals">
             <ProfilePage />
+          </Route>
+          <Route exact path="/goals/completed">
+            <CompletedGoals />
           </Route>
         </Switch>
       )}
