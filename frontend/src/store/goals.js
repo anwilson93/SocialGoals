@@ -63,14 +63,20 @@ export const createGoal = (obj) => async (dispatch) => {
 };
 
 
-export const deleteGoal = (goalId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/goals/delete/${goalId}`)
-        dispatch(
-            getAllGoals(res.data)
-        );
-    };
+export const deleteGoal = (goalId, userId) => async (dispatch) => {
+    console.log('hereee', goalId, userId)
+    const res = await fetch(`/api/delete/goal/${goalId}`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            goalId
+        })
+    });
+    dispatch(fetchAllMyGoals(userId))
+    return res
 };
+
+
+
 
 
 function reducer(state = initialState, action) {

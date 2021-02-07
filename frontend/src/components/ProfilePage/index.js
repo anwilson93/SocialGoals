@@ -52,7 +52,7 @@ function ProfilePage () {
                             <>
                                 <div key={goalId} className='goals-individual-container'>
                                     <input type="checkbox" onClick={completeGoal}/>
-                                    <label>{goal.name}</label> < DeleteButton goalId={goalId}/>
+                                    <label>{goal.name}</label> < DeleteButton goalId={goalId} userId={userId}/>
                                 </div>
                             </>
                         )

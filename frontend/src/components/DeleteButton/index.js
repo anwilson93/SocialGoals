@@ -1,9 +1,13 @@
 import './DeleteButton.css';
 import {deleteGoal} from '../../store/goals';
-function DeleteButton ({goalId}) {
+import {useDispatch} from 'react-redux';
+
+function DeleteButton ({goalId, userId}) {
+
+    const dispatch = useDispatch();
 
     const deleteSomething = () => {
-        return dispatchEvent(deleteGoal(goalId))
+        return(dispatch(deleteGoal(goalId, userId)))
     }
     return (
         <button className='delete-button' onClick={deleteSomething}>Delete</button>

@@ -6,6 +6,7 @@ const goalsRouter = require('./goals.js');
 const commentsRouter = require('./comments.js');
 const likesRouter = require('./likes.js');
 const diaryRouter = require('./diary.js');
+const deleteRouter = require('./delete.js');
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
@@ -57,5 +58,7 @@ router.use('/comments', commentsRouter);
 router.use('/likes', likesRouter);
 
 router.use('/diary', diaryRouter);
+
+router.use('/delete', deleteRouter);
 
 module.exports = router;
