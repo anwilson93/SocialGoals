@@ -11,6 +11,7 @@ import GoalsLiked from '../GoalsLiked';
 import GoalsFollowed from '../GoalsFollowed';
 import { fetchGoalFollows } from '../../store/follow';
 import DiaryEntriesCard from '../DiaryEntriesCard';
+import { Redirect } from 'react-router-dom';
 // import {Link} from 'react-router-dom';
 
 
@@ -44,6 +45,17 @@ function HomePage () {
         return state.goals.goals
     });
 
+    try {
+        if (!username) {
+        return (
+            <Redirect to='/login' />
+        )
+    }
+
+    } catch (e) {
+        <h4>Something went wrong. Try reloading the page</h4>
+    }
+    
     
     try {
 

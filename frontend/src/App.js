@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
-// import LoginFormPage from "./components/LoginFormPage";
+import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import CommentList from "./components/CommentList";
 import ProfilePage from "./components/ProfilePage";
 import CompletedGoals from "./components/CompletedGoals";
 import MyDiaryEntries from "./components/MyDiaryEntries";
+// import LoginForm from "./components/LoginFormModal/LoginForm";
 
 
 function App() {
@@ -30,9 +31,12 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path='/'>
+          {/* <Route exact path='/'>
             <HomePage />
             <CommentList />
+          </Route> */}
+          <Route exact path='/'>
+            <LoginFormPage />
           </Route>
           <Route exact path="/goals">
             <ProfilePage />
@@ -42,6 +46,10 @@ function App() {
           </Route>
           <Route exact path='/diaries'>
             <MyDiaryEntries />
+          </Route>
+          <Route exact path='/feed'>
+            <HomePage />
+            <CommentList />
           </Route>
         </Switch>
       )}
