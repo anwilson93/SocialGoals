@@ -1,5 +1,5 @@
-import { Redirect } from 'react-router-dom';
 import { fetch } from './csrf.js';
+
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
@@ -47,7 +47,7 @@ export const logout = () => async (dispatch) => {
   const response = await fetch('/api/session', {
     method: 'DELETE'
   });
-  dispatch(removeUser(), <Redirect to='/login' />);
+  dispatch(removeUser());
   return response;
 };
 
