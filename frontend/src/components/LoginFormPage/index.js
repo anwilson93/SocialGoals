@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -16,7 +16,7 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }), <Redirect to='/' />)
+    return dispatch(sessionActions.login({ credential, password }), <Redirect to='/feed' />)
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
@@ -29,36 +29,44 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-        <button onClick={demoLogin}>Demo Login</button>
-      </form>
+      <h1 className='h1'>Log In</h1>
+      <div className='form-container'>
+        <form id='login-form' onSubmit={handleSubmit}>
+          <ul className='login-inputs'>
+            {errors.map((error, idx) => (
+               <li id='errors' key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className='form-fields-container'>
+            <input 
+              type='text'
+              className='form-field'
+              placeholder='Email or Username' 
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+            
+            <input 
+              type='password'
+              className='form-field'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />  
+          </div>
+
+          <div className='buttons-footer'>
+            <button type="submit" className='login-form-buttons'>Log In</button>
+            <button onClick={demoLogin} className='login-form-buttons'>Demo Login</button>
+            <Link to='/signup'><button className='login-form-buttons'>Sign Up</button></Link>
+          </div>
+
+        </form>
+      </div>
     </>
-  );
+  )
 }
 
 export default LoginFormPage;

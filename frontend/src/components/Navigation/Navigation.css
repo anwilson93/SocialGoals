@@ -1,9 +1,29 @@
 .profile-dropdown {
   position: absolute;
+  padding-right: 20px;
 }
 
-#profile-button {
-  margin-right: 10px;
+.profile-button,
+.profile-dropdown {
+  margin: 5px;
+  border: none;
+  color: rgb(48, 47, 47);
+  font-size: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
+}
+
+.nav-buttons {
+  border: none;
+  color: rgb(48, 47, 47);
+  font-size: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
+}
+
+.nav-buttons:hover {
+  background-color: rgb(141, 202, 255);
+  color: white;
 }
 
 #border-heading {

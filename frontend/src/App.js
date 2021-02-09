@@ -10,6 +10,7 @@ import CommentList from "./components/CommentList";
 import ProfilePage from "./components/ProfilePage";
 import CompletedGoals from "./components/CompletedGoals";
 import MyDiaryEntries from "./components/MyDiaryEntries";
+import LogoutPage from './components/LogoutPage';
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 
 
@@ -25,9 +26,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          {/* <Route path="/login" >
-            <LoginFormPage />
-          </Route> */}
+          <Route path='/logout-page' >
+            <LogoutPage />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

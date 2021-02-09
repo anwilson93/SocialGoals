@@ -32,7 +32,7 @@
   border-top: 3px solid rgb(252, 196, 3);
   border-right: 3px solid rgb(231, 72, 35);
   padding: 2rem;
-  box-shadow: 5px 5px 5px rgb(221, 232, 241);
+  box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
 }
 
 .space {
