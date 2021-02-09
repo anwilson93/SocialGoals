@@ -1,6 +1,6 @@
 #search-bar {
   width: 30rem;
-  background: "#F2F1F9";
-  border: none;
   padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.3);
 }

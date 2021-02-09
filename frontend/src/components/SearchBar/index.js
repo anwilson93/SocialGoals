@@ -29,7 +29,8 @@ function SearchBar (){
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <input 
+        <input
+          className='form-field' 
           id='search-bar'
           placeholder='Search for people or goals to follow'
           value={searchTerm}
