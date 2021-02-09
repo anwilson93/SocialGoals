@@ -46,6 +46,10 @@
   list-style-type: none;
 }
 
+#nav-bar-logo {
+  margin-left: -90px;
+}
+
 /* COME BACK TO STYLING THIS!! */
 .logo .mobile {
   display: none;

@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import logo from './9a32f425-52e6-4f53-84fd-16c3732dbcf4_200x200.png';
 import smallLogo from './b31eb0cd-6ed1-4061-9681-9ad341b19923_200x200.png'
+import SearchBar from '../SearchBar';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -38,8 +39,8 @@ function Navigation({ isLoaded }){
       <div id='border-heading'></div>
         <ul id='top-nav-bar'>
           <li>
-            <NavLink id='nav-bar-logo' className='logo' exact to="/">
-              <img className='desktop'
+            <NavLink className='logo' exact to="/">
+              <img className='desktop' id='nav-bar-logo'
                   key='desktop'
                   src={logo} alt='logo desktop' />
               <img className='mobile'
@@ -47,7 +48,7 @@ function Navigation({ isLoaded }){
                   src={smallLogo} alt='logo mobile' />
             </NavLink>
           </li>
-            Search
+            < SearchBar />
           <li>
             {isLoaded && sessionLinks}
           </li>
