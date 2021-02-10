@@ -67,12 +67,34 @@ router.post('/diary/:diaryEntryId(\\d+)',
   })
 );
 
-// CREATE OR DELETE LIKE FOR GOAL
+// DELETE LIKE FOR GOAL
 router.post('/delete/delete/:goalId(\\d+)',
   asyncHandler(async (req, res) => {
     const {userId, goalId} = req.body
     let like = await Like.destroy({
             where: {goalId, userId}
+        })
+    const likes = await Like.findAll({
+      where: { userId},
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+
+    console.log('yoooooooooooooooooooooooo', likes)
+
+    return res.json(likes)
+  })
+);
+
+// DELETE FOR DIARY LIKE
+router.post('/delete/:DiaryEntryId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const {userId, diaryEntryId} = req.body
+    let like = await Like.destroy({
+            where: {diaryEntryId, userId}
         })
     const likes = await Like.findAll({
       where: { userId},

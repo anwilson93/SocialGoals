@@ -1,6 +1,7 @@
 import { useSelector} from 'react-redux';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
+import CheckLikeOrUnlike from '../CheckLikeOrUnlike';
 function DiaryEntriesCard ({userId}) {
     const diaries = useSelector(state => {
         return state.diaries.diaries
@@ -23,7 +24,8 @@ function DiaryEntriesCard ({userId}) {
                                 {date}
                                 <div>Entry: {entry}</div>
                                 <LikeAndFollowFormModal diaryEntryId={diaryEntryId} userId={userId}/> 
-                                <GoalsLiked diaryEntryId={diaryEntryId} />
+                                {/* <GoalsLiked diaryEntryId={diaryEntryId} /> */}
+                                <CheckLikeOrUnlike diaryEntryId={diaryEntryId}/>
                                 {/* <CommentBox goalId={goalId}/> */}
                             </div>
                         </div>

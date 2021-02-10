@@ -21,12 +21,13 @@ function CheckLikeOrUnlike ({goalId, diaryEntryId}) {
          {likes && likes.map(like => {
 
              console.log('goalId', goalId, 'like.goalId', like.goalId, likes)
+             console.log('diaryId', diaryEntryId, 'like.diaryId', like.diaryEntryId, likes)
             
-             {if (like.goalId === goalId) {
+             {if (like.goalId === goalId || like.diaryEntryId === diaryEntryId) {
                  return (
-                   <GoalsLiked goalId={goalId} />
+                   <GoalsLiked goalId={goalId} diaryEntryId={diaryEntryId}/>
                  )
-             } else if (like.goalId !== goalId) {
+             } else if (like.goalId !== goalId || like.diaryEntryId !== diaryEntryId) {
                 return (
                     <Unlike/>
                 )
