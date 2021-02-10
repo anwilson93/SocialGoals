@@ -58,13 +58,59 @@ router.post('/diary/:diaryEntryId(\\d+)',
         const like = await Like.create({diaryEntryId, userId})
         await like.save();
         return res.json({ like });
-    } else {
-        Like.destroy({
-            where: {diaryEntryId, userId}
-        })
     }
+    // } else {
+    //     Like.destroy({
+    //         where: {diaryEntryId, userId}
+    //     })
+    // }
   })
 );
+
+// DELETE LIKE FOR GOAL
+router.post('/delete/delete/:goalId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId} = req.body
+    let like = await Like.destroy({
+            where: {goalId, userId}
+        })
+    const likes = await Like.findAll({
+      where: { userId},
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+
+    console.log('yoooooooooooooooooooooooo', likes)
+
+    return res.json(likes)
+  })
+);
+
+// DELETE FOR DIARY LIKE
+router.post('/delete/:DiaryEntryId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const {userId, diaryEntryId} = req.body
+    let like = await Like.destroy({
+            where: {diaryEntryId, userId}
+        })
+    const likes = await Like.findAll({
+      where: { userId},
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+
+    console.log('yoooooooooooooooooooooooo', likes)
+
+    return res.json(likes)
+  })
+);
+
 
 
 module.exports = router;

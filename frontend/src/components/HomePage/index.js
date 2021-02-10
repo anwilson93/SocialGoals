@@ -8,6 +8,8 @@ import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
+import Unlike from '../Unlike';
+import CheckLikeOrUnlike from '../CheckLikeOrUnlike';
 import GoalsFollowed from '../GoalsFollowed';
 import { fetchGoalFollows } from '../../store/follow';
 import DiaryEntriesCard from '../DiaryEntriesCard';
@@ -69,8 +71,11 @@ function HomePage () {
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
-                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsLiked goalId={goalId} /> <GoalsFollowed goalId={goalId} />
+                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsFollowed goalId={goalId} />
                                     <CommentBox goalId={goalId}/>
+                                    <CheckLikeOrUnlike goalId={goalId}/>
+                                    {/* <GoalsLiked goalId={goalId} /> */}
+                                    {/* <Unlike goalId={goalId} /> */}
                                 </div>
                             </div>
                             {/* </div> */}
