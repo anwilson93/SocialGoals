@@ -1,4 +1,4 @@
-.ul {
+/* .ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -21,4 +21,33 @@
 
 .space-for-links {
   height: 50px;
+} */
+
+.main-sidepanel-container {
+  display: flex;
+  flex-direction: column;
+  padding: 70px;
+  justify-content: center;
+}
+
+.sidepanel-button {
+  margin-bottom: 100px;
+  width: 100%;
+  border: 0;
+  border-image: linear-gradient(
+    to right,
+    rgb(141, 202, 255),
+    rgb(227, 107, 177)
+  );
+  border-image-slice: 2;
+  border-bottom: 3px solid gray;
+  outline: 0;
+  font-size: 1.1rem;
+  color: rgb(48, 47, 47);
+  padding: 7px 0;
+  background-color: white;
+}
+
+.sidepanel-button:hover {
+  background-color: rgb(141, 202, 255);
 }
