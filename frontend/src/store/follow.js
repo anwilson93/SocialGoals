@@ -72,12 +72,13 @@ export const createGoalFollow = (obj) => async (dispatch) => {
 
 
 export const createUserFollow = (obj) => async (dispatch) => {
-  const { userId, userToFollowId, username } = obj;
+  const { userId, usernameToFollow, username } = obj;
+  console.log(usernameToFollow, 'guthgohftoighbifghbifhgi')
   const res = await fetch(`/api/follow/user`, {
     method: 'POST',
      body: JSON.stringify({
             followerId: userId,
-            userId: userToFollowId
+            usernameToFollow: usernameToFollow
       })
   });
     dispatch(fetchUsersIFollow(username))

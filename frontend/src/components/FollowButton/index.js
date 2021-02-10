@@ -1,7 +1,7 @@
 import {createGoalFollow, createUserFollow} from '../../store/follow';
 import {useDispatch} from 'react-redux';
 
-function FollowButton ({goalId, userId, userToFollowId, username}) {
+function FollowButton ({goalId, userId, usernameToFollow, username}) {
 
     const dispatch = useDispatch();
 
@@ -9,7 +9,7 @@ function FollowButton ({goalId, userId, userToFollowId, username}) {
         if (goalId){
             return(dispatch(createGoalFollow(goalId, userId)))
         } else {
-            return(dispatch(createUserFollow(userToFollowId, userId, username)))
+            return(dispatch(createUserFollow({usernameToFollow, userId, username})))
         }
     }
     return (

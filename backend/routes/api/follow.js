@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { User, FollowGoal } = require('../../db/models');
+const { User, FollowGoal, Follower } = require('../../db/models');
 
 
 // GET ALL FOLLOWERS FOR A USER AND RETURNS THE FOLLOWERS' USERNAMES
@@ -64,6 +64,30 @@ router.post('/:goalId(\\d+)',
             where: {goalId, userId}
         })
     }
+  })
+);
+
+
+router.post('/user',
+  asyncHandler(async (req, res) => {
+    const {followerId, usernameToFollow} = req.body
+
+    // FIND USER BY USERNAME
+    const user = await User.findOne({
+        where: {
+          username: usernameToFollow
+        }
+    });
+
+    if (user){
+      console.log(user.id, 'wherrtihihgighoifhbighbiogh')
+      const userId = user.id
+      // CREATE IT
+      const follow = await Follower.create({userId, followerId})
+      await follow.save();
+      return res.json({ follow });
+    }
+    
   })
 );
 

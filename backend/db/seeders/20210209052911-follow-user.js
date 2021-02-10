@@ -16,7 +16,16 @@ module.exports = {
     return queryInterface.bulkInsert('Followers', [{
         userId: 2,
         followerId: 1
-      }], {});
+      },
+      {
+        userId: 1,
+        followerId: 2
+      },
+      {
+        userId: 1,
+        followerId: 3
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {

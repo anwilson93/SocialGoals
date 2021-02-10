@@ -1,11 +1,13 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {fetchUsersIFollow} from '../../store/follow';
+import FollowButton from '../FollowButton';
 
 
 
 function CheckIfFollowing ({follower}) {
     const username = useSelector(state => state.session.user.username);
+    const userId = useSelector(state => state.session.user.id);
 
     let following;
     const dispatch = useDispatch();
@@ -49,7 +51,7 @@ function CheckIfFollowing ({follower}) {
         )
     } else {
         return (
-            null
+            < FollowButton username={username} userId={userId} usernameToFollow={follower}/>
         )
     }
  
