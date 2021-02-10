@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux';
-import './GoalsLiked.css';
+// import './GoalsLiked.css';
 
-function GoalsLiked ({goalId, diaryEntryId}) {
+function Unlike () {
 
     
     // const likes = useSelector(state => {
@@ -12,16 +12,16 @@ function GoalsLiked ({goalId, diaryEntryId}) {
     //     <>
     //      {likes && likes.map(like => {
             
-    //          {if (like.goalId === goalId) {
+    //          {if (like.goalId !== goalId) {
     //              return (
     //                 <div className='like-button-container'>
-    //                     <button className='like-button'><i className="fas fa-heart"/></button>
+    //                     <button className='like-button'><i className="far fa-heart"/></button>
     //                 </div>
     //              )
-    //          } else if (like.diaryEntryId === diaryEntryId) {
+    //          } else if (like.diaryEntryId !== diaryEntryId) {
     //             return (
     //                 <div className='like-button-container'>
-    //                     <button className='like-button'><i className="fas fa-heart"/></button>
+    //                     <button className='like-button'><i className="far fa-heart"/></button>
     //                 </div>
     //             )
     //          }}
@@ -29,11 +29,11 @@ function GoalsLiked ({goalId, diaryEntryId}) {
     //     </>
     // )
 
-     return (
+    return (
                    <div className='like-button-container'>
-                         <button className='like-button'><i className="fas fa-heart"/></button>
-                  </div>
+                       <button className='like-button'><i className="far fa-heart"/></button>
+                   </div>
                 )
 }
 
-export default GoalsLiked;
+export default Unlike;

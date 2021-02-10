@@ -35,6 +35,19 @@ export const createGoalLike = (obj) => async (dispatch) => {
     return res.data.like
 };
 
+export const deleteGoalLike = (obj) => async (dispatch) => {
+  const { userId, goalId } = obj;
+  const res = await fetch(`/api/likes/delete/delete/${goalId}`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId
+      })
+  });
+    console.log('ressssssssss', res.data)
+    dispatch(setLikes(res.data))
+};
+
 
 export const createDiaryLike = (obj) => async (dispatch) => {
   const { userId, diaryEntryId } = obj;

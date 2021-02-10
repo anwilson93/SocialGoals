@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {createGoalLike, fetchLikes, createDiaryLike} from '../../store/likes';
+import {createGoalLike, fetchLikes, createDiaryLike, deleteGoalLike} from '../../store/likes';
 import {createGoalFollow, fetchGoalFollows} from '../../store/follow';
 import {fetchAllDiariessForGoalsAUserFollows} from '../../store/diaries';
 import "./LikeAndFollowForm.css";
@@ -19,6 +19,14 @@ function LikeAndFollowForm({goalId, userId, diaryEntryId}) {
   const handleLikeSubmit = (e) => {
       setErrors([]);
       return dispatch(createGoalLike({userId, goalId}), dispatch(fetchLikes(userId)))
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+  }
+
+  const handleDeleteLikeSubmit = (e) => {
+      setErrors([]);
+      return dispatch(deleteGoalLike({userId, goalId}))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
@@ -52,6 +60,7 @@ function LikeAndFollowForm({goalId, userId, diaryEntryId}) {
     <>
       <h1>Like or Follow</h1>
       <button onClick={() => handleLikeSubmit()}>Like <i className="far fa-heart"></i></button>
+      <button onClick={() => handleDeleteLikeSubmit()}>Unlike</button>
       <button onClick={() => handleGoalSubmit()}>Follow</button>
     </>
   );
