@@ -1,15 +1,13 @@
 import SidePanel from '../SidePanel';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {fetchMyFollowers} from '../../store/follow';
+import {fetchUsersIFollow} from '../../store/follow';
 import {Link} from 'react-router-dom';
 import CreateGoalFormModal from '../CreateGoalFormModal';
 import DeleteButton from '../DeleteButton';
-import Following from './Following';
-import CheckIfFollowing from './CheckIfFollowing';
 
 
-function MyFollowersProfilePage () {
+function Following () {
 
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
@@ -18,20 +16,19 @@ function MyFollowersProfilePage () {
 
     
     useEffect (() => {
-        dispatch(fetchMyFollowers(username))
+        dispatch(fetchUsersIFollow(username))
     }, [dispatch])
 
-    const myFollowers = useSelector(state => {
-        return state.follows.myFollowers
+    const usersIFollow = useSelector(state => {
+        console.log(state.follows.following, 'yoo')
+        return state.follows.following
     });
 
-    let followers;
+    let following;
 
-    if (myFollowers){
-        followers = myFollowers.followers
+    if (usersIFollow){
+        following = usersIFollow.following
     }
-
-   
 
     
 
@@ -43,7 +40,8 @@ function MyFollowersProfilePage () {
                 <div className='my-goals-container'>
                     <Link to='/followers'><button className='goals-button'>Followers</button></Link>
                     <Link to={`/following`}><button className='goals-button'>Following</button></Link>
-                    {followers && followers.map(follower => {
+
+                    {following && following.map(follow => {
                         // let goalId = goal.id
                         // const completeGoal = () => {
                         //     console.log('complete', goalId)
@@ -51,11 +49,10 @@ function MyFollowersProfilePage () {
 
                         return (
                             <>
-                                <div key={follower} className='goals-individual-container'>
+                                <div key={follow} className='goals-individual-container'>
                                     {/* <input type="checkbox" onClick={completeGoal}/> */}
-                                    <label>{follower}</label>
+                                    <label>{follow}</label>
                                 </div>
-                                <CheckIfFollowing follower={follower} />
                             </>
                         )
                     })}
@@ -66,4 +63,4 @@ function MyFollowersProfilePage () {
     )
 }
 
-export default MyFollowersProfilePage;
+export default Following;
