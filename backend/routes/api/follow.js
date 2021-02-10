@@ -67,7 +67,7 @@ router.post('/:goalId(\\d+)',
   })
 );
 
-
+// CREATE USER FOLLOW ANOTHER USER
 router.post('/user',
   asyncHandler(async (req, res) => {
     const {followerId, usernameToFollow} = req.body
@@ -80,12 +80,35 @@ router.post('/user',
     });
 
     if (user){
-      console.log(user.id, 'wherrtihihgighoifhbighbiogh')
+     
       const userId = user.id
       // CREATE IT
       const follow = await Follower.create({userId, followerId})
       await follow.save();
       return res.json({ follow });
+    }
+    
+  })
+);
+
+
+// DELETE FOLLOW FOR A USER
+router.post('/unfollow/user',
+  asyncHandler(async (req, res) => {
+    const {followerId, usernameToUnfollow} = req.body
+
+    // FIND USER BY USERNAME
+    const user = await User.findOne({
+        where: {
+          username: usernameToUnfollow
+        }
+    });
+    if (user) {
+      const userId = user.id
+      let unfollow = await Follower.destroy({
+            where: {followerId, userId}
+        })
+        return res.json({unfollow})
     }
     
   })

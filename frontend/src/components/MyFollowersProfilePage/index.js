@@ -3,9 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {fetchMyFollowers} from '../../store/follow';
 import {Link} from 'react-router-dom';
-import CreateGoalFormModal from '../CreateGoalFormModal';
-import DeleteButton from '../DeleteButton';
-import Following from './Following';
 import CheckIfFollowing from './CheckIfFollowing';
 
 
@@ -44,23 +41,16 @@ function MyFollowersProfilePage () {
                     <Link to='/followers'><button className='goals-button'>Followers</button></Link>
                     <Link to={`/following`}><button className='goals-button'>Following</button></Link>
                     {followers && followers.map(follower => {
-                        // let goalId = goal.id
-                        // const completeGoal = () => {
-                        //     console.log('complete', goalId)
-                        // }
 
                         return (
                             <>
                                 <div key={follower} className='goals-individual-container'>
-                                    {/* <input type="checkbox" onClick={completeGoal}/> */}
-                                    <label>{follower}</label>
+                                    <label>{follower}</label> <CheckIfFollowing follower={follower} />
                                 </div>
-                                <CheckIfFollowing follower={follower} />
                             </>
                         )
                     })}
                 </div>
-                {/* <CreateGoalFormModal userId={userId}/> */}
             </div>
         </>
     )

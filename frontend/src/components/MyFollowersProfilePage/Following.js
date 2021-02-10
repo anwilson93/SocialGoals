@@ -5,6 +5,7 @@ import {fetchUsersIFollow} from '../../store/follow';
 import {Link} from 'react-router-dom';
 import CreateGoalFormModal from '../CreateGoalFormModal';
 import DeleteButton from '../DeleteButton';
+import UnfollowButton from '../UnfollowButton';
 
 
 function Following () {
@@ -42,16 +43,11 @@ function Following () {
                     <Link to={`/following`}><button className='goals-button'>Following</button></Link>
 
                     {following && following.map(follow => {
-                        // let goalId = goal.id
-                        // const completeGoal = () => {
-                        //     console.log('complete', goalId)
-                        // }
-
                         return (
                             <>
                                 <div key={follow} className='goals-individual-container'>
                                     {/* <input type="checkbox" onClick={completeGoal}/> */}
-                                    <label>{follow}</label>
+                                    <label>{follow}</label> <UnfollowButton userId={userId} username={username} follow={follow}/>
                                 </div>
                             </>
                         )

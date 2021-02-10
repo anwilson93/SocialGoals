@@ -47,7 +47,7 @@ function CheckIfFollowing ({follower}) {
 
     if (followingFollower) {
         return (
-            <button>following</button>
+            <div>following <i class="fas fa-check"></i></div>
         )
     } else {
         return (
