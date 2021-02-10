@@ -11,6 +11,8 @@ import ProfilePage from "./components/ProfilePage";
 import CompletedGoals from "./components/CompletedGoals";
 import MyDiaryEntries from "./components/MyDiaryEntries";
 import LogoutPage from './components/LogoutPage';
+import MyFollowersProfilePage from "./components/MyFollowersProfilePage";
+import Following from "./components/MyFollowersProfilePage/Following";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 
 
@@ -47,6 +49,12 @@ function App() {
           </Route>
           <Route exact path='/diaries'>
             <MyDiaryEntries />
+          </Route>
+          <Route exact path="/followers">
+            <MyFollowersProfilePage />
+          </Route>
+          <Route exact path="/following">
+            <Following />
           </Route>
           <Route exact path='/feed'>
             <HomePage />
