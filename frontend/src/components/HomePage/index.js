@@ -69,8 +69,9 @@ function HomePage () {
                                     <div> {user} made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
-                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsLiked goalId={goalId} /> <GoalsFollowed goalId={goalId} />
+                                    <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsFollowed goalId={goalId} />
                                     <CommentBox goalId={goalId}/>
+                                    <GoalsLiked goalId={goalId} />
                                 </div>
                             </div>
                             {/* </div> */}

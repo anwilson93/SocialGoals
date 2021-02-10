@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-
+import './GoalsLiked.css';
 
 function GoalsLiked ({goalId, diaryEntryId}) {
 
@@ -14,11 +14,15 @@ function GoalsLiked ({goalId, diaryEntryId}) {
             
              {if (like.goalId === goalId) {
                  return (
-                     <h1>liked</h1>
+                    <div className='like-button-container'>
+                        <button className='like-button'><i className="fas fa-heart"/></button>
+                    </div>
                  )
              } else if (like.diaryEntryId === diaryEntryId) {
                 return (
-                    <h1>like</h1>
+                    <div className='like-button-container'>
+                        <button className='like-button'><i className="fas fa-heart"/></button>
+                    </div>
                 )
              }}
          })}
