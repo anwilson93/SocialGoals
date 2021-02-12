@@ -8,10 +8,15 @@ function SearchPage () {
     const search = useSelector(state => {
         return state.search.search
     });
+
+    const sessionUser = useSelector(state => {
+        return state.session.user
+    });
+
     let searchedUsers;
  
 
-    if (search){
+    if (search && sessionUser){
         searchedUsers = search.users
         
 
@@ -44,7 +49,7 @@ function SearchPage () {
                                             <SearchedUserGoalModal userId={userId} username={username}/>
                                         </button>
                                         <div>
-                                            <CheckIfFollowing follower={user}/>
+                                            <CheckIfFollowing follower={username}/>
                                         </div>
                                     </div>
                                 </div>
@@ -55,6 +60,18 @@ function SearchPage () {
                 </div>
             )
         }
+    } else if (!sessionUser && search) {
+        return (
+            <>
+                <div className='main-container'>
+                    <SidePanel />
+                    <div className='results-container'>
+                        <h1>Please log in or sign up to search</h1>
+                    </div>
+                </div>
+            </>
+        )   
+
     } else {
         return (
             <>

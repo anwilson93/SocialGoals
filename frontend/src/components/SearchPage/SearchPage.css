@@ -1,3 +1,4 @@
+/* need this in order to click on the modal inside the search results button */
 #search-modal {
   height: 5px;
   width: auto;
@@ -6,9 +7,8 @@
 .results-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 600px;
-  margin-left: 150px;
+  margin-left: 200px;
 }
 
 .individual-search-result {
