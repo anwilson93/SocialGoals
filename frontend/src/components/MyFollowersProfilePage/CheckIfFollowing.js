@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {fetchUsersIFollow} from '../../store/follow';
 import FollowButton from '../FollowButton';
+import './MyFollowersProfilePage.css';
 
 
 
@@ -34,7 +35,7 @@ function CheckIfFollowing ({follower}) {
       
         while (i<following.length){
             
-            if (follower === following[i]){
+            if (follower === following[i] || follower.username === following[i]){
                 setFollowingFollower(true)
                 break;
             }
@@ -44,11 +45,14 @@ function CheckIfFollowing ({follower}) {
         }
     }, [dispatch, followingFollower, setFollowingFollower, following])
 
+   
 
     if (followingFollower) {
         return (
-            <div>following <i class="fas fa-check"></i></div>
+            <div className='following-checkmark'>following <i class="fas fa-check"></i></div>
         )
+    } else if (follower.username === username) {
+        return null
     } else {
         return (
             < FollowButton username={username} userId={userId} usernameToFollow={follower}/>

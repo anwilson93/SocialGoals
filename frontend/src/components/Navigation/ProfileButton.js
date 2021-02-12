@@ -5,7 +5,7 @@ import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  let history = useHistory()
+  let history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   
   const openMenu = () => {

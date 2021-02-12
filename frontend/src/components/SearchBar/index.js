@@ -2,10 +2,11 @@ import './SearchBar.css';
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
 import {search} from '../../store/search.js';
-import {Redirect} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function SearchBar (){
   const dispatch = useDispatch();
+  let history = useHistory();
 
    const [searchTerm, setSearchTerm] = useState('');
    const [errors, setErrors] = useState([]);
@@ -15,7 +16,7 @@ function SearchBar (){
     if (searchTerm) {
       setErrors([]);
 
-      return dispatch(search(searchTerm), setSearchTerm('') )
+      return dispatch(search(searchTerm), setSearchTerm(''), history.push('/search') )
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
