@@ -7,6 +7,7 @@ import './MyFollowersProfilePage.css';
 
 
 function CheckIfFollowing ({follower}) {
+    // follower is coming in from following.js as an array with the username in it
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
 
@@ -35,7 +36,7 @@ function CheckIfFollowing ({follower}) {
       
         while (i<following.length){
             
-            if (follower === following[i] || follower.username === following[i]){
+            if (follower === following[i]){
                 setFollowingFollower(true)
                 break;
             }
@@ -51,7 +52,7 @@ function CheckIfFollowing ({follower}) {
         return (
             <div className='following-checkmark'>following <i class="fas fa-check"></i></div>
         )
-    } else if (follower.username === username) {
+    } else if (follower === username) {
         return null
     } else {
         return (
