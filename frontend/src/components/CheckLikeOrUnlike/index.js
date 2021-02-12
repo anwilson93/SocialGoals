@@ -10,10 +10,12 @@ function CheckLikeOrUnlike ({goalId, diaryEntryId}) {
         return state.likes.likes
     });
 
-    if (likes.length === 0){
-        return (
-            <Unlike/>
-        )
+    if (likes){
+        if (likes.length === 0) {
+            return (
+                <Unlike />
+            )
+        }
     }
 
     return (

@@ -1,7 +1,7 @@
 import './SearchBar.css';
 import { useState } from "react";
 import {useDispatch} from 'react-redux';
-// import {search} from '../../store/search.js';
+import {search} from '../../store/search.js';
 import {Redirect} from 'react-router-dom';
 
 function SearchBar (){
@@ -12,16 +12,16 @@ function SearchBar (){
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (searchTerm) {
-    //   setErrors([]);
+    if (searchTerm) {
+      setErrors([]);
 
-    //   return dispatch(search({searchTerm}), setSearchTerm(''), <Redirect to='/'></Redirect> )
-    //     .catch(res => {
-    //       if (res.data && res.data.errors) setErrors(res.data.errors);
-    //     });
+      return dispatch(search(searchTerm), setSearchTerm('') )
+        .catch(res => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
 
-    // }
-    // return setErrors(['Please enter a word to search']);
+    }
+    return setErrors(['Please enter a word to search']);
   };
   return (
         <>

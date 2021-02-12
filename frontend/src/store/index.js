@@ -7,6 +7,7 @@ import likes from './likes';
 import follows from './follow';
 import diaries from './diaries';
 import completed from './goals';
+import search from './search';
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   likes,
   follows,
   diaries,
-  completed
+  completed,
+  search
 });
 
 let enhancer;
