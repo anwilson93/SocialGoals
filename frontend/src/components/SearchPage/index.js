@@ -66,7 +66,7 @@ function SearchPage () {
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>
-                        <h1>Please sign in or sign up to search</h1>
+                        <h1>Please log in or sign up to search</h1>
                     </div>
                 </div>
             </>
