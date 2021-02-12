@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 
 function SearchedUserGoals({userId, username}) {
