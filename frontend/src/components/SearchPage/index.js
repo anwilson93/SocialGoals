@@ -1,9 +1,12 @@
 import {useParams} from "react-router-dom";
+import { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {search} from '../../store/search.js';
 import {Link} from 'react-router-dom';
 import {useEffect} from 'react';
+import SearchedUserGoalModal from './SearchedUserGoalModal';
 function SearchPage () {
+    const [showModal, setShowModal] = useState(false);
 //     const params = useParams();
 //     const {searchTerm} = params;
     
@@ -12,6 +15,7 @@ function SearchPage () {
 //     useEffect (() => {
 //         dispatch(search({searchTerm}))
 //     }, [])
+  
 
     const search = useSelector(state => {
         return state.search.search
@@ -22,8 +26,6 @@ function SearchPage () {
     if (search){
         searchedUsers = search.users
         
-        console.log(searchedUsers.length)
-       
 
         if (searchedUsers.length ===0){
             return (
@@ -32,9 +34,16 @@ function SearchPage () {
         } else {
             return (
                 searchedUsers.map(user => {
+                    const userId = user.id
                 return (
                     <>
-                        <div><button>{user.username}</button></div>
+                        <div key={user.id}>
+                            <button>
+                                <SearchedUserGoalModal userId={userId}/>
+                                {user.username}
+                                <SearchedUserGoalModal userId={userId}/>
+                            </button>
+                        </div>
                     </>
                 )
                
