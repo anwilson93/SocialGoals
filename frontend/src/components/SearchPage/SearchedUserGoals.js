@@ -18,10 +18,14 @@ function SearchedUserGoals({userId, username}) {
             )
         } else {
             return (
-                searchedGoals.map(goal => {
+                <>
+                <h3>{username}'s goals</h3>
+
+                {searchedGoals.map(goal => {
                     if (goal.userId === userId){
                         let startDate = new Date(goal.startDate).toString().slice(0, 16);
                         return (
+                            <>
                             <div className='feed-container' key={goal.id}>
                                 <div className='individual-container' key={goal.id}>
                                     <div> {username} started a new goal: {goal.name}</div>
@@ -29,13 +33,15 @@ function SearchedUserGoals({userId, username}) {
                                     <div>Start date: {startDate}</div>
                                 </div>
                             </div>
+                            </>
                         )       
-                    } else {
+                    }   else {
                         return (
                             <h1>No goals to display</h1>
                         )
                     }
-            })
+                })}
+                </>
             )
         }
     } else return null;
