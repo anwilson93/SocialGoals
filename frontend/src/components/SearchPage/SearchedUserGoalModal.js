@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import SearchedUserGoals from './SearchedUserGoals';
 import './SearchPage.css';
 
-function SearchedUserGoalModal({userId}) {
+function SearchedUserGoalModal({userId, username}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function SearchedUserGoalModal({userId}) {
       <div id='search-modal' onClick={() => setShowModal(true)}></div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SearchedUserGoals userId={userId}/>
+          <SearchedUserGoals userId={userId} username={username}/>
         </Modal>
       )}
     </>

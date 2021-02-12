@@ -35,13 +35,14 @@ function SearchPage () {
             return (
                 searchedUsers.map(user => {
                     const userId = user.id
+                    const username = user.username
                 return (
                     <>
                         <div key={user.id}>
                             <button>
-                                <SearchedUserGoalModal userId={userId}/>
+                                <SearchedUserGoalModal userId={userId} username={username}/>
                                 {user.username}
-                                <SearchedUserGoalModal userId={userId}/>
+                                <SearchedUserGoalModal userId={userId} username={username}/>
                             </button>
                         </div>
                     </>

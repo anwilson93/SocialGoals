@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 
-function SearchedUserGoals({userId}) {
+function SearchedUserGoals({userId, username}) {
   const search = useSelector(state => {
         return state.search.search
     });
@@ -19,12 +19,16 @@ function SearchedUserGoals({userId}) {
         } else {
             return (
                 searchedGoals.map(goal => {
-                    console.log(goal.userId, 'yoooo', userId)
                     if (goal.userId === userId){
+                        let startDate = new Date(goal.startDate).toString().slice(0, 16);
                         return (
-                            <>
-                                <div key={goal.id}>{goal.name}</div>
-                            </>
+                            <div className='feed-container' key={goal.id}>
+                                <div className='individual-container' key={goal.id}>
+                                    <div> {username} started a new goal: {goal.name}</div>
+                                    <div className='space'></div>
+                                    <div>Start date: {startDate}</div>
+                                </div>
+                            </div>
                         )       
                     } else {
                         return (
