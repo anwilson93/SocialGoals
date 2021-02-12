@@ -13,6 +13,7 @@ import MyDiaryEntries from "./components/MyDiaryEntries";
 import LogoutPage from './components/LogoutPage';
 import MyFollowersProfilePage from "./components/MyFollowersProfilePage";
 import Following from "./components/MyFollowersProfilePage/Following";
+import SearchPage from "./components/SearchPage";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 
 
@@ -59,6 +60,9 @@ function App() {
           <Route exact path='/feed'>
             <HomePage />
             <CommentList />
+          </Route>
+          <Route exact path='/search'>
+            <SearchPage />
           </Route>
         </Switch>
       )}

@@ -18,16 +18,13 @@ router.get('/:searchTerm', asyncHandler(async(req, res) => {
     },
     });
 
+    const userId = users.map(user => {
+        return user.id
+    });
+
     const goals = await Goal.findAll({
     where: {
-      [Op.or]: {
-      name: {
-        [Op.iLike]: `%${searchTerm}%`
-      },
-      goalType: {
-        [Op.iLike]: `%${searchTerm}%`
-      },
-      }
+      userId
     },
     });
 
