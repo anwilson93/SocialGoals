@@ -14,6 +14,7 @@ import LogoutPage from './components/LogoutPage';
 import MyFollowersProfilePage from "./components/MyFollowersProfilePage";
 import Following from "./components/MyFollowersProfilePage/Following";
 import SearchPage from "./components/SearchPage";
+import MyDiaryEntriesProfilePage from "./components/MyDiaryEntriesProfilePage";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 
 
@@ -49,7 +50,7 @@ function App() {
             <CompletedGoals />
           </Route>
           <Route exact path='/diaries'>
-            <MyDiaryEntries />
+            <MyDiaryEntriesProfilePage />
           </Route>
           <Route exact path="/followers">
             <MyFollowersProfilePage />
