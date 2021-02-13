@@ -61,6 +61,26 @@ router.post('/:goalId(\\d+)',
   })
 );
 
+// DELETE FOLLOW FOR A USER
+router.post('/unfollow/goal',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId} = req.body
+
+    // FIND USER BY USERNAME
+    const isFollowingGoal = await FollowGoal.findOne({
+        where: {
+          userId, goalId
+        }
+    });
+    if (isFollowingGoal) {
+      let unfollow = await FollowGoal.destroy({
+            where: {userId, goalId}
+        })
+        return res.json({unfollow})
+    }
+  })
+);
+
 // CREATE USER FOLLOW ANOTHER USER
 router.post('/user',
   asyncHandler(async (req, res) => {

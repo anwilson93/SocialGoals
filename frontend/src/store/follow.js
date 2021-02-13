@@ -61,14 +61,7 @@ export const fetchUsersIFollow = (username) => {
     };
 };
 
-export const fetchGoalsIFollow = (username) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/follow/goal/${username}`)
-        dispatch(
-            setUsersIFollow(res.data)
-        );
-    };
-};
+
 
 
 export const createGoalFollow = (obj) => async (dispatch) => {
@@ -101,7 +94,7 @@ export const createUserFollow = (obj) => async (dispatch) => {
 
 export const deleteUserFollow = (obj) => async (dispatch) => {
   const { userId, usernameToUnfollow, username } = obj;
-  console.log('jdhguhdtigjhvid', userId, usernameToUnfollow, username)
+  
   const res = await fetch(`/api/follow/unfollow/user`, {
     method: 'POST',
      body: JSON.stringify({
@@ -110,6 +103,19 @@ export const deleteUserFollow = (obj) => async (dispatch) => {
       })
   });
     dispatch(fetchUsersIFollow(username))
+    return res.data
+};
+
+export const deleteGoalFollow = (obj) => async (dispatch) => {
+  const { userId, goalId } = obj;
+  const res = await fetch(`/api/follow/unfollow/goal`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId
+      })
+  });
+    dispatch(fetchGoalFollows(userId))
     return res.data
 };
 

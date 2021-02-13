@@ -3,12 +3,13 @@ import {useEffect, useState} from 'react';
 import {fetchGoalFollows} from '../../store/follow';
 import FollowButton from '../FollowButton';
 import UnfollowButton from '../UnfollowButton'
+import DiaryEntriesCard from '../DiaryEntriesCard';
+import { fetchAllDiariessForGoalsAUserFollows } from '../../store/diaries';
 
 
 
 
 function CheckIfFollowingGoal ({goalId}) {
-    console.log(goalId, 'goalidddd')
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
 
@@ -18,7 +19,7 @@ function CheckIfFollowingGoal ({goalId}) {
     let [followingGoal, setFollowingGoal] = useState(false);
     
     useEffect (() => {
-        dispatch(fetchGoalFollows(userId))
+        return (dispatch(fetchGoalFollows(userId)), dispatch(fetchAllDiariessForGoalsAUserFollows(userId)))
     }, [dispatch, followingGoal, setFollowingGoal, following])
 
     const goalsIFollow = useSelector(state => {
@@ -34,27 +35,28 @@ function CheckIfFollowingGoal ({goalId}) {
         if (following) {
             let i = 0
       
-        while (i<following.length){
-            
-            if (goalId === following[i].goalId){
-                setFollowingGoal(true)
-                break;
-            } else {
-                setFollowingGoal(false)
-            }
-            i++
+            while (i<following.length){
+                
+                if (goalId === following[i].goalId){
+                    setFollowingGoal(true)
+                    break;
+                } else {
+                    setFollowingGoal(false)
+                }
+                i++
+            } 
+        } else {
+            setFollowingGoal(false)
         }
-        
-        }
-    }, [dispatch, followingGoal, setFollowingGoal, following])
+    }, [dispatch, followingGoal, setFollowingGoal, following, goalsIFollow])
 
    
 
     if (followingGoal) {
         return (
             <>
-            <div className='following-checkmark'>following <i className="fas fa-check"></i></div>
-            <UnfollowButton userId={userId} username={username} goalId={goalId}/>
+            {/* <div className='following-checkmark'>following <i className="fas fa-check"></i></div> */}
+            <UnfollowButton userId={userId} username={username} goalId={goalId} followingGoal={followingGoal}/>
             </>
         )
     } else {
