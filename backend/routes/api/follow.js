@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { User, FollowGoal, Follower } = require('../../db/models');
+const { User, FollowGoal, Follower, Goal } = require('../../db/models');
 
 
 // GET ALL FOLLOWERS FOR A USER AND RETURNS THE FOLLOWERS' USERNAMES
@@ -44,25 +44,39 @@ router.get('/following/:username',
   })
 );
 
-// CREATE OR DELETE FOLLOW FOR A GOAL
+// CREATE FOLLOW FOR A GOAL
 router.post('/:goalId(\\d+)',
   asyncHandler(async (req, res) => {
     const {userId, goalId} = req.body
-    let follow;
-    //CHECK IF FOLLOW ALREADY EXISTS
-    const deleteFollow = await FollowGoal.findOne({
-        where: {goalId, userId}
+    //CHECK IF GOAL EXISTS
+    const goalExists = await Goal.findOne({
+        where: {id: goalId}
     });
 
-    // IF IT DOESN'T EXIST, CREATE IT. ELSE DELETE IT
-    if (deleteFollow === null){
+    if (goalExists){
         const follow = await FollowGoal.create({goalId, userId})
         await follow.save();
         return res.json({ follow });
-    } else {
-        FollowGoal.destroy({
-            where: {goalId, userId}
+    }
+  })
+);
+
+// DELETE FOLLOW FOR A USER
+router.post('/unfollow/goal',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId} = req.body
+
+    // FIND USER BY USERNAME
+    const isFollowingGoal = await FollowGoal.findOne({
+        where: {
+          userId, goalId
+        }
+    });
+    if (isFollowingGoal) {
+      let unfollow = await FollowGoal.destroy({
+            where: {userId, goalId}
         })
+        return res.json({unfollow})
     }
   })
 );
@@ -111,6 +125,19 @@ router.post('/unfollow/user',
         return res.json({unfollow})
     }
     
+  })
+);
+
+
+// GET ALL GOALS THAT A USER IS FOLLOWING
+router.get('/goal/:userId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const follows = await FollowGoal.findAll({
+      where: { userId},
+    });
+
+    return res.json(follows)
   })
 );
 

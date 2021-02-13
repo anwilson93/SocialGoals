@@ -44,16 +44,16 @@ router.get('/following/:username',
 );
 
 // GET ALL GOALS THAT A USER IS FOLLOWING
-router.get('/following/goal/:userId(\\d+)',
-  asyncHandler(async (req, res) => {
-    const userId = req.params.userId;
-    const follows = await FollowGoal.findAll({
-      where: { userId},
-    });
+// router.get('/following/goal/:userId(\\d+)',
+//   asyncHandler(async (req, res) => {
+//     const userId = req.params.userId;
+//     const follows = await FollowGoal.findAll({
+//       where: { userId},
+//     });
 
-    return res.json(follows)
-  })
-);
+//     return res.json(follows)
+//   })
+// );
 
 // GET ALL OF USER'S UNCOMPLETED GOALS
 router.get('/:userId(\\d+)',

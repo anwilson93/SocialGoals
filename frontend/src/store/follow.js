@@ -1,15 +1,16 @@
 import { fetch } from './csrf.js';
 
-const SET_FOLLOW_GOAL = 'follow/setFollowGoal';
+// const SET_FOLLOW_GOAL = 'follow/setFollowGoal';
 const SET_MY_FOLLOWERS = 'follow/setMyFollowers';
 const SET_WHO_I_FOLLOW = 'follow/setWhoIFollow';
+const SET_GOALS_I_FOLLOW = 'follow/setGoalsIFollow';
 
 
 
 const initialState = {};
 
-const setFollowGoal = (follows) => ({
-  type: SET_FOLLOW_GOAL,
+const setGoalsIFollow = (follows) => ({
+  type: SET_GOALS_I_FOLLOW,
   payload: follows
 });
 
@@ -24,12 +25,18 @@ const setUsersIFollow = (following) => ({
   payload: following
 });
 
+// const setGoalsIFollow = (following) => ({
+//   type: SET_GOALS_I_FOLLOW,
+//   payload: following
+// });
+
 
 export const fetchGoalFollows = (userId) => {
     return async (dispatch) => {
-        const res = await fetch(`/api/goals/following/goal/${userId}`)
+        const res = await fetch(`/api/follow/goal/${userId}`)
         dispatch(
-            setFollowGoal(res.data)
+
+            setGoalsIFollow(res.data)
         );
     };
 };
@@ -87,7 +94,7 @@ export const createUserFollow = (obj) => async (dispatch) => {
 
 export const deleteUserFollow = (obj) => async (dispatch) => {
   const { userId, usernameToUnfollow, username } = obj;
-  console.log('jdhguhdtigjhvid', userId, usernameToUnfollow, username)
+  
   const res = await fetch(`/api/follow/unfollow/user`, {
     method: 'POST',
      body: JSON.stringify({
@@ -99,12 +106,25 @@ export const deleteUserFollow = (obj) => async (dispatch) => {
     return res.data
 };
 
+export const deleteGoalFollow = (obj) => async (dispatch) => {
+  const { userId, goalId } = obj;
+  const res = await fetch(`/api/follow/unfollow/goal`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId
+      })
+  });
+    dispatch(fetchGoalFollows(userId))
+    return res.data
+};
+
 
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case SET_FOLLOW_GOAL:
+    case SET_GOALS_I_FOLLOW:
       newState = Object.assign({}, state, { follows: action.payload });
       return newState;
     case SET_MY_FOLLOWERS:
