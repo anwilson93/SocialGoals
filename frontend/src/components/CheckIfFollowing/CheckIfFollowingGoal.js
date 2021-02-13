@@ -3,7 +3,6 @@ import {useEffect, useState} from 'react';
 import {fetchGoalFollows} from '../../store/follow';
 import FollowButton from '../FollowButton';
 import UnfollowButton from '../UnfollowButton'
-import DiaryEntriesCard from '../DiaryEntriesCard';
 import { fetchAllDiariessForGoalsAUserFollows } from '../../store/diaries';
 
 
@@ -55,7 +54,6 @@ function CheckIfFollowingGoal ({goalId}) {
     if (followingGoal) {
         return (
             <>
-            {/* <div className='following-checkmark'>following <i className="fas fa-check"></i></div> */}
             <UnfollowButton userId={userId} username={username} goalId={goalId} followingGoal={followingGoal}/>
             </>
         )

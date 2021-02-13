@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 import FollowButton from '../FollowButton';
 import { fetchAllDiariessForGoalsAUserFollows } from '../../store/diaries';
-import {fetchGoalFollows} from '../../store/follow';
+
 
 
 function UnfollowButton ({goalId, userId, username, follow, followingGoal}) {
@@ -19,7 +19,6 @@ function UnfollowButton ({goalId, userId, username, follow, followingGoal}) {
         if (goalId){
             setUnfollowed(true)
             return(dispatch(deleteGoalFollow({goalId, userId}), 
-            // dispatch(fetchGoalFollows(userId)), 
             // dispatch(fetchAllDiariessForGoalsAUserFollows(userId))
             )).then(() => {
                 return (dispatch(fetchAllDiariessForGoalsAUserFollows(userId)))

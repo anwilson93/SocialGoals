@@ -33,7 +33,7 @@ function SearchBar (){
         <input
           className='form-field' 
           id='search-bar'
-          placeholder='Search for people follow'
+          placeholder='Search for people to follow'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}/>
       </form>

@@ -24,7 +24,7 @@ export const fetchLikes = (userId) => {
 
 export const createGoalLike = (obj) => async (dispatch) => {
   const { userId, goalId } = obj;
-  const res = await fetch(`/api/likes/${goalId}`, {
+  const res = await fetch(`/api/likes/goal`, {
     method: 'POST',
      body: JSON.stringify({
             userId: userId,
@@ -32,40 +32,39 @@ export const createGoalLike = (obj) => async (dispatch) => {
       })
   });
     dispatch(fetchLikes(userId))
+
     return res.data.like
 };
 
 export const deleteGoalLike = (obj) => async (dispatch) => {
   const { userId, goalId } = obj;
-  const res = await fetch(`/api/likes/delete/delete/${goalId}`, {
+  const res = await fetch(`/api/delete/goal/like`, {
     method: 'POST',
      body: JSON.stringify({
             userId: userId,
             goalId: goalId
       })
   });
-    console.log('ressssssssss', res.data)
     dispatch(setLikes(res.data))
 };
 
 
 export const deleteDiaryLike = (obj) => async (dispatch) => {
   const { userId, diaryEntryId } = obj;
-  const res = await fetch(`/api/likes/delete/${diaryEntryId}`, {
+  const res = await fetch(`/api/delete/diary/like`, {
     method: 'POST',
      body: JSON.stringify({
             userId: userId,
             diaryEntryId: diaryEntryId
       })
   });
-    console.log('ressssssssss', res.data)
     dispatch(setLikes(res.data))
 };
 
 
 export const createDiaryLike = (obj) => async (dispatch) => {
   const { userId, diaryEntryId } = obj;
-  const res = await fetch(`/api/likes/diary/${diaryEntryId}`, {
+  const res = await fetch(`/api/likes/diary`, {
     method: 'POST',
      body: JSON.stringify({
             userId: userId,

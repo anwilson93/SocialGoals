@@ -8,13 +8,14 @@ import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
 import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
 import GoalsLiked from '../GoalsLiked';
-import Unlike from '../Unlike';
+import Unlike from '../UnlikeButton';
 import CheckLikeOrUnlike from '../CheckLikeOrUnlike';
 import GoalsFollowed from '../GoalsFollowed';
 import { fetchGoalFollows } from '../../store/follow';
 import DiaryEntriesCard from '../DiaryEntriesCard';
 import { Redirect } from 'react-router-dom';
 import CheckIfFollowingGoal from '../CheckIfFollowing/CheckIfFollowingGoal';
+import CheckIfLikeGoal from '../CheckIfLike/CheckIfLikeGoal';
 // import {Link} from 'react-router-dom';
 
 
@@ -74,8 +75,9 @@ function HomePage () {
                                     <div>Start date: {startDate}</div>
                                     {/* <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsFollowed goalId={goalId} /> */}
                                     <CommentBox goalId={goalId}/>
-                                    <CheckLikeOrUnlike goalId={goalId}/>
+                                    {/* <CheckLikeOrUnlike goalId={goalId}/> */}
                                     <CheckIfFollowingGoal goalId={goalId} />
+                                    <CheckIfLikeGoal goalId={goalId} />
                                     {/* <GoalsLiked goalId={goalId} /> */}
                                     {/* <Unlike goalId={goalId} /> */}
                                 </div>
