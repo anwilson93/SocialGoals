@@ -43,6 +43,10 @@ function UnfollowButton ({goalId, userId, username, follow, followingGoal}) {
             <button className='delete-button' onClick={unfollowSomething}>Unfollow</button>
         )
     }
+
+    return (
+        <button className='delete-button' onClick={unfollowSomething}>Unfollow</button>
+    )
 }
 
 export default UnfollowButton;
