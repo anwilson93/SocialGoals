@@ -32,6 +32,7 @@ export const fetchAllMyDiaryEntries = (userId) => {
 
 export const createDiary = (obj) => async (dispatch) => {
   const { userId, goalId, entry} = obj;
+
   const res = await fetch(`/api/diary/create`, {
     method: 'POST',
      body: JSON.stringify({
@@ -40,7 +41,7 @@ export const createDiary = (obj) => async (dispatch) => {
             entry: entry
       })
   }); 
-    dispatch(getAllDiaries(res.data))
+    dispatch(getAllDiaries(res.data.myDiaryEntries))
 };
 
 

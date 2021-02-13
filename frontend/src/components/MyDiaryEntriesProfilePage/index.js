@@ -1,27 +1,32 @@
 import SidePanel from '../SidePanel';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { fetchAllMyDiaryEntries } from '../../store/diaries';
 import MyDiaryEntryCard from './MyDiaryEntryCard';
 import CreateDiaryFormModal from '../CreateDiaryFormModal';
 
-function MyDiaryEntries () {
+function MyDiaryEntriesProfilePage () {
 
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
 
     const dispatch = useDispatch();
+    let history = useHistory();
 
     
     useEffect (() => {
         dispatch(fetchAllMyDiaryEntries(userId))
     }, [dispatch])
 
-    const goals = useSelector(state => {
-        return state.diaries.diaries
+    let goals;
+    const myGoals = useSelector(state => {
+        return state.diaries
     });
 
+    if (myGoals){
+        goals = myGoals.diaries
+    }
 
     try {
     return (
@@ -60,4 +65,4 @@ function MyDiaryEntries () {
     }
 }
 
-export default MyDiaryEntries;
+export default MyDiaryEntriesProfilePage;

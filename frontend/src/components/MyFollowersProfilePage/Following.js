@@ -21,7 +21,6 @@ function Following () {
     }, [dispatch])
 
     const usersIFollow = useSelector(state => {
-        console.log(state.follows.following, 'yoo')
         return state.follows.following
     });
 
