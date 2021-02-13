@@ -1,7 +1,4 @@
 import { useSelector} from 'react-redux';
-import LikeAndFollowFormModal from '../LikeAndFollowFormModal';
-import GoalsLiked from '../GoalsLiked';
-import CheckLikeOrUnlike from '../CheckLikeOrUnlike';
 import CheckIfLikeDiaryEntry from '../CheckIfLike/CheckIfLikeDiaryEntry';
 function DiaryEntriesCard ({userId}) {
     const diaries = useSelector(state => {

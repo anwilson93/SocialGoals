@@ -9,7 +9,6 @@ import Navigation from "./components/Navigation";
 import CommentList from "./components/CommentList";
 import ProfilePage from "./components/ProfilePage";
 import CompletedGoals from "./components/CompletedGoals";
-import MyDiaryEntries from "./components/MyDiaryEntries";
 import LogoutPage from './components/LogoutPage';
 import MyFollowersProfilePage from "./components/MyFollowersProfilePage";
 import Following from "./components/MyFollowersProfilePage/Following";
