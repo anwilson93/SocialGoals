@@ -7,7 +7,7 @@ function FollowButton ({goalId, userId, usernameToFollow, username}) {
 
     const followSomething = () => {
         if (goalId){
-            return(dispatch(createGoalFollow(goalId, userId)))
+            return(dispatch(createGoalFollow({goalId, userId})))
         } else {
             return(dispatch(createUserFollow({usernameToFollow, userId, username})))
         }

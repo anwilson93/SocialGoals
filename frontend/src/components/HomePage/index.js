@@ -14,6 +14,7 @@ import GoalsFollowed from '../GoalsFollowed';
 import { fetchGoalFollows } from '../../store/follow';
 import DiaryEntriesCard from '../DiaryEntriesCard';
 import { Redirect } from 'react-router-dom';
+import CheckIfFollowingGoal from '../CheckIfFollowing/CheckIfFollowingGoal';
 // import {Link} from 'react-router-dom';
 
 
@@ -74,6 +75,7 @@ function HomePage () {
                                     <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsFollowed goalId={goalId} />
                                     <CommentBox goalId={goalId}/>
                                     <CheckLikeOrUnlike goalId={goalId}/>
+                                    <CheckIfFollowingGoal goalId={goalId} />
                                     {/* <GoalsLiked goalId={goalId} /> */}
                                     {/* <Unlike goalId={goalId} /> */}
                                 </div>

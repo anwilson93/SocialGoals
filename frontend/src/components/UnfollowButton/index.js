@@ -8,7 +8,8 @@ function UnollowButton ({goalId, userId, username, follow}) {
 
     const unfollowSomething = () => {
         if (goalId){
-            return(dispatch(createGoalFollow(goalId, userId)))
+            console.log(goalId)
+            // return(dispatch(createGoalFollow(goalId, userId)))
         } else {
             return(dispatch(deleteUserFollow({userId, usernameToUnfollow, username})))
         }
