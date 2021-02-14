@@ -8,6 +8,15 @@ const { Goal, DiaryEntry, Like, User, Comment} = require('../../db/models');
 router.delete('/goal/:goalId', asyncHandler(async (req, res) => {
     const { goalId } = req.body;
     const deleteGoal = await Goal.findByPk(goalId);
+    const deleteDiaryEntries = await DiaryEntry.findAll({where: {goalId}});
+
+    //delete all diary entries for the goal before deleting goal
+    if (deleteDiaryEntries){
+      const asyncDeleteEntries = await Promise.all(deleteDiaryEntries.map(async (entry) => {
+	      await entry.destroy();
+      }));
+    }
+  
     await deleteGoal.destroy();
     return res.json({ deleteGoal });
 }));
