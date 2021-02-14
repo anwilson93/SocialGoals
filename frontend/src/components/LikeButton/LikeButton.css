@@ -1,10 +1,11 @@
-/* .like-button-container {
+.like-button-container {
   display: flex;
   justify-content: start;
 }
 
 .like-button {
   margin-left: 0.5rem;
+  margin-top: 0.3rem;
   border: none;
   color: rgb(48, 47, 47);
   background-color: transparent;
@@ -16,4 +17,4 @@
   background-color: rgb(141, 202, 255);
   color: white;
   box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
-} */
+}

@@ -3,6 +3,7 @@ import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import CheckIfLikeDiaryEntry from '../CheckIfLike/CheckIfLikeDiaryEntry';
 import CheckIfLikeGoal from '../CheckIfLike/CheckIfLikeGoal';
+import './LikeButton.css';
 
 function LikeButton ({goalId, userId, diaryEntryId}) {
 
@@ -33,7 +34,9 @@ function LikeButton ({goalId, userId, diaryEntryId}) {
 
     return (
         <>
-        <button className='like-button' onClick={likeSomething}><i className="far fa-heart"/></button>
+        <div className='like-button-container'>
+            <button className='like-button' onClick={likeSomething}><i className="far fa-heart"/></button>
+        </div>
         </>
     )
 }
