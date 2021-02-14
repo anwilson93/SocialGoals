@@ -72,8 +72,6 @@ function HomePage () {
                                     {/* <CheckLikeOrUnlike goalId={goalId}/> */}
                                     <CheckIfFollowingGoal goalId={goalId} />
                                     <CheckIfLikeGoal goalId={goalId} />
-                                    {/* <GoalsLiked goalId={goalId} /> */}
-                                    {/* <Unlike goalId={goalId} /> */}
                                 </div>
                             </div>
                             {/* </div> */}

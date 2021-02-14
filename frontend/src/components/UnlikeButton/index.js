@@ -34,16 +34,23 @@ function UnlikeButton ({goalId, userId, diaryEntryId, likeDiary, likeGoal}) {
 
     if (likeDiary) {
         return (
-            <button className='like-button' onClick={unlikeSomething}><i className="fas fa-heart"/></button>
+            <div className='like-button-container'>
+                 <button className='like-button' onClick={unlikeSomething}><i className="fas fa-heart"/></button>
+            </div>
+           
         )
     } else if (likeGoal) {
         return (
-            <button className='like-button' onClick={unlikeSomething}><i className="fas fa-heart"/></button>
+            <div className='like-button-container'>
+                 <button className='like-button' onClick={unlikeSomething}><i className="fas fa-heart"/></button>
+            </div>
         )
     }
 
     return (
-        <button className='like-button' onClick={unlikeSomething}><i className="fas fa-heart"/></button>
+        <div className='like-button-container'>
+            <button className='like-button' onClick={unlikeSomething}><i className="fas fa-heart"/></button>
+        </div>
     )
 }
 
