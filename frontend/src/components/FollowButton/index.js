@@ -31,7 +31,7 @@ function FollowButton ({goalId, userId, usernameToFollow, username}) {
     // }
     return (
         <>
-        <button className='delete-button' onClick={followSomething}>Follow</button>
+        <button className='unfollow-follow-button' onClick={followSomething}>Follow</button>
         {/* <CheckIfFollowingGoal goalId={goalId} /> */}
         </>
     )

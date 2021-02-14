@@ -1,0 +1,12 @@
+.unfollow-follow-button {
+  background-color: transparent;
+  margin-top: 30px;
+  border: 2px solid rgb(141, 202, 255);
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+.unfollow-follow-button:hover {
+  background-color: rgb(141, 202, 255);
+  color: white;
+}

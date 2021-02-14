@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 import FollowButton from '../FollowButton';
 import { fetchAllDiariessForGoalsAUserFollows } from '../../store/diaries';
+import './UnfollowButton.css';
 
 
 
@@ -39,12 +40,12 @@ function UnfollowButton ({goalId, userId, username, follow, followingGoal}) {
 
     if (followingGoal) {
         return (
-            <button className='delete-button' onClick={unfollowSomething}>Unfollow</button>
+            <button className='unfollow-follow-button' onClick={unfollowSomething}>Unfollow</button>
         )
     }
 
     return (
-        <button className='delete-button' onClick={unfollowSomething}>Unfollow</button>
+        <button className='unfollow-follow-button' onClick={unfollowSomething}>Unfollow</button>
     )
 }
 
