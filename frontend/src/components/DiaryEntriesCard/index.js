@@ -22,7 +22,6 @@ function DiaryEntriesCard ({userId}) {
                                 {date}
                                 <div>Entry: {entry}</div>
                                 {/* <LikeAndFollowFormModal diaryEntryId={diaryEntryId} userId={userId}/>  */}
-                                {/* <GoalsLiked diaryEntryId={diaryEntryId} /> */}
                                 {/* <CheckLikeOrUnlike diaryEntryId={diaryEntryId}/> */}
                                 {/* <CommentBox goalId={goalId}/> */}
                                 <CheckIfLikeDiaryEntry diaryEntryId={diaryEntryId} />
