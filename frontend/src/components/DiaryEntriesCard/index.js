@@ -1,9 +1,12 @@
 import { useSelector} from 'react-redux';
 import CheckIfLikeDiaryEntry from '../CheckIfLike/CheckIfLikeDiaryEntry';
+import './DiaryEntriesCard.css';
 function DiaryEntriesCard ({userId}) {
+
     const diaries = useSelector(state => {
         return state.diaries.diaries
     });
+
     try {
       return (
         <>
@@ -12,19 +15,20 @@ function DiaryEntriesCard ({userId}) {
                 let entry = diary.entry
                 let diaryEntryId = diary.id
                 let goalName = diary.Goal.name
+                let diaryAuthor = diary.Goal.User.username
 
                 return (
                     <>  
                         <div className='feed-container'>
-                            <div className='individual-container'>
-                                <div> New diary entry for goal: {goalName}</div>
+                            <div className='individual-container' id='individual-diaries-container'>
+                                <div> New diary entry for goal: {goalName} <p className='diary-username'>({diaryAuthor})</p></div>
                                 <div className='space'></div>
                                 {date}
-                                <div>Entry: {entry}</div>
+                                <div className='diary-entry-container'> Entry: <p className='diary-entry'>{entry}</p> </div>
                                 {/* <LikeAndFollowFormModal diaryEntryId={diaryEntryId} userId={userId}/>  */}
                                 {/* <CheckLikeOrUnlike diaryEntryId={diaryEntryId}/> */}
                                 {/* <CommentBox goalId={goalId}/> */}
-                                <CheckIfLikeDiaryEntry diaryEntryId={diaryEntryId} />
+                                <CheckIfLikeDiaryEntry diaryEntryId={diaryEntryId} /> 
                             </div>
                         </div>
                     </>

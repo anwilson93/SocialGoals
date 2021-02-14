@@ -71,7 +71,7 @@ function HomePage () {
                                     <CommentBox goalId={goalId} userId={userId}/>
                                     {/* <CheckLikeOrUnlike goalId={goalId}/> */}
                                     <CheckIfFollowingGoal goalId={goalId} />
-                                    <CheckIfLikeGoal goalId={goalId} />
+                                    <CheckIfLikeGoal goalId={goalId} /> 
                                 </div>
                             </div>
                             {/* </div> */}
