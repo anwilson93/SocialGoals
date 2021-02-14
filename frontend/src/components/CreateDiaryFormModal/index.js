@@ -7,7 +7,7 @@ function CreateDiaryFormModal({goalId, userId}) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <button className='modal-like-button' onClick={() => setShowModal(true)}>Create New Diary Entry</button>
+      <button className='goals-button' onClick={() => setShowModal(true)}><i className="fa fa-plus" aria-hidden="true"></i></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateDiaryForm goalId={goalId} userId={userId}/>

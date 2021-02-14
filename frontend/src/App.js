@@ -7,8 +7,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 // import CommentList from "./components/CommentList";
-import ProfilePage from "./components/ProfilePage";
-import CompletedGoals from "./components/CompletedGoals";
+import MyGoalsProfilePage from "./components/MyGoalsProfilePage";
+import MyCompletedGoals from "./components/MyGoalsProfilePage/MyCompletedGoals";
 import LogoutPage from './components/LogoutPage';
 import MyFollowersProfilePage from "./components/MyFollowersProfilePage";
 import Following from "./components/MyFollowersProfilePage/Following";
@@ -43,10 +43,10 @@ function App() {
             <LoginFormPage />
           </Route>
           <Route exact path="/goals">
-            <ProfilePage />
+            <MyGoalsProfilePage />
           </Route>
           <Route exact path="/goals/completed">
-            <CompletedGoals />
+            <MyCompletedGoals />
           </Route>
           <Route exact path='/diaries'>
             <MyDiaryEntriesProfilePage />

@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 
-function CompletedGoals () {
+function MyCompletedGoals () {
 
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
@@ -29,8 +29,11 @@ function CompletedGoals () {
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>
-                    <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
-                    <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
+                    <div className='goals-buttons-container'>
+                        <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
+                        <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
+                    </div>
+
                     {completedGoals && completedGoals.map(goal => {
                         let goalId = goal.id
 
@@ -49,4 +52,4 @@ function CompletedGoals () {
     )
 }
 
-export default CompletedGoals;
+export default MyCompletedGoals;

@@ -1,25 +1,36 @@
 .main-top {
   display: flex;
-  /* justify-content: flex-start; */
   align-items: flex-start;
-  background-color: yellow;
 }
+
+.my-goals-container {
+  width: 900px;
+  height: auto;
+}
+.create-goal-button-container {
+  display: inline;
+}
+
+.goals-buttons-container {
+  border-bottom: 2px rgb(227, 107, 177) solid;
+}
+
 .goals-button {
   background-color: transparent;
-  outline: none;
   margin-top: 10px;
   margin-left: 100px;
   margin-right: 50px;
-  border: 2px solid #0099cc;
-  border-radius: 6px;
-  -webkit-box-shadow: 6px 5px 24px #666666;
-  -moz-box-shadow: 6px 5px 24px #666666;
-  box-shadow: 6px 5px 24px #666666;
+  margin-bottom: 20px;
+  border: 2px solid rgb(141, 202, 255);
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   font-size: 16px;
 }
 
 .goals-button:hover {
-  background-color: #008cba;
+  background-color: rgb(141, 202, 255);
   color: white;
 }
 

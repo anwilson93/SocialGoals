@@ -67,7 +67,7 @@ function HomePage () {
                                     <div> <p className='username'> {user} </p> made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
-                                    {/* <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsFollowed goalId={goalId} /> */}
+                                    {/* <LikeAndFollowFormModal goalId={goalId} userId={userId}/> */}
                                     <CommentBox goalId={goalId} userId={userId}/>
                                     {/* <CheckLikeOrUnlike goalId={goalId}/> */}
                                     <CheckIfFollowingGoal goalId={goalId} />
