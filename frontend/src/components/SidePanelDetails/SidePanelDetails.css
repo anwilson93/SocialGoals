@@ -40,12 +40,13 @@
     rgb(227, 107, 177)
   );
   border-image-slice: 2;
-  border-bottom: 3px solid gray;
-  outline: 0;
+  border-bottom: 3px solid white;
   font-size: 1.1rem;
   color: rgb(48, 47, 47);
   padding: 7px 0;
   background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
 }
 
 .sidepanel-button:hover {

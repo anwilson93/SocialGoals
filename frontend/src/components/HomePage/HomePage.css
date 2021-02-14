@@ -50,3 +50,9 @@
   background-color: transparent;
   outline: none;
 }
+
+.username {
+  font-size: 18px;
+  display: inline;
+  color: rgb(231, 72, 35);
+}
