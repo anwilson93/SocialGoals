@@ -3,11 +3,12 @@
 }
 
 .open-comments,
-.make-new-comment {
+.make-new-comment,
+.comment-submit {
   display: inline-block;
   border: none;
   color: rgb(48, 47, 47);
-  width: 190px;
+  width: 194px;
   border-radius: 5px;
   border-bottom: rgb(231, 72, 35) 2px solid;
   border-left: rgb(231, 72, 35) 2px solid;
@@ -16,13 +17,30 @@
   margin: 3px;
 }
 
+.comment-submit {
+  width: 100%;
+}
+
 .button-container {
   display: inline-block;
   margin-top: 10px;
 }
 
 .make-new-comment:hover,
-.open-comments:hover {
+.open-comments:hover,
+.comment-submit:hover {
   background-color: rgb(231, 72, 35);
   color: white;
+}
+
+.leave-a-comment-box {
+  resize: none;
+  margin-left: 19px;
+  border-radius: 5px;
+}
+
+.comment-username {
+  font-size: 16px;
+  display: inline;
+  color: rgb(231, 72, 35);
 }

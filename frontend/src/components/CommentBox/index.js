@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import {fetchAllComments} from '../../store/comments';
 import {useDispatch} from 'react-redux';
 import './CommentBox.css';
-import CommentList from '../CommentList';
+import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 
-function CommentBox({goalId}) {
+function CommentBox({goalId, userId}) {
 
   const [commentsOpen, setCommentsOpen] = useState(false);
   const [newCommentsOpen, setNewCommentsOpen] = useState(false);
@@ -24,7 +24,7 @@ function CommentBox({goalId}) {
           <button className='make-new-comment' onClick={() => setNewCommentsOpen(!newCommentsOpen)}>Make A New Comment!</button> 
         </div>
         <div className="comment-box">
-          <CommentList visible={commentsOpen}/>
+          <CommentList visible={commentsOpen} userId={userId} goalId={goalId}/>
           <CommentForm visible={newCommentsOpen} goalId={goalId}/>
         </div>
       </>
