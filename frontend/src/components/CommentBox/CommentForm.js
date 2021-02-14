@@ -1,6 +1,6 @@
 import { useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {createComment} from '../../store/comments';
+import {createGoalComment} from '../../store/comments';
 import "./CommentBox.css";
 
 function CommentForm({visible, goalId}) {
@@ -17,7 +17,7 @@ function CommentForm({visible, goalId}) {
     if (newComment) {
       setErrors([]);
     
-    return dispatch(createComment({userId, goalId, newComment}),
+    return dispatch(createGoalComment({userId, goalId, newComment}),
       setNewComment(''),
       // setVisible(false),
     )

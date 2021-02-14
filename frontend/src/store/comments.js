@@ -1,13 +1,13 @@
 import { fetch } from './csrf.js';
 
-const GET_ALL_COMMENTS = 'comments/getAllComments';
+const SET_ALL_COMMENTS = 'comments/setAllComments';
 
 
 
 const initialState = {};
 
-const getAllComments = (comments) => ({
-  type: GET_ALL_COMMENTS,
+const setAllComments = (comments) => ({
+  type: SET_ALL_COMMENTS,
   payload: comments
 });
 
@@ -16,16 +16,16 @@ export const fetchAllComments = (goalId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/comments/${goalId}`)
         dispatch(
-            getAllComments(res.data)
+            setAllComments(res.data)
         );
     };
 };
 
 
-export const createComment = (obj) => async (dispatch) => {
+export const createGoalComment = (obj) => async (dispatch) => {
   const { userId, goalId, newComment } = obj;
 
-  const res = await fetch(`/api/comments/${goalId}`, {
+  const res = await fetch(`/api/comments/goal`, {
     method: 'POST',
      body: JSON.stringify({
             userId: userId,
@@ -38,16 +38,28 @@ export const createComment = (obj) => async (dispatch) => {
 };
 
 
+export const deleteGoalComment = (obj) => async (dispatch) => {
+  const { userId, goalId, comment } = obj;
+  const res = await fetch(`/api/delete/goal/comment`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId,
+            comment: comment
+      })
+  });
+    dispatch(fetchAllComments(goalId))
+    return res
+};
+
+
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case GET_ALL_COMMENTS:
+    case SET_ALL_COMMENTS:
       newState = Object.assign({}, state, { comments: action.payload });
       return newState;
-    // case GET_USER:
-    //   newState = Object.assign({}, state, { user: action.payload });
-    //   return newState;
     default:
       return state;
   }

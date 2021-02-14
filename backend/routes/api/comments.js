@@ -20,8 +20,8 @@ router.get('/:goalId',
   })
 );
 
-// CREATE A COMMENT
-router.post('/:goalId(\\d+)',
+// CREATE A GOAL COMMENT
+router.post('/goal',
   asyncHandler(async (req, res) => {
     const {userId, goalId, comment} = req.body
     const newComment = await Comment.create({ userId, goalId, comment });

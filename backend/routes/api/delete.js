@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { Goal, DiaryEntry, Like, User} = require('../../db/models');
+const { Goal, DiaryEntry, Like, User, Comment} = require('../../db/models');
 
 
 // DELETE A GOAL
@@ -54,6 +54,21 @@ router.post('/goal/like',
     return res.json(likes)
   })
 );
+
+
+// DELETE A GOAL COMMENT
+router.post('/goal/comment',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId, comment} = req.body
+    const deleteGoalComment = await Comment.findOne({
+        where: {userId, goalId, comment}
+    });
+    await deleteGoalComment.destroy();
+
+    return res.json(deleteGoalComment)
+  })
+);
+
 
 module.exports = router;
 

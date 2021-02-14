@@ -40,7 +40,12 @@
 }
 
 .comment-username {
-  font-size: 16px;
+  font-size: 15px;
   display: inline;
   color: rgb(231, 72, 35);
+}
+
+.comment-text {
+  display: inline;
+  font-size: 14px;
 }

@@ -15,16 +15,23 @@ function CommentList({visible, userId, goalId}) {
         let username = comment.User.username
         let commentUserId = comment.userId
         let commentText = comment.comment
+        //if user made comment, allow the ability to delete it
         if (commentUserId === userId){
             return (
                 <>
-                    <div> <p className='comment-username'> {username}: </p> {commentText} <DeleteButton comment={commentText} userId={userId} goalId={goalId}/></div>
+                    <div> 
+                      <p className='comment-username'> {username}: </p> 
+                      <p className='comment-text'>{commentText} </p>
+                      <DeleteButton comment={commentText} userId={userId} goalId={goalId}/></div>
                 </>
             )
         } else {
             return (
                 <>
-                    <div> <p className='comment-username'> {username}: </p> {commentText}</div>
+                    <div>
+                      <p className='comment-username'> {username}: </p> 
+                      <p className='comment-text'>{commentText}</p>
+                    </div>
                 </>
             )
         }
