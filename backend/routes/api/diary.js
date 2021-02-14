@@ -23,7 +23,7 @@ router.get('/following/:userId',
       where: {goalId},
       include: [
         {
-          model: Goal,
+          model: Goal, include: [{model: User}]
         },
       ],
       order: [["createdAt", 'DESC']],

@@ -3,12 +3,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {fetchAllMyGoals} from '../../store/goals';
 import {Link} from 'react-router-dom';
-import './ProfilePage.css';
+import './MyGoalsProfilePage.css';
 import CreateGoalFormModal from '../CreateGoalFormModal';
 import DeleteButton from '../DeleteButton';
 
 
-function ProfilePage () {
+function MyGoalsProfilePage () {
 
     const username = useSelector(state => state.session.user.username);
     const userId = useSelector(state => state.session.user.id);
@@ -31,8 +31,13 @@ function ProfilePage () {
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>
+                    <div className='goals-buttons-container'>
                     <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
                     <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
+                    <div className='create-goal-button-container'>
+                        <CreateGoalFormModal userId={userId}/> 
+                    </div>
+                    </div>
 
                     {goals && goals.map(goal => {
                         let goalId = goal.id
@@ -50,10 +55,9 @@ function ProfilePage () {
                         )
                     })}
                 </div>
-                <CreateGoalFormModal userId={userId}/>
             </div>
         </>
     )
 }
 
-export default ProfilePage;
+export default MyGoalsProfilePage;

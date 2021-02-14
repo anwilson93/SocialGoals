@@ -1,0 +1,19 @@
+#individual-diaries-container {
+  border: 3px solid rgb(252, 196, 3);
+}
+
+.diary-username {
+  font-size: 15px;
+  display: inline;
+  color: rgb(231, 72, 35);
+}
+
+.diary-entry-container {
+  margin-top: 10px;
+  border-top: 2px solid rgb(231, 72, 35);
+}
+
+.diary-entry {
+  display: inline;
+  font-family: cursive;
+}
