@@ -6,7 +6,7 @@ import HomePage from "./components/HomePage";
 import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import CommentList from "./components/CommentList";
+// import CommentList from "./components/CommentList";
 import ProfilePage from "./components/ProfilePage";
 import CompletedGoals from "./components/CompletedGoals";
 import LogoutPage from './components/LogoutPage';
@@ -59,7 +59,7 @@ function App() {
           </Route>
           <Route exact path='/feed'>
             <HomePage />
-            <CommentList />
+            {/* <CommentList /> */}
           </Route>
           <Route exact path='/search'>
             <SearchPage />
