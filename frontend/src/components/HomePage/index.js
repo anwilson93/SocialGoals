@@ -64,11 +64,11 @@ function HomePage () {
                             {/* <div className='feed-container'> */}
                             <div className='feed-container' key={goal.id}>
                                 <div className='individual-container' key={goal.id}>
-                                    <div> {user} made a new goal: {goal.name}</div>
+                                    <div> <p className='username'> {user} </p> made a new goal: {goal.name}</div>
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
                                     {/* <LikeAndFollowFormModal goalId={goalId} userId={userId}/> <GoalsFollowed goalId={goalId} /> */}
-                                    <CommentBox goalId={goalId}/>
+                                    <CommentBox goalId={goalId} userId={userId}/>
                                     {/* <CheckLikeOrUnlike goalId={goalId}/> */}
                                     <CheckIfFollowingGoal goalId={goalId} />
                                     <CheckIfLikeGoal goalId={goalId} />

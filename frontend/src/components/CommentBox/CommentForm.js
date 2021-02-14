@@ -1,7 +1,7 @@
 import { useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {createComment} from '../../store/comments';
-// import "./CommentForm.css";
+import {createGoalComment} from '../../store/comments';
+import "./CommentBox.css";
 
 function CommentForm({visible, goalId}) {
   const [newComment, setNewComment] = useState('');
@@ -17,7 +17,7 @@ function CommentForm({visible, goalId}) {
     if (newComment) {
       setErrors([]);
     
-    return dispatch(createComment({userId, goalId, newComment}),
+    return dispatch(createGoalComment({userId, goalId, newComment}),
       setNewComment(''),
       // setVisible(false),
     )
@@ -36,17 +36,17 @@ function CommentForm({visible, goalId}) {
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
           <textarea
-            rows='5'
-            cols='33'
+            className='leave-a-comment-box'
+            rows='2'
+            cols='44'
+            placeholder='Leave a comment here'
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             required
           />
-        </label>
         <div>
-            <button type="submit">Submit</button>
+            <button className='comment-submit' type="submit">Submit</button>
         </div>
       </form>
     </>
