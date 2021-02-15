@@ -43,7 +43,7 @@ router.get('/:userId(\\d+)',
   asyncHandler(async (req, res) => {
     const userId = req.params.userId;
     const myDiaryEntries = await Goal.findAll({
-      where: { userId},
+      where: { userId, completed:false},
       include: [
         {
           model: DiaryEntry,
