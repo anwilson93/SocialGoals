@@ -1,0 +1,30 @@
+#goal-name-in-diary-page {
+  color: rgb(227, 107, 177);
+}
+
+#add-diary-button {
+  display: inline;
+  margin-left: -70px;
+}
+
+.space-diary {
+  height: 3px;
+  width: 60px;
+  background-color: rgb(141, 202, 255);
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+.all-diary-entries {
+  margin-top: 20px;
+}
+
+.individual-diary-entry {
+  font-family: cursive;
+  margin-left: 55px;
+  margin-bottom: 30px;
+}
+
+.diary-individual-container {
+  margin-bottom: 70px;
+}

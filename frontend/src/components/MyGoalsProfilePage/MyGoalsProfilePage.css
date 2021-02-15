@@ -48,3 +48,7 @@
 .goals-individual-container {
   margin-top: 20px;
 }
+
+.goal-name {
+  font-size: 20px;
+}

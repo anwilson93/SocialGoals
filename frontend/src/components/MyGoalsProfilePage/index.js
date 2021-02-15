@@ -32,11 +32,11 @@ function MyGoalsProfilePage () {
                 <SidePanel />
                 <div className='my-goals-container'>
                     <div className='goals-buttons-container'>
-                    <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
-                    <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
-                    <div className='create-goal-button-container'>
-                        <CreateGoalFormModal userId={userId}/> 
-                    </div>
+                        <Link to='/goals'><button className='goals-button'>Current Goals</button></Link>
+                        <Link to={`/goals/completed`}><button className='goals-button'>Completed Goals</button></Link>
+                        <div className='create-goal-button-container'>
+                            <CreateGoalFormModal userId={userId}/> 
+                        </div>
                     </div>
 
                     {goals && goals.map(goal => {
@@ -49,7 +49,7 @@ function MyGoalsProfilePage () {
                             <>
                                 <div key={goalId} className='goals-individual-container'>
                                     <input type="checkbox" onClick={completeGoal}/>
-                                    <label>{goal.name}</label> < DeleteButton goalId={goalId} userId={userId}/>
+                                    <label className='goal-name'>{goal.name}</label> < DeleteButton goalId={goalId} userId={userId}/>
                                 </div>
                             </>
                         )
