@@ -50,7 +50,7 @@ function CheckIfFollowing ({follower}) {
 
     if (followingFollower) {
         return (
-            <div className='following-checkmark'>following <i class="fas fa-check"></i></div>
+            <div className='following-checkmark'>following <i className="fas fa-check"></i></div>
         )
     } else if (follower === username) {
         return null
