@@ -7,12 +7,14 @@ function MyDiaryEntryCard ({diary, userId}) {
         <>
             {diary && diary.map(diar => {
                 let diaryEntryId = diar.id     
+                let date = new Date(diar.createdAt).toString().slice(0, 16);
+                
                 return (
                     <>
-                        <div>
-                            {diar.entry}
+                        <div className='individual-diary-entry'>
+                            {date}: {diar.entry}
+                            < DeleteButton userId={userId} diaryEntryId={diaryEntryId}/>
                         </div>
-                        < DeleteButton userId={userId} diaryEntryId={diaryEntryId}/>
                     </>
                 )
             })}
