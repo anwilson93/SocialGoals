@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {createDiary} from '../../store/diaries';
-
+import './CreateDiaryForm.css';
 
 
 function CreateDiaryForm({goalId, userId}) {
@@ -28,20 +28,25 @@ function CreateDiaryForm({goalId, userId}) {
 
   return (
     <>
-      <h1>Create a Diary Entry</h1>
+      <h1 className='h1'>Create a Diary Entry</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+        <div className='diary-entry-form-container'>
         <label>
-          Entry
           <textarea
             value={entry}
+            rows='2'
+            cols='80'
+            className='entry-field'
+            placeholder='Write your entry here' 
             onChange={(e) => setEntry(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Create!</button>
+        <button className='create-diary-button' type="submit">Create!</button>  
+        </div>
       </form>
     </>
   );

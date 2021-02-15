@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {createGoal} from '../../store/goals';
-
+import './CreateGoalForm.css';
 
 
 function CreateGoalForm({userId}) {
@@ -33,46 +33,44 @@ function CreateGoalForm({userId}) {
 
   return (
     <>
-      <h1>Create a Goal</h1>
+      <h1 className='h1'>Create a Goal</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
-          Name of Goal
+        <div className='goal-entry-form-container'>
+          <label className='label'> Name of Goal</label>
           <input
+            className='goal-entry-field'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Type of Goal
-          <select value={goalType} onChange={handleGoalTypeChange} required>
-                        <option default value="exercise">Exercise</option>
-                        <option value="food">Food / Food Health</option>
-                        <option value="health">Health</option>
-                        <option value="mental">Mental Health</option>
-                        <option value="productivity">Productivity</option>
-                        <option value="self-development">Self-Development</option>
-                        <option value="relationships">Relationship / Family</option>
-                        <option value="diet">Weight Loss / Diet</option>
-                        <option value="academic">Academic</option>
-                        <option value="passion">Hobby / Personal Passion</option>
-                        <option value="other">Other</option>
-                    </select>
-        </label>
-        <label>
-          When do you plan to start this goal?
+          <label className='label'> Type of Goal </label>
+          <select className='goal-entry-field' value={goalType} onChange={handleGoalTypeChange} required>
+            <option default value="exercise">Exercise</option>
+            <option value="food">Food / Food Health</option>
+            <option value="health">Health</option>
+            <option value="mental">Mental Health</option>
+            <option value="productivity">Productivity</option>
+            <option value="self-development">Self-Development</option>
+            <option value="relationships">Relationship / Family</option>
+            <option value="diet">Weight Loss / Diet</option>
+            <option value="academic">Academic</option>
+            <option value="passion">Hobby / Personal Passion</option>
+            <option value="other">Other</option>
+          </select>
+          <label className='label'> When do you plan to start this goal? </label>
           <input
+            className='goal-entry-field'
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Create!</button>
+          <button className='create-goal-button' type="submit">Create!</button>
+        </div>
       </form>
     </>
   );

@@ -1,0 +1,39 @@
+.entry-field {
+  width: 90%;
+  border: 0;
+  border: 3px solid gray;
+  font-size: 1.4rem;
+  color: rgb(48, 47, 47);
+  padding: 7px 0;
+  transition: border-color 0.2s;
+  margin-left: 40px;
+}
+
+.entry-field:focus {
+  border-image: linear-gradient(
+    to right,
+    rgb(141, 202, 255),
+    rgb(227, 107, 177)
+  );
+  border-image-slice: 2;
+}
+
+.diary-entry-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-diary-button {
+  background-color: transparent;
+  margin: 10px;
+  border: 2px solid rgb(141, 202, 255);
+  border-radius: 6px;
+  font-size: 15px;
+  width: 90%;
+  margin-left: 40px;
+}
+
+.create-diary-button:hover {
+  background-color: rgb(141, 202, 255);
+  color: white;
+}

@@ -1,0 +1,46 @@
+.goal-entry-form-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.label {
+  align-self: center;
+  font-size: 20px;
+  margin-top: 20px;
+  color: rgb(141, 202, 255);
+}
+
+.goal-entry-field {
+  border: 0;
+  border: 3px solid gray;
+  font-size: 1.1rem;
+  color: rgb(48, 47, 47);
+  padding: 7px 0;
+  transition: border-color 0.2s;
+  margin: 10px;
+}
+
+.goal-entry-field:focus {
+  border-image: linear-gradient(
+    to right,
+    rgb(141, 202, 255),
+    rgb(227, 107, 177)
+  );
+  border-image-slice: 2;
+}
+
+.create-goal-button {
+  background-color: transparent;
+  margin: 10px;
+  border: 2px solid rgb(141, 202, 255);
+  border-radius: 6px;
+  font-size: 15px;
+  width: 90%;
+  margin-left: 15px;
+}
+
+.create-goal-button:hover {
+  background-color: rgb(141, 202, 255);
+  color: white;
+}
