@@ -39,9 +39,9 @@ function MyCompletedGoals () {
 
                         return (
                             <>
-                                <div key={goalId}>
+                                <div key={goalId} className='goals-individual-container'>
                                     <input type="checkbox" checked/>
-                                    <label> {goal.name}</label>
+                                    <label className='goal-name'> {goal.name}</label>
                                 </div>
                             </>
                         )

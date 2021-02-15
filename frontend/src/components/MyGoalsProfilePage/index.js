@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import './MyGoalsProfilePage.css';
 import CreateGoalFormModal from '../CreateGoalFormModal';
 import DeleteButton from '../DeleteButton';
+import {completeGoal} from '../../store/goals';
 
 
 function MyGoalsProfilePage () {
@@ -41,14 +42,14 @@ function MyGoalsProfilePage () {
 
                     {goals && goals.map(goal => {
                         let goalId = goal.id
-                        const completeGoal = () => {
-                            console.log('complete ', goalId)
+                        const complete = () => {
+                            return(dispatch(completeGoal({goalId, userId}))) 
                         }
 
                         return (
                             <>
                                 <div key={goalId} className='goals-individual-container'>
-                                    <input type="checkbox" onClick={completeGoal}/>
+                                    <input type="checkbox" onClick={complete}/>
                                     <label className='goal-name'>{goal.name}</label> < DeleteButton goalId={goalId} userId={userId}/>
                                 </div>
                             </>

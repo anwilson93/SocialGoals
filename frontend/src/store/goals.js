@@ -62,6 +62,21 @@ export const createGoal = (obj) => async (dispatch) => {
 };
 
 
+export const completeGoal = (obj) => async (dispatch) => {
+  const { userId, goalId } = obj;
+
+  const res = await fetch(`/api/goals/put`, {
+    method: 'PUT',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId,
+      })
+  }); 
+    dispatch(fetchAllMyGoals(userId))
+    return res
+};
+
+
 
 export const deleteGoal = (goalId, userId) => async (dispatch) => {
 

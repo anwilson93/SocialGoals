@@ -90,5 +90,18 @@ router.post('/create',
     return res.json({ newGoal});
   }));
 
+  //UPDATE GOAL TO COMPLETED
+  router.put('/put',
+  asyncHandler(async (req, res) => {
+    const {userId, goalId} = req.body
+    const completedGoal = await Goal.update(
+      {completed: true},
+      {where: {id: goalId, userId}}
+    )
+
+    return res.json(completedGoal)
+    
+  }));
+
 
 module.exports = router;
