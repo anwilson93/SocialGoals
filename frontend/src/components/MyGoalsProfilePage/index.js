@@ -42,7 +42,7 @@ function MyGoalsProfilePage () {
                     {goals && goals.map(goal => {
                         let goalId = goal.id
                         const completeGoal = () => {
-                            console.log('complete', goalId)
+                            console.log('complete ', goalId)
                         }
 
                         return (

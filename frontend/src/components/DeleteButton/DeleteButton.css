@@ -4,12 +4,12 @@
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 50px;
-  border: 2px solid #0099cc;
+  border: 2px solid rgb(81, 171, 250);
   border-radius: 6px;
   font-size: 10px;
 }
 
 .delete-button:hover {
-  background-color: #008cba;
+  background-color: rgb(81, 171, 250);
   color: white;
 }

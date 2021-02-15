@@ -38,14 +38,16 @@ function MyFollowersProfilePage () {
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>
-                    <Link to='/followers'><button className='goals-button'>Followers</button></Link>
-                    <Link to={`/following`}><button className='goals-button'>Following</button></Link>
+                    <div className='goals-buttons-container'>
+                        <Link to='/followers'><button className='goals-button'>Followers</button></Link>
+                        <Link to={`/following`}><button className='goals-button'>Following</button></Link>
+                    </div>
                     {followers && followers.map(follower => {
 
                         return (
                             <>
                                 <div key={follower} className='goals-individual-container'>
-                                    <label>{follower}</label> <CheckIfFollowing follower={follower} />
+                                    <label className='goal-name'>{follower}</label> <CheckIfFollowing follower={follower} />
                                 </div>
                             </>
                         )
