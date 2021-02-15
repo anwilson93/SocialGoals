@@ -41,6 +41,7 @@ export const createDiary = (obj) => async (dispatch) => {
             entry: entry
       })
   }); 
+    console.log('ressss', res.data.myDiaryEntries)
     dispatch(getAllDiaries(res.data.myDiaryEntries))
 };
 

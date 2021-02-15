@@ -61,7 +61,7 @@ router.post('/create',
     const newDiary = await DiaryEntry.create({goalId, entry})
     await newDiary.save();
     const myDiaryEntries = await Goal.findAll({
-      where: { userId},
+      where: { userId, completed:false},
       include: [
         {
           model: DiaryEntry,
