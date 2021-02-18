@@ -14,6 +14,7 @@ const app = express();
 
 app.use(morgan('dev'));
 
+app.use(csrf({ cookie: true }))
 app.use(cookieParser());
 app.use(express.json());
 

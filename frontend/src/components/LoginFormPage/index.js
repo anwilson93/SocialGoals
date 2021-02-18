@@ -24,7 +24,13 @@ function LoginFormPage() {
 
   const demoLogin = () => {
     setCredential('demo@user.io');
-    setPassword('password')
+    setPassword('password');
+
+    return dispatch(sessionActions.login({ credential, password }), <Redirect to='/feed' />)
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+
   }
 
   return (
