@@ -28,7 +28,7 @@ function HomePage () {
 
     useEffect (() => {
         dispatch(fetchAllDiariessForGoalsAUserFollows(userId))
-    }, [dispatch])
+    })
 
     useEffect (() => {
         dispatch(fetchLikes(userId))
@@ -57,6 +57,7 @@ function HomePage () {
                     let user = goal.User.username
                     let startDate = new Date(goal.startDate).toString().slice(0, 16);
                     let goalId = goal.id
+                    let comments = goal.Comments
 
 
                     return (
@@ -68,7 +69,7 @@ function HomePage () {
                                     <div className='space'></div>
                                     <div>Start date: {startDate}</div>
                                     {/* <LikeAndFollowFormModal goalId={goalId} userId={userId}/> */}
-                                    <CommentBox goalId={goalId} userId={userId}/>
+                                    <CommentBox goalId={goalId} userId={userId} comments={comments}/>
                                     {/* <CheckLikeOrUnlike goalId={goalId}/> */}
                                     <CheckIfFollowingGoal goalId={goalId} />
                                     <CheckIfLikeGoal goalId={goalId} /> 

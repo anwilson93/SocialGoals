@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
 import goals from './goals';
-import comments from './comments';
+// import comments from './comments';
 import likes from './likes';
 import follows from './follow';
 import diaries from './diaries';
@@ -13,7 +13,7 @@ import search from './search';
 const rootReducer = combineReducers({
   session,
   goals,
-  comments,
+  // comments,
   likes,
   follows,
   diaries,

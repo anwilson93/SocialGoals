@@ -1,29 +1,30 @@
 import { fetch } from './csrf.js';
+import {fetchAllGoalsForPeopleAUserFollows} from './goals';
 
-const SET_ALL_COMMENTS = 'comments/setAllComments';
-
-
-
-const initialState = {};
-
-const setAllComments = (comments) => ({
-  type: SET_ALL_COMMENTS,
-  payload: comments
-});
+// const SET_ALL_COMMENTS = 'comments/setAllComments';
 
 
-export const fetchAllComments = (goalId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/comments/${goalId}`)
-        dispatch(
-            setAllComments(res.data)
-        );
-    };
-};
+
+// const initialState = {};
+
+// const setAllComments = (comments) => ({
+//   type: SET_ALL_COMMENTS,
+//   payload: comments
+// });
+
+
+// export const fetchAllComments = (goalId) => {
+//     return async (dispatch) => {
+//         const res = await fetch(`/api/comments/${goalId}`)
+//         dispatch(
+//             setAllComments(res.data)
+//         );
+//     };
+// };
 
 
 export const createGoalComment = (obj) => async (dispatch) => {
-  const { userId, goalId, newComment } = obj;
+  const { userId, goalId, newComment, username } = obj;
 
   const res = await fetch(`/api/comments/goal`, {
     method: 'POST',
@@ -33,13 +34,13 @@ export const createGoalComment = (obj) => async (dispatch) => {
             comment: newComment
       })
   });
-    dispatch(fetchAllComments(goalId))
+    dispatch(fetchAllGoalsForPeopleAUserFollows(username))
     return res
 };
 
 
 export const deleteGoalComment = (obj) => async (dispatch) => {
-  const { userId, goalId, comment } = obj;
+  const { userId, goalId, comment, username } = obj;
   const res = await fetch(`/api/delete/goal/comment`, {
     method: 'POST',
      body: JSON.stringify({
@@ -48,21 +49,21 @@ export const deleteGoalComment = (obj) => async (dispatch) => {
             comment: comment
       })
   });
-    dispatch(fetchAllComments(goalId))
+    dispatch(fetchAllGoalsForPeopleAUserFollows(username))
     return res
 };
 
 
 
-function reducer(state = initialState, action) {
-  let newState;
-  switch (action.type) {
-    case SET_ALL_COMMENTS:
-      newState = Object.assign({}, state, { comments: action.payload });
-      return newState;
-    default:
-      return state;
-  }
-}
+// function reducer(state = initialState, action) {
+//   let newState;
+//   switch (action.type) {
+//     case SET_ALL_COMMENTS:
+//       newState = Object.assign({}, state, { comments: action.payload });
+//       return newState;
+//     default:
+//       return state;
+//   }
+// }
 
-export default reducer;
+// export default reducer;

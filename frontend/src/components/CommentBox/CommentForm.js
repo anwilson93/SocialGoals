@@ -11,13 +11,14 @@ function CommentForm({visible, goalId}) {
   const dispatch = useDispatch();
 
   const userId = useSelector(state => state.session.user.id);
+  const username = useSelector(state => state.session.user.username);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newComment) {
       setErrors([]);
     
-    return dispatch(createGoalComment({userId, goalId, newComment}),
+    return dispatch(createGoalComment({userId, goalId, newComment, username}),
       setNewComment(''),
       // setVisible(false),
     )

@@ -1,11 +1,8 @@
-import { useSelector} from 'react-redux';
 import "./CommentBox.css";
 import DeleteButton from '../DeleteButton';
 
-function CommentList({visible, userId, goalId}) {
-  const comments = useSelector(state => {
-      return state.comments.comments
-    });
+function CommentList({visible, userId, goalId, comments}) {
+  
  
   if (!visible) return null
   if (comments.length>0){
@@ -15,6 +12,7 @@ function CommentList({visible, userId, goalId}) {
         let username = comment.User.username
         let commentUserId = comment.userId
         let commentText = comment.comment
+        
         //if user made comment, allow the ability to delete it
         if (commentUserId === userId){
             return (

@@ -4,21 +4,21 @@ const asyncHandler = require('express-async-handler');
 const { Comment, User } = require('../../db/models');
 
 // GET ALL COMMENTS FOR A GOAL
-router.get('/:goalId',
-  asyncHandler(async (req, res) => {
-    const goalId = req.params.goalId;
-    const comments = await Comment.findAll({
-      where: { goalId},
-      include: [
-        {
-          model: User,
-        },
-      ],
-    });
+// router.get('/:goalId',
+//   asyncHandler(async (req, res) => {
+//     const goalId = req.params.goalId;
+//     const comments = await Comment.findAll({
+//       where: { goalId},
+//       include: [
+//         {
+//           model: User,
+//         },
+//       ],
+//     });
 
-    return res.json(comments)
-  })
-);
+//     return res.json(comments)
+//   })
+// );
 
 // CREATE A GOAL COMMENT
 router.post('/goal',
