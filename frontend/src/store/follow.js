@@ -1,13 +1,11 @@
 import { fetch } from './csrf.js';
 
-// const SET_FOLLOW_GOAL = 'follow/setFollowGoal';
 const SET_MY_FOLLOWERS = 'follow/setMyFollowers';
 const SET_WHO_I_FOLLOW = 'follow/setWhoIFollow';
 const SET_GOALS_I_FOLLOW = 'follow/setGoalsIFollow';
 
-
-
 const initialState = {};
+
 
 const setGoalsIFollow = (follows) => ({
   type: SET_GOALS_I_FOLLOW,
@@ -25,13 +23,22 @@ const setUsersIFollow = (following) => ({
   payload: following
 });
 
-// const setGoalsIFollow = (following) => ({
-//   type: SET_GOALS_I_FOLLOW,
-//   payload: following
-// });
+
+export const createGoalFollow = (obj) => async (dispatch) => {
+  const { userId, goalId } = obj;
+  const res = await fetch(`/api/follow/goal/create`, {
+    method: 'POST',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId
+      })
+  });
+    dispatch(fetchGoalsIFollow(userId))
+    return res.data
+};
 
 
-export const fetchGoalFollows = (userId) => {
+export const fetchGoalsIFollow = (userId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/follow/goal/${userId}`)
         dispatch(
@@ -39,6 +46,38 @@ export const fetchGoalFollows = (userId) => {
             setGoalsIFollow(res.data)
         );
     };
+};
+
+
+export const deleteGoalFollow = (obj) => async (dispatch) => {
+  const { userId, goalId } = obj;
+  const res = await fetch(`/api/follow/goal/delete`, {
+    method: 'DELETE',
+     body: JSON.stringify({
+            userId: userId,
+            goalId: goalId
+      })
+  });
+    dispatch(fetchGoalsIFollow(userId))
+    return res.data
+};
+
+
+
+
+
+export const createUserFollow = (obj) => async (dispatch) => {
+  const { userId, usernameToFollow, username } = obj;
+
+  const res = await fetch(`/api/follow/user/create`, {
+    method: 'POST',
+     body: JSON.stringify({
+            followerId: userId,
+            usernameToFollow: usernameToFollow
+      })
+  });
+    dispatch(fetchUsersIFollow(username))
+    return res.data
 };
 
 
@@ -62,41 +101,11 @@ export const fetchUsersIFollow = (username) => {
 };
 
 
-
-
-export const createGoalFollow = (obj) => async (dispatch) => {
-  const { userId, goalId } = obj;
-  const res = await fetch(`/api/follow/${goalId}`, {
-    method: 'POST',
-     body: JSON.stringify({
-            userId: userId,
-            goalId: goalId
-      })
-  });
-    dispatch(fetchGoalFollows(userId))
-    return res.data
-};
-
-
-export const createUserFollow = (obj) => async (dispatch) => {
-  const { userId, usernameToFollow, username } = obj;
-
-  const res = await fetch(`/api/follow/user`, {
-    method: 'POST',
-     body: JSON.stringify({
-            followerId: userId,
-            usernameToFollow: usernameToFollow
-      })
-  });
-    dispatch(fetchUsersIFollow(username))
-    return res.data
-};
-
 export const deleteUserFollow = (obj) => async (dispatch) => {
   const { userId, usernameToUnfollow, username } = obj;
   
-  const res = await fetch(`/api/follow/unfollow/user`, {
-    method: 'POST',
+  const res = await fetch(`/api/follow/user/delete`, {
+    method: 'DELETE',
      body: JSON.stringify({
             followerId: userId,
             usernameToUnfollow: usernameToUnfollow
@@ -105,20 +114,6 @@ export const deleteUserFollow = (obj) => async (dispatch) => {
     dispatch(fetchUsersIFollow(username))
     return res.data
 };
-
-export const deleteGoalFollow = (obj) => async (dispatch) => {
-  const { userId, goalId } = obj;
-  const res = await fetch(`/api/follow/unfollow/goal`, {
-    method: 'POST',
-     body: JSON.stringify({
-            userId: userId,
-            goalId: goalId
-      })
-  });
-    dispatch(fetchGoalFollows(userId))
-    return res.data
-};
-
 
 
 function reducer(state = initialState, action) {

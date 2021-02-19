@@ -6,7 +6,7 @@ import {fetchLikes} from '../../store/likes';
 import {useDispatch, useSelector} from 'react-redux';
 import SidePanel from '../SidePanel';
 import CommentBox from '../CommentBox';
-import { fetchGoalFollows } from '../../store/follow';
+import { fetchGoalsIFollow } from '../../store/follow';
 import DiaryEntriesCard from '../DiaryEntriesCard';
 import CheckIfFollowingGoal from '../CheckIfFollowing/CheckIfFollowingGoal';
 import CheckIfLikeGoal from '../CheckIfLike/CheckIfLikeGoal';
@@ -35,7 +35,7 @@ function HomePage () {
     }, [dispatch])
 
     useEffect (() => {
-        dispatch(fetchGoalFollows(userId))
+        dispatch(fetchGoalsIFollow(userId))
     }, [dispatch])
 
 

@@ -1,4 +1,4 @@
-import {createGoalFollow, createUserFollow, fetchGoalFollows} from '../../store/follow';
+import {createGoalFollow, createUserFollow, fetchGoalsIFollow} from '../../store/follow';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import CheckIfFollowingGoal from '../CheckIfFollowing/CheckIfFollowingGoal';
@@ -13,7 +13,7 @@ function FollowButton ({goalId, userId, usernameToFollow, username}) {
     const followSomething = () => {
         if (goalId){
             setFollowingGoal(true)
-            return(dispatch(createGoalFollow({goalId, userId}), dispatch(fetchGoalFollows(userId)), dispatch(fetchAllDiariessForGoalsAUserFollows(userId)) ))
+            return(dispatch(createGoalFollow({goalId, userId}), dispatch(fetchGoalsIFollow(userId)), dispatch(fetchAllDiariessForGoalsAUserFollows(userId)) ))
         } else {
             return(dispatch(createUserFollow({usernameToFollow, userId, username})))
         }

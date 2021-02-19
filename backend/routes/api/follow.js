@@ -4,48 +4,8 @@ const asyncHandler = require('express-async-handler');
 const { User, FollowGoal, Follower, Goal } = require('../../db/models');
 
 
-// GET ALL FOLLOWERS FOR A USER AND RETURNS THE FOLLOWERS' USERNAMES
-router.get('/followers/:username',
-  asyncHandler(async (req, res) => {
-    const username = req.params.username;
-    const user = await User.findOne({
-      where: { username },
-      include: [
-        {
-          model: User,
-          as: "Followers",
-        },
-      ],
-    });
-    const followers = user.Followers.map(eachFollower => {
-        return eachFollower.username
-    });
-    res.json({ followers });
-  })
-);
-
-// GET ALL THE USERNAMES OF PEOPLE THAT A USER FOLLOWS
-router.get('/following/:username',
-  asyncHandler(async (req, res) => {
-    const username = req.params.username;
-    const user = await User.findOne({
-      where: { username },
-      include: [
-        {
-          model: User,
-          as: "Following",
-        },
-      ],
-    });
-    const following = user.Following.map(eachFollowedPerson => {
-        return eachFollowedPerson.username
-    });
-    res.json({ following });
-  })
-);
-
-// CREATE FOLLOW FOR A GOAL
-router.post('/:goalId(\\d+)',
+// CREATE A FOLLOW FOR A GOAL
+router.post('/goal/create',
   asyncHandler(async (req, res) => {
     const {userId, goalId} = req.body
     //CHECK IF GOAL EXISTS
@@ -61,8 +21,22 @@ router.post('/:goalId(\\d+)',
   })
 );
 
-// DELETE FOLLOW FOR A USER
-router.post('/unfollow/goal',
+
+// GET ALL GOALS THAT A USER IS FOLLOWING
+router.get('/goal/:userId(\\d+)',
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId;
+    const follows = await FollowGoal.findAll({
+      where: { userId},
+    });
+
+    return res.json(follows)
+  })
+);
+
+
+// DELETE A FOLLOW FOR A GOAL
+router.delete('/goal/delete',
   asyncHandler(async (req, res) => {
     const {userId, goalId} = req.body
 
@@ -81,8 +55,11 @@ router.post('/unfollow/goal',
   })
 );
 
+
+
+
 // CREATE USER FOLLOW ANOTHER USER
-router.post('/user',
+router.post('/user/create',
   asyncHandler(async (req, res) => {
     const {followerId, usernameToFollow} = req.body
 
@@ -106,8 +83,50 @@ router.post('/user',
 );
 
 
-// DELETE FOLLOW FOR A USER
-router.post('/unfollow/user',
+// GET ALL FOLLOWERS FOR A USER AND RETURNS THE FOLLOWERS' USERNAMES
+router.get('/followers/:username',
+  asyncHandler(async (req, res) => {
+    const username = req.params.username;
+    const user = await User.findOne({
+      where: { username },
+      include: [
+        {
+          model: User,
+          as: "Followers",
+        },
+      ],
+    });
+    const followers = user.Followers.map(eachFollower => {
+        return eachFollower.username
+    });
+    res.json({ followers });
+  })
+);
+
+
+// GET ALL THE USERNAMES OF PEOPLE THAT A USER FOLLOWS
+router.get('/following/:username',
+  asyncHandler(async (req, res) => {
+    const username = req.params.username;
+    const user = await User.findOne({
+      where: { username },
+      include: [
+        {
+          model: User,
+          as: "Following",
+        },
+      ],
+    });
+    const following = user.Following.map(eachFollowedPerson => {
+        return eachFollowedPerson.username
+    });
+    res.json({ following });
+  })
+);
+
+
+// DELETE A FOLLOW FOR A USER
+router.delete('/user/delete',
   asyncHandler(async (req, res) => {
     const {followerId, usernameToUnfollow} = req.body
 
@@ -128,17 +147,5 @@ router.post('/unfollow/user',
   })
 );
 
-
-// GET ALL GOALS THAT A USER IS FOLLOWING
-router.get('/goal/:userId(\\d+)',
-  asyncHandler(async (req, res) => {
-    const userId = req.params.userId;
-    const follows = await FollowGoal.findAll({
-      where: { userId},
-    });
-
-    return res.json(follows)
-  })
-);
 
 module.exports = router;

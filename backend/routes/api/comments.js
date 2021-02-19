@@ -14,7 +14,7 @@ router.post('/goal/create',
 );
 
 // DELETE A COMMENT FOR A GOAL
-router.post('/goal/delete',
+router.delete('/goal/delete',
   asyncHandler(async (req, res) => {
     const {userId, goalId, comment} = req.body
     const deleteGoalComment = await Comment.findOne({

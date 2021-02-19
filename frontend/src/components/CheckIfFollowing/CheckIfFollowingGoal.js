@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
-import {fetchGoalFollows} from '../../store/follow';
+import {fetchGoalsIFollow} from '../../store/follow';
 import FollowButton from '../FollowButton';
 import UnfollowButton from '../UnfollowButton'
 import { fetchAllDiariessForGoalsAUserFollows } from '../../store/diaries';
@@ -18,7 +18,7 @@ function CheckIfFollowingGoal ({goalId}) {
     let [followingGoal, setFollowingGoal] = useState(false);
     
     useEffect (() => {
-        return (dispatch(fetchGoalFollows(userId)), dispatch(fetchAllDiariessForGoalsAUserFollows(userId)))
+        return (dispatch(fetchGoalsIFollow(userId)), dispatch(fetchAllDiariessForGoalsAUserFollows(userId)))
     }, [dispatch, followingGoal, setFollowingGoal, following])
 
     const goalsIFollow = useSelector(state => {

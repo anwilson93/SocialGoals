@@ -1,50 +1,21 @@
 import { fetch } from './csrf.js';
 
-const GET_ALL_GOALS = 'goals/getAllGoals';
-const GET_COMPLETED_GOALS = 'goals/getCompletedGoals';
-
+const SET_ALL_GOALS = 'goals/setAllGoals';
+const SET_COMPLETED_GOALS = 'goals/setCompletedGoals';
 
 const initialState = {};
 
-const getAllGoals = (goals) => ({
-  type: GET_ALL_GOALS,
+const setAllGoals = (goals) => ({
+  type: SET_ALL_GOALS,
   payload: goals
 });
 
-const getCompletedGoals = (completed) => ({
-  type: GET_COMPLETED_GOALS,
+const setCompletedGoals = (completed) => ({
+  type: SET_COMPLETED_GOALS,
   payload: completed
 });
 
 
-
-
-export const fetchAllGoalsForPeopleAUserFollows = (username) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/goals/following/${username}`)
-        dispatch(
-            getAllGoals(res.data.goals)
-        );
-    };
-};
-
-export const fetchAllMyGoals = (userId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/goals/${userId}`)
-        dispatch(
-            getAllGoals(res.data)
-        );
-    };
-};
-
-export const fetchAllMyCompletedGoals = (userId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/goals/completed/${userId}`)
-        dispatch(
-            getCompletedGoals(res.data)
-        );
-    };
-};
 
 export const createGoal = (obj) => async (dispatch) => {
   const { userId, name, goalType, startDate } = obj;
@@ -57,8 +28,38 @@ export const createGoal = (obj) => async (dispatch) => {
             startDate: startDate
       })
   }); 
-    dispatch(fetchAllMyGoals(userId))
+    dispatch(fetchAllMyUncompletedGoals(userId))
     return res
+};
+
+
+export const fetchAllMyUncompletedGoals = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/goals/uncompleted/${userId}`)
+        dispatch(
+            setAllGoals(res.data)
+        );
+    };
+};
+
+
+export const fetchAllMyCompletedGoals = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/goals/completed/${userId}`)
+        dispatch(
+            setCompletedGoals(res.data)
+        );
+    };
+};
+
+
+export const fetchAllGoalsForPeopleAUserFollows = (username) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/goals/following/${username}`)
+        dispatch(
+            setAllGoals(res.data.goals)
+        );
+    };
 };
 
 
@@ -72,35 +73,32 @@ export const completeGoal = (obj) => async (dispatch) => {
             goalId: goalId,
       })
   }); 
-    dispatch(fetchAllMyGoals(userId))
+    dispatch(fetchAllMyUncompletedGoals(userId))
     return res
 };
 
 
-
 export const deleteGoal = (goalId, userId) => async (dispatch) => {
 
-    const res = await fetch(`/api/delete/goal/${goalId}`, {
+    const res = await fetch(`/api/goals/delete`, {
         method: 'DELETE',
         body: JSON.stringify({
             goalId
         })
     });
-    dispatch(fetchAllMyGoals(userId))
+    dispatch(fetchAllMyUncompletedGoals(userId))
     return res
 };
-
-
 
 
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case GET_ALL_GOALS:
+    case SET_ALL_GOALS:
       newState = Object.assign({}, state, { goals: action.payload });
       return newState;
-    case GET_COMPLETED_GOALS:
+    case SET_COMPLETED_GOALS:
       newState = Object.assign({}, state, { completed: action.payload });
       return newState;
     default:

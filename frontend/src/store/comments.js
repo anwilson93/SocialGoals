@@ -21,7 +21,7 @@ export const createGoalComment = (obj) => async (dispatch) => {
 export const deleteGoalComment = (obj) => async (dispatch) => {
   const { userId, goalId, comment, username } = obj;
   const res = await fetch(`/api/comments/goal/delete`, {
-    method: 'POST',
+    method: 'DELETE',
      body: JSON.stringify({
             userId: userId,
             goalId: goalId,

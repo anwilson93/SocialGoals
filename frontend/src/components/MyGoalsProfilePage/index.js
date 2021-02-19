@@ -1,7 +1,7 @@
 import SidePanel from '../SidePanel';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {fetchAllMyGoals} from '../../store/goals';
+import {fetchAllMyUncompletedGoals} from '../../store/goals';
 import {Link} from 'react-router-dom';
 import './MyGoalsProfilePage.css';
 import CreateGoalFormModal from '../CreateGoalFormModal';
@@ -18,7 +18,7 @@ function MyGoalsProfilePage () {
 
     
     useEffect (() => {
-        dispatch(fetchAllMyGoals(userId))
+        dispatch(fetchAllMyUncompletedGoals(userId))
     }, [dispatch])
 
     const goals = useSelector(state => {
