@@ -6,7 +6,6 @@ const goalsRouter = require('./goals.js');
 const commentsRouter = require('./comments.js');
 const likesRouter = require('./likes.js');
 const diaryRouter = require('./diary.js');
-const deleteRouter = require('./delete.js');
 const searchRouter = require('./search.js');
 
 
@@ -60,8 +59,6 @@ router.use('/comments', commentsRouter);
 router.use('/likes', likesRouter);
 
 router.use('/diary', diaryRouter);
-
-router.use('/delete', deleteRouter);
 
 router.use('/search', searchRouter);
 

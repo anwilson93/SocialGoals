@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { User, Goal, Like, FollowGoal, DiaryEntry } = require('../../db/models');
+const { User, Goal, FollowGoal, DiaryEntry } = require('../../db/models');
 
 // CREATE A DIARY ENTRY FOR AN UNCOMPLETED GOAL
 router.post('/create',
