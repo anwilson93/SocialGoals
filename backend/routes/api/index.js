@@ -9,6 +9,7 @@ const diaryRouter = require('./diary.js');
 const deleteRouter = require('./delete.js');
 const searchRouter = require('./search.js');
 
+
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
@@ -63,5 +64,6 @@ router.use('/diary', diaryRouter);
 router.use('/delete', deleteRouter);
 
 router.use('/search', searchRouter);
+
 
 module.exports = router;

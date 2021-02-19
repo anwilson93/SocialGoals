@@ -1,34 +1,15 @@
 import { fetch } from './csrf.js';
 
-const GET_ALL_DIARIES = 'diaries/getAllDiaries';
-
-
+const SET_ALL_DIARIES = 'diaries/SetAllDiaries';
 
 const initialState = {};
 
-const getAllDiaries = (diaries) => ({
-  type: GET_ALL_DIARIES,
+
+const setAllDiaries = (diaries) => ({
+  type: SET_ALL_DIARIES,
   payload: diaries
 });
 
-
-export const fetchAllDiariessForGoalsAUserFollows = (userId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/diary/following/${userId}`)
-        dispatch(
-            getAllDiaries(res.data.diaries)
-        );
-    };
-};
-
-export const fetchAllMyDiaryEntries = (userId) => {
-    return async (dispatch) => {
-        const res = await fetch(`/api/diary/${userId}`)
-        dispatch(
-            getAllDiaries(res.data)
-        );
-    };
-};
 
 export const createDiary = (obj) => async (dispatch) => {
   const { userId, goalId, entry} = obj;
@@ -41,13 +22,28 @@ export const createDiary = (obj) => async (dispatch) => {
             entry: entry
       })
   }); 
-    dispatch(getAllDiaries(res.data.myDiaryEntries))
+    dispatch(setAllDiaries(res.data.myDiaryEntries))
+};
+
+
+export const fetchAllMyDiaryEntries = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/diary/${userId}`)
+        dispatch(setAllDiaries(res.data));
+    };
+};
+
+
+export const fetchAllDiariessForGoalsAUserFollows = (userId) => {
+    return async (dispatch) => {
+        const res = await fetch(`/api/diary/following/${userId}`)
+        dispatch(setAllDiaries(res.data.diaries));
+    };
 };
 
 
 export const deleteDiaryEntry = (diaryEntryId, userId) => async (dispatch) => {
-
-    const res = await fetch(`/api/delete/diary/${diaryEntryId}`, {
+    const res = await fetch(`/api/diary/delete/${diaryEntryId}`, {
         method: 'DELETE',
         body: JSON.stringify({
             diaryEntryId
@@ -62,7 +58,7 @@ export const deleteDiaryEntry = (diaryEntryId, userId) => async (dispatch) => {
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case GET_ALL_DIARIES:
+    case SET_ALL_DIARIES:
       newState = Object.assign({}, state, { diaries: action.payload });
       return newState;
     default:

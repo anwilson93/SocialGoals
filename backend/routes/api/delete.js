@@ -21,13 +21,13 @@ router.delete('/goal/:goalId', asyncHandler(async (req, res) => {
     return res.json({ deleteGoal });
 }));
 
-// DELETE A DIARY ENTRY
-router.delete('/diary/:diaryEntryId', asyncHandler(async (req, res) => {
-    const { diaryEntryId } = req.body;
-    const deleteEntry = await DiaryEntry.findByPk(diaryEntryId);
-    await deleteEntry.destroy();
-    return res.json({ deleteEntry });
-}));
+// // DELETE A DIARY ENTRY
+// router.delete('/diary/:diaryEntryId', asyncHandler(async (req, res) => {
+//     const { diaryEntryId } = req.body;
+//     const deleteEntry = await DiaryEntry.findByPk(diaryEntryId);
+//     await deleteEntry.destroy();
+//     return res.json({ deleteEntry });
+// }));
 
 // DELETE A DIARY LIKE
 router.post('/diary/like',
@@ -61,20 +61,6 @@ router.post('/goal/like',
     });
 
     return res.json(likes)
-  })
-);
-
-
-// DELETE A GOAL COMMENT
-router.post('/goal/comment',
-  asyncHandler(async (req, res) => {
-    const {userId, goalId, comment} = req.body
-    const deleteGoalComment = await Comment.findOne({
-        where: {userId, goalId, comment}
-    });
-    await deleteGoalComment.destroy();
-
-    return res.json(deleteGoalComment)
   })
 );
 
