@@ -1,0 +1,18 @@
+.jumbotron {
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* background: url("./s-o-c-i-a-l-c-u-t-6iYb1BWWbV0-unsplash.jpg") no-repeat; */
+  /* background: url("./kelly-sikkema-sDqT3iD6vSc-unsplash.jpg") no-repeat; */
+  /* background-size: cover; */
+}
+
+.landing-div {
+  height: 100px;
+  background-color: rgb(243, 230, 172);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

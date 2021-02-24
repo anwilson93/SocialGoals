@@ -14,6 +14,7 @@ import MyFollowersProfilePage from "./components/MyFollowersProfilePage";
 import Following from "./components/MyFollowersProfilePage/Following";
 import SearchPage from "./components/SearchPage";
 import MyDiaryEntriesProfilePage from "./components/MyDiaryEntriesProfilePage";
+import LandingPageJumbotron from "./components/LandingPageJumbotron";
 // import LoginForm from "./components/LoginFormModal/LoginForm";
 
 
@@ -40,7 +41,7 @@ function App() {
             <CommentList />
           </Route> */}
           <Route exact path='/'>
-            <LoginFormPage />
+            <LandingPageJumbotron />
           </Route>
           <Route exact path="/goals">
             <MyGoalsProfilePage />
