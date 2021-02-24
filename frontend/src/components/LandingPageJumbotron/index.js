@@ -2,6 +2,7 @@ import LoginFormPage from '../LoginFormPage';
 import './LandingPageJumbotron.css';
 import social from './s-o-c-i-a-l-c-u-t-6iYb1BWWbV0-unsplash.jpg'
 import notebook from './carolyn-christine-D7bmnvGJA2Q-unsplash.jpg'
+import friends from './hudson-hintze-vpxeE7s-my4-unsplash.jpg'
 function LandingPageJumbotron  () {
 
     return (
@@ -13,12 +14,13 @@ function LandingPageJumbotron  () {
                     <div>Document Your Progress</div>
                     <div>Be Encouraged</div>
                     <div>Reach Your Goals</div>
+                    <div>Achieve More Together</div>
                 </div>
             </div>
             <div className='jumbotron'>
                 <img style={{height: 550}}
                 key='social'
-                src={notebook} alt='' /> 
+                src={friends} alt='' /> 
                 <LoginFormPage />
             </div>
         </>
