@@ -18,9 +18,9 @@ function LandingPageJumbotron  () {
                 </div>
             </div>
             <div className='jumbotron'>
-                <img style={{height: 550}}
+                <img style={{height: 500}}
                 key='social'
-                src={friends} alt='' /> 
+                src={notebook} alt='' /> 
                 <LoginFormPage />
             </div>
         </>
