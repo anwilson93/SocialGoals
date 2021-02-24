@@ -6,7 +6,13 @@ function LandingPageJumbotron  () {
 
     return (
         <>
-            <div></div>
+            <h2 className='h1'>Social Media for Goal-Setters and Encouragers</h2>
+            <div className='landing-div'>
+                <div>Set Goals</div>
+                <div>Document Your Progress</div>
+                <div>Be Encouraged</div>
+                <div>Reach Your Goals</div>
+            </div>
             <div className='jumbotron'>
                 <img style={{height: 550}}
                 key='social'
