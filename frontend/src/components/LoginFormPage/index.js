@@ -29,7 +29,7 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1 className='h1'>Log In</h1>
+      {/* <h1 className='h1'>Log In</h1> */}
       <div className='form-container'>
         <form id='login-form' onSubmit={handleSubmit}>
           <ul className='login-inputs'>
