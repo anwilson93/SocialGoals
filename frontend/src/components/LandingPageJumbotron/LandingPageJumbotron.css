@@ -10,8 +10,11 @@
 
 .landing-div {
   height: 100px;
-  background-color: rgb(243, 230, 172);
+  /* background-color: rgb(253, 234, 174); */
   margin-bottom: 10px;
+}
+
+.steps {
   display: flex;
   align-items: center;
   justify-content: space-around;

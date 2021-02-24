@@ -34,12 +34,14 @@
   width: 100%;
   display: block;
   background: radial-gradient(rgb(141, 202, 255), rgb(227, 107, 177));
+  /* background: radial-gradient(rgb(254, 199, 200), rgb(165, 66, 99)); */
 }
 
 #top-nav-bar {
   background-color: rgb(221, 232, 241);
-  margin-top: 0;
-  margin-bottom: 0;
+  /* background-color: rgb(235, 247, 247); */
+  margin: 0;
+  /* margin-bottom: 0; */
   height: 100px;
   display: flex;
   align-items: center;

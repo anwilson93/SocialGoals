@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   padding-top: 5px;
+  margin-top: 0;
 }
 .form-container {
   display: flex;
@@ -48,6 +49,7 @@
     rgb(141, 202, 255),
     rgb(227, 107, 177)
   );
+  /* border-image: linear-gradient(to right, rgb(254, 199, 200), rgb(165, 66, 99)); */
   border-image-slice: 2;
 }
 
