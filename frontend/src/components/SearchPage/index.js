@@ -23,16 +23,20 @@ function SearchPage () {
         if (searchedUsers.length ===0){
             return (
                 <>
+                    <h2>Search</h2>
                     <div className='main-container'>
                         <SidePanel />
                         <div className='results-container'>
-                            <h1>No matching results</h1>
+                            <h3>No matching results</h3>
                         </div>
+                        
                     </div>
                 </>
             )
         } else {
             return (
+                <>
+                <h2>Search</h2>
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>
@@ -58,15 +62,17 @@ function SearchPage () {
                     })}
                 </div> 
                 </div>
+                </>
             )
         }
     } else if (!sessionUser && search) {
         return (
             <>
+                <h2>Search</h2>
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>
-                        <h1>Please log in or sign up to search</h1>
+                        <h3>Please log in or sign up to search</h3>
                     </div>
                 </div>
             </>
@@ -75,10 +81,11 @@ function SearchPage () {
     } else {
         return (
             <>
+                <h2>Search</h2>
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>
-                        <h1>Please search for a user</h1>
+                        <h3>Please search for a user</h3>
                     </div>
                 </div>
             </>
