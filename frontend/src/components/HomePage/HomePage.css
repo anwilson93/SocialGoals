@@ -29,8 +29,8 @@
   height: auto;
   border-left: 3px solid rgb(227, 107, 177);
   border-bottom: 3px solid rgb(141, 202, 255);
-  border-top: 3px solid rgb(252, 196, 3);
-  border-right: 3px solid rgb(231, 72, 35);
+  border-right: 3px solid rgb(252, 196, 3);
+  border-top: 3px solid rgb(180, 175, 247);
   padding: 2rem;
   box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
   border-radius: 6px;
@@ -55,5 +55,5 @@
 .username {
   font-size: 18px;
   display: inline;
-  color: rgb(231, 72, 35);
+  color: rgb(252, 196, 3);
 }

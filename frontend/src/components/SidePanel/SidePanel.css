@@ -6,15 +6,18 @@
 }
 
 .side-panel {
-  border-right: 3px solid rgb(252, 196, 3);
-  border-left: 3px solid rgb(252, 196, 3);
-  background-color: rgb(221, 232, 241);
+  border-right: 3px solid rgb(247, 206, 72);
+  border-left: 3px solid rgb(247, 206, 72);
+  /* background-color: rgb(221, 232, 241); */
+  background-color: rgb(243, 242, 248);
   flex: 0 0 fit-content;
-  box-shadow: 2px -3px 5px rgb(141, 202, 255);
+  /* box-shadow: 2px -3px 5px rgb(141, 202, 255); */
+  box-shadow: 2px -3px 11px rgba(0, 0, 0, 0.3);
 }
 
 .side-panel-button {
-  background-color: rgb(221, 232, 241);
+  /* background-color: rgb(221, 232, 241); */
+  background-color: rgb(243, 242, 248);
   display: flex;
   align-items: center;
   justify-content: center;

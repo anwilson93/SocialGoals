@@ -21,10 +21,10 @@ function DiaryEntriesCard ({userId}) {
                     <>  
                         <div className='feed-container'>
                             <div className='individual-container' id='individual-diaries-container'>
-                                <div> New diary entry for goal: {goalName} <p className='diary-username'>({diaryAuthor})</p></div>
-                                <div className='space'></div>
+                                <div> New diary entry for goal: {goalName}</div>
+                                <div className='space' id='space-diary'></div>
                                 {date}
-                                <div className='diary-entry-container'> Entry: <p className='diary-entry'>{entry}</p> </div>
+                                <div className='diary-entry-container'> <p className='diary-username'>{diaryAuthor}</p>: <p className='diary-entry'>{entry}</p> </div>
                                 {/* <LikeAndFollowFormModal diaryEntryId={diaryEntryId} userId={userId}/>  */}
                                 {/* <CheckLikeOrUnlike diaryEntryId={diaryEntryId}/> */}
                                 {/* <CommentBox goalId={goalId}/> */}

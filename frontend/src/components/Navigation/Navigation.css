@@ -1,6 +1,7 @@
 .profile-dropdown {
   position: absolute;
-  padding-right: 20px;
+  padding: 0;
+  list-style-type: none;
 }
 
 .profile-button,
@@ -38,8 +39,9 @@
 }
 
 #top-nav-bar {
-  background-color: rgb(221, 232, 241);
-  /* background-color: rgb(235, 247, 247); */
+  /* background-color: rgb(221, 232, 241); */
+  /* background-color: rgb(235, 234, 250); */
+  background-color: rgb(243, 242, 248);
   margin: 0;
   /* margin-bottom: 0; */
   height: 100px;
