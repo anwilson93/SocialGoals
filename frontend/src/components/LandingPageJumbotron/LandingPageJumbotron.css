@@ -19,3 +19,21 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.goal-bubbles {
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.goal-bubbles:hover {
+  border: 1px solid rgb(186, 181, 255);
+}
+
+.h2-landing {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  margin-top: 20px;
+}
