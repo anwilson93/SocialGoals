@@ -24,7 +24,7 @@ router.get('/:searchTerm', asyncHandler(async(req, res) => {
 
     const goals = await Goal.findAll({
     where: {
-      userId
+      userId, completed:false
     },
     });
 
