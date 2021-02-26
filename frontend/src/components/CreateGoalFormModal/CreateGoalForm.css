@@ -38,6 +38,7 @@
   font-size: 15px;
   width: 90%;
   margin-left: 15px;
+  cursor: pointer;
 }
 
 .create-goal-button:hover {

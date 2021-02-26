@@ -12,6 +12,7 @@
   font-size: 20px;
   border-radius: 5px;
   box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .nav-buttons {
@@ -20,6 +21,7 @@
   font-size: 20px;
   border-radius: 5px;
   box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .nav-buttons:hover {

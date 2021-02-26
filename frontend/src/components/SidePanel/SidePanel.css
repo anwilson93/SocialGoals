@@ -6,11 +6,11 @@
 }
 
 .side-panel {
-  border-right: 3px solid rgb(247, 206, 72);
-  border-left: 3px solid rgb(247, 206, 72);
+  border-right: 1px solid rgb(247, 206, 72);
+  border-left: 1px solid rgb(247, 206, 72);
   /* background-color: rgb(221, 232, 241); */
   background-color: rgb(243, 242, 248);
-  flex: 0 0 fit-content;
+  /* flex: 0 0 fit-content; */
   /* box-shadow: 2px -3px 5px rgb(141, 202, 255); */
   box-shadow: 2px -3px 11px rgba(0, 0, 0, 0.3);
 }
@@ -23,6 +23,7 @@
   justify-content: center;
   width: 18px;
   height: 500px;
+  cursor: pointer;
 }
 
 .side-panel-wrapper {

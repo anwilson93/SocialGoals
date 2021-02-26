@@ -5,6 +5,7 @@
 #add-diary-button {
   display: inline;
   margin-left: -70px;
+  cursor: pointer;
 }
 
 .space-diary {

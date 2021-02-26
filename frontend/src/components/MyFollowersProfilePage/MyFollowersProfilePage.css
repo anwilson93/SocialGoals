@@ -6,6 +6,7 @@
 
 .unfollow-button-following-page {
   display: inline;
+  cursor: pointer;
 }
 
 #following {
