@@ -27,6 +27,7 @@
   -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   font-size: 16px;
+  cursor: pointer;
 }
 
 .goals-button:hover {

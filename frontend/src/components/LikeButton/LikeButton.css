@@ -11,6 +11,7 @@
   background-color: transparent;
   font-size: 25px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .like-button:hover {

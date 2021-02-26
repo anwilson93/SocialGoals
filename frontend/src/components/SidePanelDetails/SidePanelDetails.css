@@ -27,11 +27,12 @@
   display: flex;
   flex-direction: column;
   padding: 70px;
-  justify-content: center;
+  height: 320px;
+  justify-content: space-around;
 }
 
 .sidepanel-button {
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   width: 100%;
   border: 0;
   border-image: linear-gradient(
@@ -47,6 +48,7 @@
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .sidepanel-button:hover {
