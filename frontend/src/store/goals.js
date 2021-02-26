@@ -2,11 +2,17 @@ import { fetch } from './csrf.js';
 
 const SET_ALL_GOALS = 'goals/setAllGoals';
 const SET_COMPLETED_GOALS = 'goals/setCompletedGoals';
+const SET_UNCOMPLETED_GOALS = 'goals/setUncompletedGoals';
 
 const initialState = {};
 
 const setAllGoals = (goals) => ({
   type: SET_ALL_GOALS,
+  payload: goals
+});
+
+const setUncompletedGoals = (goals) => ({
+  type: SET_UNCOMPLETED_GOALS,
   payload: goals
 });
 
@@ -37,7 +43,7 @@ export const fetchAllMyUncompletedGoals = (userId) => {
     return async (dispatch) => {
         const res = await fetch(`/api/goals/uncompleted/${userId}`)
         dispatch(
-            setAllGoals(res.data)
+            setUncompletedGoals(res.data)
         );
     };
 };
@@ -100,6 +106,9 @@ function reducer(state = initialState, action) {
       return newState;
     case SET_COMPLETED_GOALS:
       newState = Object.assign({}, state, { completed: action.payload });
+      return newState;
+    case SET_UNCOMPLETED_GOALS:
+      newState = Object.assign({}, state, { uncompleted: action.payload });
       return newState;
     default:
       return state;

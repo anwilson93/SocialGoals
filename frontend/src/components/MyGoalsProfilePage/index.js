@@ -22,7 +22,7 @@ function MyGoalsProfilePage () {
     }, [dispatch])
 
     const goals = useSelector(state => {
-        return state.goals.goals
+        return state.goals.uncompleted
     });
 
 
