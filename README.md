@@ -3,7 +3,7 @@
 <br />
 <p align="center"  style='margin-top: -40px; margin-bottom: -10px;'>
   <a href="https://github.com/anwilson93/SocialGoals">
-    <img src="frontend/src/components/Navigation/7cb4e30c-5529-4b3b-82bb-aab4818e5692_200x200.png" alt="logo" width="200" height="100" style="object-fit: contain">
+    <img src="frontend/src/components/Navigation/7cb4e30c-5529-4b3b-82bb-aab4818e5692_200x200.png" alt="logo" width="150" height="100" style="object-fit: contain">
   </a>
 
   <p align="center">
