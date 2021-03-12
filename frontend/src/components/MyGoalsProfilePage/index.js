@@ -28,7 +28,7 @@ function MyGoalsProfilePage () {
 
     return (
         <>
-            {username && <h2>Welcome to your profile page, {username}!</h2>}
+            {username && <h2 className='add-margin'>Welcome to your profile page, {username}!</h2>}
             <div className='main-top'>
                 <SidePanel />
                 <div className='my-goals-container'>

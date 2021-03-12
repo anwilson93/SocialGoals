@@ -23,7 +23,7 @@ function SearchPage () {
         if (searchedUsers.length ===0){
             return (
                 <>
-                    <h2>Search</h2>
+                    <h2 className='add-margin'>Search</h2>
                     <div className='main-container'>
                         <SidePanel />
                         <div className='results-container'>
@@ -36,7 +36,7 @@ function SearchPage () {
         } else {
             return (
                 <>
-                <h2>Search</h2>
+                <h2 className='add-margin'>Search</h2>
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>
@@ -68,7 +68,7 @@ function SearchPage () {
     } else if (!sessionUser && search) {
         return (
             <>
-                <h2>Search</h2>
+                <h2 className='add-margin'>Search</h2>
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>
@@ -81,7 +81,7 @@ function SearchPage () {
     } else {
         return (
             <>
-                <h2>Search</h2>
+                <h2 className='add-margin'>Search</h2>
                 <div className='main-container'>
                     <SidePanel />
                     <div className='results-container'>

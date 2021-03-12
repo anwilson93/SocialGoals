@@ -6,6 +6,7 @@
 .my-goals-container {
   width: 900px;
   height: auto;
+  margin-left: 3rem;
 }
 .create-goal-button-container {
   display: inline;

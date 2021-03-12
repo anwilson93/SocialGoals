@@ -71,3 +71,18 @@
     display: none;
   }
 }
+
+#profile-button {
+  font-size: 18px;
+  /* background-color: rgb(243, 242, 248); */
+  background-color: rgb(243, 242, 248);
+  border: none;
+  border-radius: 26px;
+  width: 60px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#profile-button:hover {
+  background-color: rgb(141, 202, 255);
+}

@@ -4,7 +4,7 @@
 }
 
 .feed-container-outer {
-  margin-left: 150px;
+  margin-left: 95px;
 }
 
 /* .feed-container {
@@ -56,4 +56,8 @@
   font-size: 18px;
   display: inline;
   color: rgb(252, 196, 3);
+}
+
+.add-margin {
+  margin: 20px;
 }

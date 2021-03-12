@@ -49,7 +49,7 @@ function HomePage () {
     
     return (
         <>
-         {username && <h2>Welcome, {username}!</h2>}
+         {username && <h2 className='add-margin'>Welcome, {username}!</h2>}
             <div className='main-container'>
                 <SidePanel />
                 <div className='feed-container-outer'>
@@ -85,7 +85,7 @@ function HomePage () {
         </>
     )} catch (e){
         return (
-            <h4>Something went wrong. Try reloading the page</h4>
+            <h4 className='add-margin'>Something went wrong. Try reloading the page</h4>
         )
     }
 

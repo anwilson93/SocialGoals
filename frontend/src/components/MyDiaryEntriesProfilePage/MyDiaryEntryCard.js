@@ -22,7 +22,7 @@ function MyDiaryEntryCard ({diary, userId}) {
         </>
     )} catch (e){
         return (
-            <h4>Something went wrong. Try reloading the page</h4>
+            <h4 className='add-margin'>Something went wrong. Try reloading the page</h4>
         )
     }
 }
