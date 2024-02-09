@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -29,43 +29,26 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
-          <Route path='/logout-page' >
-            <LogoutPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
+        <Routes>
+          <Route path='/logout-page' element={<LogoutPage />} />
+          <Route path="/signup" element={<SignupFormPage />} />
           {/* <Route exact path='/'>
             <HomePage />
             <CommentList />
           </Route> */}
-          <Route exact path='/'>
-            <LandingPageJumbotron />
-          </Route>
-          <Route exact path="/goals">
-            <MyGoalsProfilePage />
-          </Route>
-          <Route exact path="/goals/completed">
-            <MyCompletedGoals />
-          </Route>
-          <Route exact path='/diaries'>
-            <MyDiaryEntriesProfilePage />
-          </Route>
-          <Route exact path="/followers">
-            <MyFollowersProfilePage />
-          </Route>
-          <Route exact path="/following">
-            <Following />
-          </Route>
-          <Route exact path='/feed'>
+          <Route exact path='/' element={<LandingPageJumbotron />} />
+          <Route exact path="/goals" element={<MyGoalsProfilePage />} />
+          <Route exact path="/goals/completed" element={<MyCompletedGoals />} />
+          <Route exact path='/diaries' element={<MyDiaryEntriesProfilePage />} />
+          <Route exact path="/followers" element={<MyFollowersProfilePage />} />
+          <Route exact path="/following" element={<Following />} />
+          <Route exact path='/feed' element={<HomePage />} />
+          {/* <Route exact path='/feed' >
             <HomePage />
-            {/* <CommentList /> */}
-          </Route>
-          <Route exact path='/search'>
-            <SearchPage />
-          </Route>
-        </Switch>
+            <CommentList />
+          </Route> */}
+          <Route exact path='/search' element={<SearchPage />} />
+        </Routes>
       )}
     </>
   );

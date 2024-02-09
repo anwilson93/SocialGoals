@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  let history = useHistory();
+  let history = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
-  
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -22,14 +22,14 @@ function ProfileButton({ user }) {
     };
 
     document.addEventListener('click', closeMenu);
-  
+
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout())
-    history.push('/logout-page')
+    dispatch(sessionActions.logout());
+    history('/logout-page');
   };
 
   return (
@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
           {/* <li>{user.username}</li> */}
           {/* <li>{user.email}</li> */}
           <li>
-            <button className='nav-buttons'onClick={logout}>Log Out</button>
+            <button className='nav-buttons' onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}

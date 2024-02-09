@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -13,7 +13,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Navigate to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,50 +29,50 @@ function SignupFormPage() {
 
   return (
     <>
-     <h1 className='h1'>Sign Up</h1>
+      <h1 className='h1'>Sign Up</h1>
       <div className='form-container'>
         <form id='login-form' onSubmit={handleSubmit}>
           <ul className='login-inputs'>
             {errors.map((error, idx) => (
-               <li id='errors' key={idx}>{error}</li>
+              <li id='errors' key={idx}>{error}</li>
             ))}
           </ul>
           <div className='form-fields-container'>
-            <input 
+            <input
               type='text'
               className='form-field'
-              placeholder='Email' 
+              placeholder='Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
 
-            <input 
+            <input
               type='text'
               className='form-field'
-              placeholder='Username' 
+              placeholder='Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-            
-            <input 
+
+            <input
               type='password'
               className='form-field'
               placeholder='Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-            />  
+            />
 
-            <input 
+            <input
               type='password'
               className='form-field'
               placeholder='Confirm Password'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-            /> 
+            />
           </div>
 
           <div className='buttons-footer'>
@@ -84,7 +84,7 @@ function SignupFormPage() {
         </form>
       </div>
     </>
-  )
+  );
 }
 
 export default SignupFormPage;

@@ -1,63 +1,63 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
-import {fetchLikes} from '../../store/likes';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchLikes } from '../../store/likes';
 import LikeButton from '../LikeButton';
-import UnlikeButton from '../UnlikeButton'
+import UnlikeButton from '../UnlikeButton';
 
 
-function CheckIfLikeDiaryEntry ({diaryEntryId}) {
+function CheckIfLikeDiaryEntry({ diaryEntryId }) {
     const userId = useSelector(state => state.session.user.id);
 
     let likes;
     const dispatch = useDispatch();
 
     let [likeDiary, setLikeDiary] = useState(false);
-    
-    useEffect (() => {
-        return (dispatch(fetchLikes(userId)))
-    }, [dispatch, likeDiary, setLikeDiary, likes])
+
+    useEffect(() => {
+        dispatch(fetchLikes(userId));
+    }, [dispatch, likeDiary, setLikeDiary, likes]);
 
     const diariesILike = useSelector(state => {
-        return state.likes
+        return state.likes;
     });
 
 
-    if (diariesILike){
-        likes = diariesILike.likes
+    if (diariesILike) {
+        likes = diariesILike.likes;
     }
-    
-    useEffect (() => {
+
+    useEffect(() => {
         if (likes) {
-            let i = 0
-      
-            while (i<likes.length){
-                
-                if (diaryEntryId === likes[i].diaryEntryId){
-                    setLikeDiary(true)
+            let i = 0;
+
+            while (i < likes.length) {
+
+                if (diaryEntryId === likes[i].diaryEntryId) {
+                    setLikeDiary(true);
                     break;
                 } else {
-                    setLikeDiary(false)
+                    setLikeDiary(false);
                 }
-                i++
-            } 
+                i++;
+            }
         } else {
-            setLikeDiary(false)
+            setLikeDiary(false);
         }
-    }, [dispatch, likeDiary, setLikeDiary, likes, diariesILike])
+    }, [dispatch, likeDiary, setLikeDiary, likes, diariesILike]);
 
-   
+
 
     if (likeDiary) {
         return (
             <>
-            <UnlikeButton userId={userId} diaryEntryId={diaryEntryId} likeDiary={likeDiary}/>
+                <UnlikeButton userId={userId} diaryEntryId={diaryEntryId} likeDiary={likeDiary} />
             </>
-        )
+        );
     } else {
         return (
-            < LikeButton userId={userId} diaryEntryId={diaryEntryId}/>
-        )
+            < LikeButton userId={userId} diaryEntryId={diaryEntryId} />
+        );
     }
- 
+
 }
 export default CheckIfLikeDiaryEntry;
